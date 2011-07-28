@@ -33,8 +33,10 @@ _type = ""
 
 import sys, getopt
 #import log
-import docs
+import doctype
+import doctype.log.file
 import general.listing
+import general.supportfilter
 
 class pySearch:
     def __init__(self):
@@ -48,10 +50,17 @@ class pySearch:
 
     def list(self, dir):
         #self.searchLog.info("Listing directory content...")
-        #self.searchLog.info("Supported File Types: " + repr(docs.supported))
+        #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
         print "Listing directory content..."
-        print "Supported File Types: " + repr(docs.supported)
-        general.listing.listFiles(dir, _hidden)
+        print "Supported File Types: " + repr(doctype.supported)
+        total_size, fileList = general.listing.listFiles(dir, _hidden)
+        print fileList
+        filter = general.supportfilter.supportFilter()
+        filteredList = filter.filterList(fileList)
+        print filteredList
+        handler = doctype.log.file.fileHandler()
+        handler.fopen(filteredList[0])
+        handler.readall()
         
     def validate(self):
         sure = raw_input("Are you sure you want to perform the given search? (y/n) ")

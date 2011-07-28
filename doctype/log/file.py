@@ -4,11 +4,11 @@ class fileHandler(object):
         pass
     def fopen(self, itempath):
         self.fobj = open(itempath, "r")
-        return fobj
+        return self.fobj
 
     def readall(self):
         content = ""
-        for line in fobj:
+        for line in self.fobj:
             content += line
         print content
         return content
