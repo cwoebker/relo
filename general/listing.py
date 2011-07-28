@@ -4,6 +4,7 @@ def listFiles(rootDir, hidden):
     """
     list files in specified directory
     """
+    fileList = []
     total_size = 0
     for root, subFolders, files in os.walk(rootDir):
         subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
@@ -12,5 +13,7 @@ def listFiles(rootDir, hidden):
                 continue
             itempath = os.path.join(root, file)
             total_size += os.path.getsize(itempath)
+            fileList.append(itempath)
 
-    print "\nTotal Size:", str(total_size)
+    print "Total Size:", str(total_size)
+    return total_size, fileList;
