@@ -19,6 +19,7 @@ Examples:
 This program is developed and maintained by Cecil Woebker.
 ------------------------------------------------------------
 """
+import general
 
 __author__ = "cwoebker"
 __version__ = "$Revision: 0.0.1 $"
@@ -33,10 +34,10 @@ _type = ""
 
 import sys, getopt
 #import log
-import doctype
-import doctype.log.file
+from doctype import supported
 import general.listing
 import general.supportfilter
+import general.manage
 
 class pySearch:
     def __init__(self):
@@ -52,18 +53,18 @@ class pySearch:
         #self.searchLog.info("Listing directory content...")
         #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
         print "Listing directory content..."
-        print "Supported File Types: " + repr(doctype.supported)
+        print "Supported File Types: " + repr(supported)
         total_size, fileList = general.listing.listFiles(dir, _hidden)
         print fileList
         filter = general.supportfilter.supportFilter()
         filteredList = filter.filterList(fileList)
         print filteredList
-        handler = doctype.log.file.fileHandler()
-        handler.fopen(filteredList[0])
-        handler.readall()
+        manager = general.manage.Manager('test')
+        for item in filteredList:
+            manager.start(item)
         
     def validate(self):
-        sure = raw_input("Are you sure you want to perform the given search? (y/n) ")
+        sure = 'y' #raw_input("Are you sure you want to perform the given search? (y/n) ")
         if sure != 'y':
             sys.exit(2)
 
