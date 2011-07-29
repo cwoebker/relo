@@ -1,3 +1,3 @@
-__all__ = ['txt']
+__all__ = ['txt', 'log']
 
 supported = ['txt', 'log']
