@@ -16,4 +16,4 @@ def listFiles(rootDir, hidden):
             fileList.append(itempath)
 
     print "Total Size:", str(total_size)
-    return total_size, fileList;
+    return total_size, fileList
