@@ -34,7 +34,7 @@ _type = ""
 
 import sys, getopt
 #import log
-from doctype import supported
+import doctype
 import general.manage
 
 class pySearch:
@@ -51,11 +51,9 @@ class pySearch:
         #self.searchLog.info("Listing directory content...")
         #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
         print "Listing directory content..."
-        print "Supported File Types: " + repr(supported)
+        print "Supported File Types: " + repr(doctype.__all__)
         total_size, fileList = general.listFiles(dir, _hidden)
-        print fileList
         filteredList = general.filterList(fileList)
-        print filteredList
         manager = general.manage.Manager('txt')
         for item in filteredList:
             manager.start(item)
