@@ -27,8 +27,9 @@ class LOG(Plugin):
 
     def search(self, key):
         if self.content.find(key) > 0:
-            print "Match in", self.path
             for m in re.finditer(key, self.content):
-                print m.start()
-                
-        return "OK"
+                print "Found at position: " + str(m.start())
+        else:
+            print "Nothing found"
+
+        print "Finished with: " + self.path
