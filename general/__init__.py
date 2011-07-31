@@ -52,3 +52,10 @@ def filterList(fileList):
             filteredList.append(path)
 
     return filteredList
+
+def fileNameSearch(fileList, key):
+    print fileList
+    for item in fileList:
+        print item
+        if not item.find(key) == -1:
+            print "Found: " + item
