@@ -43,20 +43,26 @@ class pySearch:
         """
         print "pySearch: version %s" % __version__
         print "Verbose: " + str(bool(_verbose))
-        #self.searchLog = log.searchLogger(_verbose)
-        #print "pySearch Logger initialized"
+
+        self.filteredList = []
+        self.total_size = 0
+        self.fileList = []
 
     def list(self, dir):
         #self.searchLog.info("Listing directory content...")
         #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
         print "Listing directory content..."
         print "Supported File Types: " + repr(doctype.__all__)
-        total_size, fileList = general.listFiles(dir, _hidden)
-        filteredList = general.filterList(fileList)
-        manager = general.manage.Manager('txt')
-        for item in filteredList:
+        self.total_size, self.fileList = general.listFiles(dir, _hidden)
+
+    def filter(self):
+        self.filteredList = general.filterList(self.fileList)
+
+    def start(self, key):
+        manager = general.manage.Manager(key)
+        for item in self.filteredList:
             manager.start(item)
-        
+
     def validate(self):
         sure = 'y' #raw_input("Are you sure you want to perform the given search? (y/n) ")
         if sure != 'y':
@@ -94,6 +100,8 @@ def main(argv):
     search = pySearch()
     search.validate()
     search.list(directory)
+    search.filter()
+    search.start(args[0])
 
 if __name__ == '__main__':
     main(sys.argv[1:])
