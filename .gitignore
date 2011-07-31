@@ -1,4 +1,5 @@
 .idea/*
+*.tmproj
 .DS_Store
 testFiles/*
 *.pyc
