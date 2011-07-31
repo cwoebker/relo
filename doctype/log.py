@@ -3,8 +3,6 @@
 import sys
 import os
 
-__author__ = 'cwoebker'
-
 dirname = os.path.dirname(os.path.abspath(__file__))
 up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)

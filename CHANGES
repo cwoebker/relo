@@ -6,7 +6,7 @@ CHANGELOG for PySearch
 
 * Initial Public Release
 
-* Implemented Basic Plugin System for diffrent doument types.
+* Implemented Basic Plugin System for different document types.
 
 * Supported DocTypes:
 
