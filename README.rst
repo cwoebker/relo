@@ -1,16 +1,14 @@
 ========
 PySearch
 ========
-More information is available at the homepage[home].
+More information is available at the `homepage <http://cwoebker.github.com/pysearch>`_.
 
 What kind of documents are supported?
 -------------------------------------
-For now you have to browse through the DocType[doctype] plugin directory on github.
+For now you have to browse through the `DocType <http://github.com/cwoebker/pysearch/tree/master/doctype/>`_ plugin directory on github.
 
 More Documentation
 ------------------
-Not available yet, email me with any questions
+Not available yet, but you can check the `github wiki <http://wiki.github.com/cwoebker/pysearch>`_ regularly for changes.
 
-[home]:http://cwoebker.github.com/pysearch
-[wiki]:http://wiki.github.com/cwoebker/pysearch
-[doctype]:http://github.com/cwoebker/pysearch/tree/master/doctype/
+Email me with any questions
