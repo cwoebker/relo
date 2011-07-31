@@ -26,7 +26,7 @@ __version__ = general.get_version()
 __copyright__ = "cwoebker"
 __license__ = "See in LICENSE file"
 
-directory = "./"
+_directory = "./"
 _verbose = 0
 _hidden = 0
 _type = ""
@@ -43,21 +43,25 @@ class pySearch:
         """
         self.verbose = _verbose
         self.hidden = _hidden
+        self.type = _type
+        self.dir = _directory
         
         print "pySearch: version %s" % __version__
         print "Verbose: " + str(bool(self.verbose))
         print "Hidden Files: " + str(bool(self.hidden))
+        print "Search Type: " + self.type
+        print "Directory: " + self.dir
 
         self.filteredList = []
         self.total_size = 0
         self.fileList = []
 
-    def list(self, dir):
+    def list(self):
         #self.searchLog.info("Listing directory content...")
         #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
         print "Listing directory content..."
         print "Supported File Types: " + repr(doctype.__all__)
-        self.total_size, self.fileList = general.listFiles(dir, self.hidden)
+        self.total_size, self.fileList = general.listFiles(self.dir, self.hidden)
 
     def filter(self):
         self.filteredList = general.filterList(self.fileList)
@@ -66,6 +70,9 @@ class pySearch:
         manager = general.manage.Manager(key)
         for item in self.filteredList:
             manager.start(item)
+
+    def startName(self, key):
+        general.fileNameSearch(self.fileList, key)
 
     def validate(self):
         sure = 'y' #raw_input("Are you sure you want to perform the given search? (y/n) ")
@@ -83,14 +90,20 @@ def main(argv):
     parses the arguments and starts the application
     """
     try:
-        opts, args = getopt.getopt(argv, "hd:v", ["hidden", "directory", "help"])
+        opts, args = getopt.getopt(argv, "hdta:v", ["help", "directory", "type", "all"])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
+    print "Arguments: " + repr(args)
+    print "Options: " + repr(opts)
     for opt, arg in opts:
-        if opt in ("-h", "--hidden"):
+        if opt in ("-a", "--all"):
             global _hidden
             _hidden = 1
+        elif opt in ("-t", "--type"):
+            global _type
+            _type = arg
+            print arg
         elif opt == '-v':
             global _verbose
             _verbose = 1
@@ -98,14 +111,21 @@ def main(argv):
             usage()
             sys.exit(1)
         elif opt in ("-d", "--directory"):
-            global directory
-            directory = str(arg)
+            global _directory
+            _directory = arg
+            print arg
 
     search = pySearch()
     search.validate()
-    search.list(directory)
-    search.filter()
-    search.start(args[0])
+    search.list()
+    if _type == "name":
+        search.startName(args[0])
+    elif _type == "regex":
+        search.filter()
+        pass
+    else:
+        search.filter()
+        search.start(args[0])
 
 if __name__ == '__main__':
     main(sys.argv[1:])
