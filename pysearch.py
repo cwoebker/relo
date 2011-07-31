@@ -22,10 +22,9 @@ This program is developed and maintained by Cecil Woebker.
 import general
 
 __author__ = "cwoebker"
-__version__ = "$Revision: 0.0.1 $"
-__date__ = "$Date: 2011/07/26"
+__version__ = general.get_version()
 __copyright__ = "cwoebker"
-__license__ = "GPL"
+__license__ = "See in LICENSE file"
 
 directory = "./"
 _verbose = 0
@@ -42,7 +41,7 @@ class pySearch:
         """
         Main pySearch class
         """
-        print "pySearch class initialized"
+        print "pySearch: version %s" % __version__
         print "Verbose: " + str(bool(_verbose))
         #self.searchLog = log.searchLogger(_verbose)
         #print "pySearch Logger initialized"
