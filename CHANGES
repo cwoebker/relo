@@ -1,0 +1,14 @@
+CHANGELOG for PySearch
+======================
+
+0.1 (2011 Jul 31)
+-----------------
+
+* Initial Public Release
+
+* Implemented Basic Plugin System for diffrent doument types.
+
+* Supported DocTypes:
+
+	* (.txt) Normal Text Files
+	* (.log) Logging Files
