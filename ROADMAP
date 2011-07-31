@@ -1,0 +1,21 @@
+ROADMAP for PySearch
+====================
+
+0.5 beta:
+---------
+
+* implement Library function register on pypi
+
+before 0.5:
+-----------
+
+* implement doctypes for pdf and chm
+* implement doctypes for office documents
+
+* implement different types of searches:
+
+    * file name search
+    * content search
+    * regular expressions search
+
+* implement option to search hidden files
