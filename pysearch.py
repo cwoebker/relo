@@ -41,8 +41,12 @@ class pySearch:
         """
         Main pySearch class
         """
+        self.verbose = _verbose
+        self.hidden = _hidden
+        
         print "pySearch: version %s" % __version__
-        print "Verbose: " + str(bool(_verbose))
+        print "Verbose: " + str(bool(self.verbose))
+        print "Hidden Files: " + str(bool(self.hidden))
 
         self.filteredList = []
         self.total_size = 0
@@ -79,20 +83,20 @@ def main(argv):
     parses the arguments and starts the application
     """
     try:
-        opts, args = getopt.getopt(argv, "hd:v", ["help", "directory", "hidden"])
+        opts, args = getopt.getopt(argv, "hd:v", ["hidden", "directory", "help"])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
     for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            usage()
-            sys.exit()
+        if opt in ("-h", "--hidden"):
+            global _hidden
+            _hidden = 1
         elif opt == '-v':
             global _verbose
             _verbose = 1
-        elif opt == "--hidden":
-            global _hidden
-            _hidden = 1
+        elif opt == "--help":
+            usage()
+            sys.exit(1)
         elif opt in ("-d", "--directory"):
             global directory
             directory = str(arg)
