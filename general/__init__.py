@@ -54,6 +54,7 @@ def filterList(fileList):
     return filteredList
 
 def fileNameSearch(fileList, key):
-    for item in fileList:
+    for itempath in fileList:
+        item = os.path.basename(itempath)
         if not item.find(key) == -1:
             print "Found: " + item
