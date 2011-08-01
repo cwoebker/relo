@@ -95,11 +95,9 @@ def main(argv):
                         help='show all files/hidden files')
     type_group = parser.add_mutually_exclusive_group()
     type_group.add_argument('-n', '--name', action='store_true',
-                            help='search file names')
+                            help='search match in fileNames')
     type_group.add_argument('-c', '--content', action='store_true',
-                            help='search content with string')
-    type_group.add_argument('-r', '--regex', action='store_true',
-                            help='search file with regular expressions')
+                            help='search match in content')
     parser.add_argument('--debug', '--verbose', action='store_true',
                         help='enable debug/verbose debugging')
     
@@ -116,8 +114,6 @@ def main(argv):
         type = "fileName Search"
     elif results.content:
         type = "content Search"
-    elif results.regex:
-        type = "regex Search"
     else:
         type = "fileName Search"
     search = pySearch(results.debug, results.all, type,
@@ -127,9 +123,6 @@ def main(argv):
     if results.name:
         search.startName()
     elif results.content:
-        search.filter()
-        search.start()
-    elif results.regex:
         search.filter()
         search.start()
 
