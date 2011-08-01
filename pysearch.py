@@ -62,7 +62,8 @@ class pySearch:
 
     def filter(self):
         self.filteredList = general.filterList(self.fileList)
-        for item in self.filteredList:
+        for itempath in self.filteredList:
+            item = general.getFileType(itempath)
             if item not in self.extList:
                 self.extList.append(item)
 

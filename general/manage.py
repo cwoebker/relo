@@ -15,7 +15,16 @@ class Manager(object):
         print "Collecting plugins..."
         files = glob(os.path.join(plugins, '*.py'))
         files.remove(plugins + '/__init__.py')
+        print "Filtering plugins..."
+        removeList = []
+        for item in files:
+            ext = os.path.basename(item)
+            ext = ext.rstrip('.py')
+            if ext not in extList:
+                removeList.append(item)
+        files = list(set(files) - set(removeList))
         print "Loading plugins..."
+        print "Loaded plugins: " + repr(files)
         sys.path.append(plugins) # So we can import files
         for plugin in files:
             __import__(os.path.basename(plugin).strip('.py'))
