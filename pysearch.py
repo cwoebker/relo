@@ -32,7 +32,7 @@ _hidden = 0
 _type = ""
 
 import sys, getopt
-#import log
+import argparse
 import doctype
 import general.manage
 
@@ -89,31 +89,34 @@ def main(argv):
     """
     parses the arguments and starts the application
     """
-    try:
-        opts, args = getopt.getopt(argv, "hdta:v", ["help", "directory", "type", "all"])
-    except getopt.GetoptError:
+    parser = argparse.ArgumentParser(description='Recursive Document Content Search in Python')
+    parser.add_argument('--version', action='version', version=('%(prog)s ' + __version__))
+
+    '''try:
+        opts, args = getopt.getopt(argv, "hd:t:av", ["help", "directory", "type", "all"])
+    except getopt.GetoptError, err:
+        print str(err)
         usage()
         sys.exit(2)
     print "Arguments: " + repr(args)
     print "Options: " + repr(opts)
     for opt, arg in opts:
-        if opt in ("-a", "--all"):
-            global _hidden
-            _hidden = 1
-        elif opt in ("-t", "--type"):
-            global _type
-            _type = arg
-            print arg
-        elif opt == '-v':
-            global _verbose
-            _verbose = 1
-        elif opt == "--help":
+        if opt in ("-h", "--help"):
             usage()
             sys.exit(1)
         elif opt in ("-d", "--directory"):
             global _directory
             _directory = arg
-            print arg
+        elif opt in ("-t", "--type"):
+            global _type
+            _type = arg
+        elif opt in ("-a", "--all"):
+            global _hidden
+            _hidden = 1
+        elif opt == '-v':
+            global _verbose
+            _verbose = 1'''
+
 
     search = pySearch()
     search.validate()
