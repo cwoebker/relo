@@ -90,16 +90,30 @@ def main(argv):
     parses the arguments and starts the application
     """
     parser = argparse.ArgumentParser(description='Recursive Document Content Search in Python')
-    parser.add_argument('search_key', action="store", help='keyword to search for')
+    parser.add_argument('search_key', action='store', help='keyword to search for')
     parser.add_argument('-v', '--version', action='version',
                         version=('%(prog)s ' + __version__))
     parser.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select Directory to search in')
+    parser.add_argument('-a', '--all', action='store_true',
+                        help='show all files/hidden files')
+    type_group = parser.add_mutually_exclusive_group()
+    type_group.add_argument('-n', '--name', action='store_true',
+                            help='search file names')
+    type_group.add_argument('-c', '--content', action='store_true',
+                            help='search content with string')
+    type_group.add_argument('-r', '--regex', action='store_true',
+                            help='search file with regular expressions')
+    parser.add_argument('--debug', '--verbose', action='store_true',
+                        help='enable debug/verbose debugging')
+    
     '''doctype_group = parser.add_argument_group('doctype arguments')
-    doctype_group.add_argument('--txt', action="store_true", default=False)
-    doctype_group.add_argument('--log', action="store_true", default=False)'''
+    doctype_group.add_argument('--txt', action='store_true', default=False)
+    doctype_group.add_argument('--log', action='store_true', default=False)'''
     
     results = parser.parse_args(args=argv)
+    print results
+    sys.exit()
 
     '''try:
         opts, args = getopt.getopt(argv, "hd:t:av", ["help", "directory", "type", "all"])
@@ -135,7 +149,7 @@ def main(argv):
     elif _type == "regex":
         search.filter()
         pass
-    else:
+    elif _type == "content":
         search.filter()
         search.start(args[0])
 
