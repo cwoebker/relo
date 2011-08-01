@@ -7,8 +7,10 @@ What kind of documents are supported?
 -------------------------------------
 For now you have to browse through the `DocType <http://github.com/cwoebker/pysearch/tree/master/doctype/>`_ plugin directory on github.
 
-More Documentation
-------------------
-Not available yet, but you can check the `github wiki <http://wiki.github.com/cwoebker/pysearch>`_ regularly for changes.
+Where are the Docs?
+-------------------
+Not done yet, but you can still check out the `github wiki <http://wiki.github.com/cwoebker/pysearch>`_.
+
+Additionally try running `python pysearch.py --help` for basic usage information.
 
 Email me with any questions
