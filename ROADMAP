@@ -9,7 +9,7 @@ ROADMAP for PySearch
 0.4 beta:
 -----------
 
-* implement doctypes for pdf and chm
+* implement doctypes for pdf (and chm if easily possible)
 * implement doctypes for office documents
 
 0.3 alpha:
