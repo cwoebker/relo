@@ -13,4 +13,8 @@ Not done yet, but you can still check out the `github wiki <http://wiki.github.c
 
 Additionally try running ``python pysearch.py --help`` for basic usage information.
 
+
+Need more info or want to constribute?
+------------------------------------
+
 Email me with any questions
