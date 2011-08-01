@@ -90,7 +90,16 @@ def main(argv):
     parses the arguments and starts the application
     """
     parser = argparse.ArgumentParser(description='Recursive Document Content Search in Python')
-    parser.add_argument('--version', action='version', version=('%(prog)s ' + __version__))
+    parser.add_argument('search_key', action="store", help='keyword to search for')
+    parser.add_argument('-v', '--version', action='version',
+                        version=('%(prog)s ' + __version__))
+    parser.add_argument('-d', '--directory', action='store', default='./',
+                        dest='directory', help='select Directory to search in')
+    '''doctype_group = parser.add_argument_group('doctype arguments')
+    doctype_group.add_argument('--txt', action="store_true", default=False)
+    doctype_group.add_argument('--log', action="store_true", default=False)'''
+    
+    results = parser.parse_args(args=argv)
 
     '''try:
         opts, args = getopt.getopt(argv, "hd:t:av", ["help", "directory", "type", "all"])
