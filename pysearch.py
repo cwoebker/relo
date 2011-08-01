@@ -106,8 +106,10 @@ def main(argv):
     '''doctype_group = parser.add_argument_group('doctype arguments')
     doctype_group.add_argument('--txt', action='store_true', default=False)
     doctype_group.add_argument('--log', action='store_true', default=False)'''
-    
-    results = parser.parse_args(args=argv)
+    try:
+        results = parser.parse_args(args=argv)
+    except IOError, msg:
+        parser.error(str(msg))
     print results
 
     '''try:
