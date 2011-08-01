@@ -4,9 +4,7 @@ class DocType(Interface):
     """""
     Implements different type of docs
     """""
-    def open(self, path):
+    def load(self, path):
         pass
     def search(self, key):
-        pass
-    def finish(self):
         pass
