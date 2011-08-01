@@ -112,18 +112,13 @@ def main(argv):
         parser.error(str(msg))
     print results
 
-    type = ""
     if results.name:
-        global type
         type = "fileName Search"
     elif results.content:
-        global type
         type = "content Search"
     elif results.regex:
-        global type
         type = "regex Search"
     else:
-        global type
         type = "fileName Search"
     search = pySearch(results.debug, results.all, type,
                       results.directory, results.search_key)
