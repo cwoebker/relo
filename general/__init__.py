@@ -54,8 +54,6 @@ def filterList(fileList):
     return filteredList
 
 def fileNameSearch(fileList, key):
-    print fileList
     for item in fileList:
-        print item
         if not item.find(key) == -1:
             print "Found: " + item

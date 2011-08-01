@@ -16,6 +16,7 @@ ROADMAP for PySearch
 ----------
 
 Regular Expression Search
+implement selective plugin loading, only if needed
 
 0.2 alpha:
 ----------
