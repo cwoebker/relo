@@ -11,6 +11,6 @@ Where are the Docs?
 -------------------
 Not done yet, but you can still check out the `github wiki <http://wiki.github.com/cwoebker/pysearch>`_.
 
-Additionally try running `python pysearch.py --help` for basic usage information.
+Additionally try running ``python pysearch.py --help`` for basic usage information.
 
 Email me with any questions
