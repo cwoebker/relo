@@ -49,6 +49,7 @@ class pySearch:
         print "Searching for: " + self.key
 
         self.filteredList = []
+        self.extList = []
         self.total_size = 0
         self.fileList = []
 
@@ -61,9 +62,12 @@ class pySearch:
 
     def filter(self):
         self.filteredList = general.filterList(self.fileList)
+        for item in self.filteredList:
+            if item not in self.extList:
+                self.extList.append(item)
 
     def start(self):
-        manager = general.manage.Manager(self.key)
+        manager = general.manage.Manager(self.key, self.extList)
         for item in self.filteredList:
             manager.start(item)
 
