@@ -1,0 +1,72 @@
+ROADMAP for PySearch
+====================
+
+Future:
+-------
+
+Indexing of files for faster search
+index db generation one time, then changes
+performance needed code in C
+
+1.0 stable:
+-----------
+
+CODE OPTIMIZATION!!!
+CODE OPTIMIZATION!!!
+CODE OPTIMIZATION!!!
+
+0.9 beta:
+---------
+
+GUI for parts of the app:
+    * setttings
+    * update system for plugins
+    * menubar spotlight like applet?
+
+0.8 beta:
+---------
+
+* plugin update, install, remove system
+* notifications when needed plugin is missing
+
+0.7 beta:
+---------
+
+* improve cmd output:
+    * progressbar where necessary
+    * log class to implement debug mode
+    * other changes... coloring?
+
+0.6 beta:
+---------
+
+* add documentation, sphinx and readthedocs.org
+* finsih wiki
+* improve web etc.
+
+0.5 beta:
+---------
+
+* implement Library function register on pypi
+
+0.4 beta:
+-----------
+
+* implement doctypes for pdf (and chm if easily possible)
+* implement doctypes for office documents
+
+0.3 alpha:
+----------
+
+Regular Expression Search
+implement selective plugin loading, only if needed
+
+0.2 alpha:
+----------
+
+* implement different types of searches:
+
+    * file name search
+    * content search
+
+* implement option to search hidden files
