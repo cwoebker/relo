@@ -24,7 +24,7 @@ class LOG(Plugin):
         self.fobj.close()
 
     def search(self, key):
-        if self.content.find(key) > 0:
+        if not (re.search(key, self.content) == None):
             for m in re.finditer(key, self.content):
                 print "Found at position: " + str(m.start())
         else:
