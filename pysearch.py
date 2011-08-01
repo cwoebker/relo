@@ -112,31 +112,6 @@ def main(argv):
         parser.error(str(msg))
     print results
 
-    '''try:
-        opts, args = getopt.getopt(argv, "hd:t:av", ["help", "directory", "type", "all"])
-    except getopt.GetoptError, err:
-        print str(err)
-        usage()
-        sys.exit(2)
-    print "Arguments: " + repr(args)
-    print "Options: " + repr(opts)
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            usage()
-            sys.exit(1)
-        elif opt in ("-d", "--directory"):
-            global _directory
-            _directory = arg
-        elif opt in ("-t", "--type"):
-            global _type
-            _type = arg
-        elif opt in ("-a", "--all"):
-            global _hidden
-            _hidden = 1
-        elif opt == '-v':
-            global _verbose
-            _verbose = 1'''
-
     type = ""
     if results.name:
         global type
