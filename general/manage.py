@@ -34,14 +34,12 @@ class Manager(object):
         self.plugList = DocType.implementors()
         print self.plugList
         for plug in self.plugList:
-            print 'ping'
             print repr(plug)
             for ext in extList:
                 if not repr(plug).find(ext) > 0:
                     self.plugList.remove(plug)
         print self.plugList
         for plug in self.plugList:
-            print 'ping'
             print repr(plug)
 
     def start(self, itempath):
