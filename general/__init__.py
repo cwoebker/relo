@@ -4,7 +4,7 @@ import doctype
 __all__ = ['manage', 'interfaces']
 
 
-VERSION = (0, 1, 0, 'alpha')
+VERSION = (0, 2, 0, 'alpha')
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -24,7 +24,8 @@ def listFiles(rootDir, hidden):
     fileList = []
     total_size = 0
     for root, subFolders, files in os.walk(rootDir):
-        subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
+        if not hidden:
+            subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
         for file in files:
             if file.startswith('.') and hidden==0:
                 continue
@@ -51,3 +52,9 @@ def filterList(fileList):
             filteredList.append(path)
 
     return filteredList
+
+def fileNameSearch(fileList, key):
+    for itempath in fileList:
+        item = os.path.basename(itempath)
+        if not item.find(key) == -1:
+            print "Found: " + item
