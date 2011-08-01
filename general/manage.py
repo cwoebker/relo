@@ -11,6 +11,7 @@ from doctype import *
 class Manager(object):
     def __init__(self, key, extList):
         self.key = key
+        self.extList = extList
         plugins = 'doctype'
         print "Collecting plugins..."
         files = glob(os.path.join(plugins, '*.py'))
@@ -24,12 +25,25 @@ class Manager(object):
                 removeList.append(item)
         files = list(set(files) - set(removeList))
         print "Loading plugins..."
-        print "Loaded plugins: " + repr(files)
         sys.path.append(plugins) # So we can import files
         for plugin in files:
             __import__(os.path.basename(plugin).strip('.py'))
+        print "Loaded plugins: " + repr(files)
+
         print "Activating plugins..."
         self.plugList = DocType.implementors()
+        print self.plugList
+        for plug in self.plugList:
+            print 'ping'
+            print repr(plug)
+            for ext in extList:
+                if not repr(plug).find(ext) > 0:
+                    self.plugList.remove(plug)
+        print self.plugList
+        for plug in self.plugList:
+            print 'ping'
+            print repr(plug)
+
     def start(self, itempath):
         for listener in self.plugList:
             if not repr(listener).startswith('<doctype'):
@@ -42,3 +56,6 @@ class Manager(object):
             listener.load(itempath)
             print "Searching data..."
             listener.search(self.key)
+            break
+
+
