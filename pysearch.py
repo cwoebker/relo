@@ -26,31 +26,27 @@ __version__ = general.get_version()
 __copyright__ = "cwoebker"
 __license__ = "See in LICENSE file"
 
-_directory = "./"
-_verbose = 0
-_hidden = 0
-_type = ""
-
-import sys, getopt
+import sys
 import argparse
 import doctype
 import general.manage
 
 class pySearch:
-    def __init__(self):
+    def __init__(self, _debug, _hidden, _type, _directory, _key):
         """
         Main pySearch class
         """
-        self.verbose = _verbose
+        self.verbose = _debug
         self.hidden = _hidden
-        self.type = _type
         self.dir = _directory
+        self.key = _key
         
         print "pySearch: version %s" % __version__
         print "Verbose: " + str(bool(self.verbose))
         print "Hidden Files: " + str(bool(self.hidden))
-        print "Search Type: " + self.type
+        print "Search Type: " + _type
         print "Directory: " + self.dir
+        print "Searching for: " + self.key
 
         self.filteredList = []
         self.total_size = 0
@@ -66,13 +62,13 @@ class pySearch:
     def filter(self):
         self.filteredList = general.filterList(self.fileList)
 
-    def start(self, key):
-        manager = general.manage.Manager(key)
+    def start(self):
+        manager = general.manage.Manager(self.key)
         for item in self.filteredList:
             manager.start(item)
 
-    def startName(self, key):
-        general.fileNameSearch(self.fileList, key)
+    def startName(self):
+        general.fileNameSearch(self.fileList, self.key)
 
     def validate(self):
         sure = 'y' #raw_input("Are you sure you want to perform the given search? (y/n) ")
@@ -113,7 +109,6 @@ def main(argv):
     
     results = parser.parse_args(args=argv)
     print results
-    sys.exit()
 
     '''try:
         opts, args = getopt.getopt(argv, "hd:t:av", ["help", "directory", "type", "all"])
@@ -140,18 +135,31 @@ def main(argv):
             global _verbose
             _verbose = 1'''
 
-
-    search = pySearch()
+    type = ""
+    if results.name:
+        global type
+        type = "fileName Search"
+    elif results.content:
+        global type
+        type = "content Search"
+    elif results.regex:
+        global type
+        type = "regex Search"
+    else:
+        global type
+        type = "fileName Search"
+    search = pySearch(results.debug, results.all, type,
+                      results.directory, results.search_key)
     search.validate()
     search.list()
-    if _type == "name":
-        search.startName(args[0])
-    elif _type == "regex":
+    if results.name:
+        search.startName()
+    elif results.content:
         search.filter()
-        pass
-    elif _type == "content":
+        search.start()
+    elif results.regex:
         search.filter()
-        search.start(args[0])
+        search.start()
 
 if __name__ == '__main__':
     main(sys.argv[1:])
