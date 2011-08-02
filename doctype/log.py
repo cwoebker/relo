@@ -12,7 +12,7 @@ from general.interfaces import DocType
 import re
 
 class LOG(DocType):
-    name = "LOG"
+    name = "LOG Plugin"
 
     def load(self, path):
         self.path = path
