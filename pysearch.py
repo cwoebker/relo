@@ -1,24 +1,4 @@
 #!/usr/bin/env python
-"""
-------------------------------------------------------------
-Recursive Document Search - Python (pySearch)
-
-Searches content of documents in a specific directory
-
-Usage: python pysearch.py [options] [arguments]
-
-Options:
-  -h,  --help           shows this help
-
-  -d                    show debugging information while running
-  -v                    show verbose output while running
-
-Examples:
-  apm.py
-
-This program is developed and maintained by Cecil Woebker.
-------------------------------------------------------------
-"""
 import general
 
 __author__ = "cwoebker"
@@ -80,12 +60,6 @@ class pySearch:
         if sure != 'y':
             sys.exit(2)
 
-def usage():
-    """
-    prints usage information
-    """
-    print __doc__
-
 def main(argv):
     """
     parses the arguments and starts the application
@@ -100,9 +74,9 @@ def main(argv):
                         help='show all files/hidden files')
     type_group = parser.add_mutually_exclusive_group()
     type_group.add_argument('-n', '--name', action='store_true',
-                            help='search match in fileNames')
+                            help='search match in fileNames (regex allowed)')
     type_group.add_argument('-c', '--content', action='store_true',
-                            help='search match in content')
+                            help='search match in content (regex allowed)')
     parser.add_argument('--debug', '--verbose', action='store_true',
                         help='enable debug/verbose debugging')
     
@@ -125,11 +99,11 @@ def main(argv):
                       results.directory, results.search_key)
     search.validate()
     search.list()
-    if results.name:
-        search.startName()
-    elif results.content:
+    if results.content:
         search.filter()
         search.start()
+    else:
+        search.startName()
 
 if __name__ == '__main__':
     main(sys.argv[1:])
