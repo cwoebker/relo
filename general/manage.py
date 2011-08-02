@@ -13,9 +13,19 @@ class Manager(object):
     def __init__(self, key, extList):
         self.key = key
         self.extList = extList
-        
-        plugins = 'doctype'
-        print "Collecting plugins..."
+
+        self.manager = PluginManager()
+        self.manager.setPluginPlaces(["doctype"])
+
+        self.manager.locatePlugins()
+        self.manager.loadPlugins()
+
+
+        pluginList = []
+        for plugin in self.manager.getAllPlugins():
+            pluginList.append(plugin.plugin_object.meta())
+        print pluginList
+        '''print "Collecting plugins..."
         files = glob(os.path.join(plugins, '*.py'))
         files.remove(plugins + '/__init__.py')
 
@@ -44,10 +54,10 @@ class Manager(object):
                     self.plugList.remove(plug)
         print self.plugList
         for plug in self.plugList:
-            print repr(plug)
+            print repr(plug)'''
 
     def start(self, itempath):
-        for listener in self.plugList:
+        '''for listener in self.plugList:
             if not repr(listener).startswith('<doctype'):
                 continue
             if not repr(listener).find(general.getFileType(itempath)) > 0:
@@ -58,6 +68,14 @@ class Manager(object):
             listener.load(itempath)
             print "Searching data..."
             listener.search(self.key)
-            break
+            break'''
+        for plugin in self.manager.getAllPlugins():
+            print ("---------- "+itempath+" ----------")
+            print "Using: " + plugin.plugin_object.meta()
+            print "Reading File to memory..."
+            plugin.plugin_object.load(itempath)
+            print "Searching data..."
+            plugin.plugin_object.search(self.key)
+            
 
 
