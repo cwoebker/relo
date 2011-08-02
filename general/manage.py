@@ -5,6 +5,7 @@ import sys, os
 from glob import glob
 from interfaces import DocType
 import general
+from yapsy.PluginManager import PluginManager
 
 from doctype import *
 
@@ -12,10 +13,12 @@ class Manager(object):
     def __init__(self, key, extList):
         self.key = key
         self.extList = extList
+        
         plugins = 'doctype'
         print "Collecting plugins..."
         files = glob(os.path.join(plugins, '*.py'))
         files.remove(plugins + '/__init__.py')
+
         print "Filtering plugins..."
         removeList = []
         for item in files:
@@ -24,6 +27,7 @@ class Manager(object):
             if ext not in extList:
                 removeList.append(item)
         files = list(set(files) - set(removeList))
+
         print "Loading plugins..."
         sys.path.append(plugins) # So we can import files
         for plugin in files:

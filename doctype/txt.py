@@ -8,12 +8,11 @@ up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)
 
 from general.interfaces import DocType
-from plugnplay import Plugin, man
 
 import re
 
-class TXT(Plugin):
-    implements = [DocType]
+class TXT(DocType):
+    name = "TXT"
 
     def load(self, path):
         self.path = path

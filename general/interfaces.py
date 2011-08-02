@@ -1,6 +1,6 @@
-from plugnplay import Interface
+from yapsy import IPlugin
 
-class DocType(Interface):
+class DocType(IPlugin):
     """""
     Implements different type of docs
     """""
