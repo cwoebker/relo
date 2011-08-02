@@ -54,10 +54,3 @@ GUI for parts of the app:
 
 * implement doctypes for pdf (and chm if easily possible)
 * implement doctypes for office documents
-
-0.3 alpha:
-----------
-
-Regular Expression Search
-implement selective plugin loading, only if needed
-change to yapsy
