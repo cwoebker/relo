@@ -1,12 +1,13 @@
-from plugnplay import Interface
+from yapsy.IPlugin import IPlugin
 
-class DocType(Interface):
+class DocType(IPlugin):
     """""
     Implements different type of docs
     """""
-    def open(self, path):
+    name = ""
+    def meta(self):
+        return self.name
+    def load(self, path):
         pass
     def search(self, key):
-        pass
-    def finish(self):
         pass

@@ -53,6 +53,7 @@ GUI for parts of the app:
 -----------
 
 * implement doctypes for pdf (and chm if easily possible)
+<<<<<<< HEAD
 * implement doctypes for office documents
 
 0.3 alpha:
@@ -71,3 +72,6 @@ change to yapsy-plugin system
     * content search
 
 * implement option to search hidden files
+=======
+* implement doctypes for office documents
+>>>>>>> release/0.3

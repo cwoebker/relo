@@ -8,13 +8,12 @@ up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)
 
 from general.interfaces import DocType
-from plugnplay import Plugin, man
 
 import re
 
-class TXT(Plugin):
-    implements = [DocType]
-
+class TXT(DocType):
+    name = "TXT Plugin"
+    
     def load(self, path):
         self.path = path
         self.fobj = open(path, "r")
@@ -24,7 +23,7 @@ class TXT(Plugin):
         self.fobj.close()
 
     def search(self, key):
-        if self.content.find(key) > 0:
+        if not (re.search(key, self.content) == None):
             for m in re.finditer(key, self.content):
                 print "Found at position: " + str(m.start())
         else:
