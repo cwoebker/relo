@@ -60,3 +60,4 @@ GUI for parts of the app:
 
 Regular Expression Search
 implement selective plugin loading, only if needed
+change to yapsy
