@@ -1,8 +1,20 @@
 CHANGELOG for PySearch
 ======================
 
-0.1 (2011 Jul 31)
------------------
+
+0.2 alpha (2011 Aug 1):
+-----------------------
+
+* Implement different types of searches:
+
+    * File name search
+    * Content search
+
+* Implement option to search hidden files
+
+
+0.1 alpha (2011 Jul 31)
+-----------------------
 
 * Initial Public Release
 
