@@ -60,13 +60,3 @@ GUI for parts of the app:
 
 Regular Expression Search
 implement selective plugin loading, only if needed
-
-0.2 alpha:
-----------
-
-* implement different types of searches:
-
-    * file name search
-    * content search
-
-* implement option to search hidden files
