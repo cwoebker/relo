@@ -4,7 +4,7 @@ import doctype
 __all__ = ['manage', 'interfaces']
 
 
-VERSION = (0, 2, 0, 'alpha')
+VERSION = (0, 3, 0, 'alpha')
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -57,4 +57,4 @@ def fileNameSearch(fileList, key):
     for itempath in fileList:
         item = os.path.basename(itempath)
         if not item.find(key) == -1:
-            print "Found: " + item
+            print "Found: " + itempath
