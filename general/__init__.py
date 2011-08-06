@@ -30,6 +30,8 @@ def listFiles(rootDir, hidden):
             if file.startswith('.') and hidden==0:
                 continue
             itempath = os.path.join(root, file)
+            if os.path.islink(itempath):
+                continue
             total_size += os.path.getsize(itempath)
             fileList.append(itempath)
 
