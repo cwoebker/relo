@@ -69,16 +69,16 @@ def main(argv):
     parser.add_argument('-v', '--version', action='version',
                         version=('%(prog)s ' + __version__))
     parser.add_argument('-d', '--directory', action='store', default='./',
-                        dest='directory', help='select Directory to search in')
+                        dest='directory', help='select Directory - (default=current)')
     parser.add_argument('-a', '--all', action='store_true',
                         help='show all files/hidden files')
     type_group = parser.add_mutually_exclusive_group()
     type_group.add_argument('-n', '--name', action='store_true',
-                            help='search match in fileNames (regex allowed)')
+                            help='search match in fileNames (regex allowed) - (default)')
     type_group.add_argument('-c', '--content', action='store_true',
                             help='search match in content (regex allowed)')
     parser.add_argument('--debug', '--verbose', action='store_true',
-                        help='enable debug/verbose debugging')
+                        help='enable debug/verbose mode')
     
     '''doctype_group = parser.add_argument_group('doctype arguments')
     doctype_group.add_argument('--txt', action='store_true', default=False)
