@@ -15,6 +15,8 @@ CODE OPTIMIZATION!!!
 CODE OPTIMIZATION!!!
 CODE OPTIMIZATION!!!
 
+Add additional doctypes: Office docs etc... chm...
+
 0.9 beta:
 ---------
 
@@ -54,4 +56,4 @@ GUI for parts of the app:
 -----------
 
 * implement doctypes for pdf (and chm if easily possible)
-* implement doctypes for office documents
+* recursive search option, disabled by default
