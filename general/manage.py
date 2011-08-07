@@ -27,18 +27,6 @@ class Manager(object):
         print pluginList
 
     def start(self, itempath):
-        '''for listener in self.plugList:
-            if not repr(listener).startswith('<doctype'):
-                continue
-            if not repr(listener).find(general.getFileType(itempath)) > 0:
-                continue
-            print ("---------- "+itempath+" ----------")
-            print "Using: " + repr(listener)
-            print "Reading File to memory..."
-            listener.load(itempath)
-            print "Searching data..."
-            listener.search(self.key)
-            break'''
         for plugin in self.manager.getAllPlugins():
             print ("---------- "+itempath+" ----------")
             print "Using: " + plugin.plugin_object.meta()
