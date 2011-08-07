@@ -14,12 +14,13 @@ import general.manage
 import yapsy
 
 class pySearch:
-    def __init__(self, _debug, _hidden, _type, _directory, _key):
+    def __init__(self, _debug, _hidden, _type, _recursive, _directory, _key):
         """
         Main pySearch class
         """
         self.verbose = _debug
         self.hidden = _hidden
+        self.recursive = _recursive
         self.dir = _directory
         self.key = _key
         
@@ -73,7 +74,9 @@ def main(argv):
     parser.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select Directory - (default=current)')
     parser.add_argument('-a', '--all', action='store_true',
-                        help='show all files/hidden files')
+                        help='search all files/hidden files')
+    parser.add_argument('-r', '--recursive', action='store_true',
+                        help='search recursively')
     type_group = parser.add_mutually_exclusive_group()
     type_group.add_argument('-n', '--name', action='store_true',
                             help='search match in fileNames (regex allowed) - (default)')
@@ -97,7 +100,7 @@ def main(argv):
         type = "content Search"
     else:
         type = "fileName Search"
-    search = pySearch(results.debug, results.all, type,
+    search = pySearch(results.debug, results.all, type, results.recursive,
                       results.directory, results.search_key)
     search.validate()
     search.list()
