@@ -17,7 +17,7 @@ def get_version():
             version = '%s %s %s' % (version, VERSION[3], VERSION[4])
     return version
 
-def listFiles(rootDir, hidden):
+def recursiveListFiles(rootDir, hidden):
     """
     list files in specified directory
     """

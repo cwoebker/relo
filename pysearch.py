@@ -27,6 +27,7 @@ class pySearch:
         print "pySearch: version %s" % __version__
         print "Verbose: " + str(bool(self.verbose))
         print "Hidden Files: " + str(bool(self.hidden))
+        print "Recursive: " + str(bool(self.recursive))
         print "Search Type: " + _type
         print "Directory: " + self.dir
         print "Searching for: " + self.key
@@ -39,7 +40,12 @@ class pySearch:
     def list(self):
         #self.searchLog.info("Listing directory content...")
         #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
-        print "Listing directory content..."
+        if self.recursive:
+            print "Listing directory content recursively..."
+            self.total_size, self.fileList = general.recursiveListFiles(self.dir, self.hidden)
+        else:
+            print "Listing directory content..."
+            self.total_size, self.fileList = general.listFiles(self.dir, self.hidden)
         print "Supported File Types: " + repr(doctype.__all__)
         self.total_size, self.fileList = general.listFiles(self.dir, self.hidden)
 
