@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import general
 
 __author__ = "cwoebker"
@@ -10,6 +11,7 @@ import sys
 import argparse
 import doctype
 import general.manage
+import yapsy
 
 class pySearch:
     def __init__(self, _debug, _hidden, _type, _directory, _key):
