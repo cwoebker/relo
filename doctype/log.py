@@ -13,6 +13,7 @@ import re
 
 class LOG(DocType):
     name = "LOG Plugin"
+    sname = "log"
 
     def load(self, path):
         self.path = path
