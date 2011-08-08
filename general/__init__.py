@@ -21,8 +21,8 @@ def listFiles(rootDir, hidden):
     returnList = []
     total_size = 0
     fileList = os.listdir(rootDir)
-    for fname in fileList:
-        itempath = os.path.join(rootDir, fname)
+    for file in fileList:
+        itempath = os.path.join(rootDir, file)
         if os.path.isdir(itempath) or os.path.islink(itempath):
 
             continue
