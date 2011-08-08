@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # encoding: utf-8
-
 import sys
 import os
 
@@ -16,14 +15,13 @@ import re
 
 class PDF(DocType):
     name = "PDF Plugin"
-    sname = "pdf"
 
     def load(self, path):
         self.path = path
-        self.pdf = PdfFileReader(file(path, "rb"))
+        self.pdfObject = PdfFileReader(file(path, "rb"))
 
         pageText = []
-        for page in self.pdf.pages:
+        for page in self.pdfObject.pages:
             pageText.append(page.extractText())
 
         print pageText

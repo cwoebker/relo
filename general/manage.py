@@ -8,6 +8,9 @@ from yapsy.PluginManager import PluginManager
 
 from doctype import *
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 class Manager(object):
     def __init__(self, key, extList):
         self.key = key
@@ -21,13 +24,16 @@ class Manager(object):
 
         pluginList = []
         for plugin in self.manager.getAllPlugins():
+            self.manager.activatePluginByName(plugin.name)
+            print plugin.name
             print plugin.plugin_object
             pluginList.append(plugin.plugin_object.meta())
         print pluginList
 
     def start(self, itempath):
+        print itempath
         for plugin in self.manager.getAllPlugins():
-            if plugin.plugin_object.id() == general.getFileType(itempath):
+            if plugin.name == general.getFileType(itempath).upper():
                 print ("---------- "+itempath+" ----------")
                 print "Using: " + plugin.plugin_object.meta()
                 print "Reading File to memory..."
