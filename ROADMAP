@@ -57,4 +57,5 @@ GUI for parts of the app:
 -----------
 
 * implement doctypes for pdf (and chm if easily possible)
+* fork own plugin framework based on yapsy and fit it to pysearches needs
 * recursive search option, disabled by default
