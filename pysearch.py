@@ -47,7 +47,6 @@ class pySearch:
             print "Listing directory content..."
             self.total_size, self.fileList = general.listFiles(self.dir, self.hidden)
         print "Supported File Types: " + repr(doctype.__all__)
-        self.total_size, self.fileList = general.listFiles(self.dir, self.hidden)
 
     def filter(self):
         self.filteredList = general.filterList(self.fileList)
