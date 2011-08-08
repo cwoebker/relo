@@ -1,6 +1,6 @@
 [Core]
 Name = LOG
-Modules = log
+Module = log
 
 [Documentation]
 Author = cwoebker

@@ -20,7 +20,6 @@ class Manager(object):
         self.manager.locatePlugins()
         self.manager.loadPlugins()
 
-
         pluginList = []
         for plugin in self.manager.getAllPlugins():
             pluginList.append(plugin.plugin_object.meta())
@@ -28,12 +27,14 @@ class Manager(object):
 
     def start(self, itempath):
         for plugin in self.manager.getAllPlugins():
-            print ("---------- "+itempath+" ----------")
-            print "Using: " + plugin.plugin_object.meta()
-            print "Reading File to memory..."
-            plugin.plugin_object.load(itempath)
-            print "Searching data..."
-            plugin.plugin_object.search(self.key)
+            if plugin.plugin_object.id() == general.getFileType(itempath):
+                print ("---------- "+itempath+" ----------")
+                print "Using: " + plugin.plugin_object.meta()
+                print "Reading File to memory..."
+                plugin.plugin_object.load(itempath)
+                print "Searching data..."
+                plugin.plugin_object.search(self.key)
+                break
             
 
 
