@@ -50,7 +50,7 @@ GUI for parts of the app:
 0.5 beta:
 ---------
 
-* improve re search and fix bug so that upper/lower casing doesnt matter
+* move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
 * implement Library function register on pypi
 
 0.4 beta:
