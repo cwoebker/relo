@@ -17,6 +17,21 @@ def get_version():
             version = '%s %s %s' % (version, VERSION[3], VERSION[4])
     return version
 
+def listFiles(rootDir, hidden):
+    returnList = []
+    total_size = 0
+    fileList = os.listdir(rootDir)
+    for fname in fileList:
+        itempath = os.path.join(rootDir, fname)
+        if os.path.isdir(itempath) or os.path.islink(itempath):
+
+            continue
+        total_size += os.path.getsize(itempath)
+        returnList.append(itempath)
+
+    print "Total Size:", str(total_size)
+    return total_size, returnList
+
 def recursiveListFiles(rootDir, hidden):
     """
     list files in specified directory

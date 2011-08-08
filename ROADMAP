@@ -50,6 +50,7 @@ GUI for parts of the app:
 0.5 beta:
 ---------
 
+* improve re search and fix bug so that upper/lower casing doesnt matter
 * implement Library function register on pypi
 
 0.4 beta:
