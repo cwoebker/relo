@@ -41,6 +41,5 @@ class Manager(object):
                 print "Searching data..."
                 plugin.plugin_object.search(self.key)
                 break
-            
 
 
