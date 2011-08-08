@@ -6,6 +6,7 @@ class DocType(IPlugin):
     """""
     name = ""
     sname = ""
+    
     def id(self):
         return  self.sname
     def meta(self):

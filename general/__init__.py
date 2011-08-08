@@ -65,7 +65,7 @@ def filterList(fileList):
     filteredList = []
     for path in fileList:
         ext = getFileType(path)
-        if ext in doctype.supported:
+        if ext in doctype.__all__:
             filteredList.append(path)
 
     return filteredList

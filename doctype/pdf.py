@@ -10,7 +10,7 @@ sys.path.append(up_dir)
 
 from general.interfaces import DocType
 
-from pyPdf import PdfFileReader
+#from pyPdf import PdfFileReader
 
 import re
 

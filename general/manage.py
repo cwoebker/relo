@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import sys, os
-from glob import glob
+#import sys, os
 from interfaces import DocType
 import general
 from yapsy.PluginManager import PluginManager
@@ -22,6 +21,7 @@ class Manager(object):
 
         pluginList = []
         for plugin in self.manager.getAllPlugins():
+            print plugin.plugin_object
             pluginList.append(plugin.plugin_object.meta())
         print pluginList
 

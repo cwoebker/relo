@@ -38,8 +38,6 @@ class pySearch:
         self.fileList = []
 
     def list(self):
-        #self.searchLog.info("Listing directory content...")
-        #self.searchLog.info("Supported File Types: " + repr(doctype.supported))
         if self.recursive:
             print "Listing directory content recursively..."
             self.total_size, self.fileList = general.recursiveListFiles(self.dir, self.hidden)
