@@ -13,7 +13,6 @@ import re
 
 class TXT(DocType):
     name = "TXT Plugin"
-    sname = "txt"
     
     def load(self, path):
         self.path = path
