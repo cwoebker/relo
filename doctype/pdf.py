@@ -9,8 +9,6 @@ sys.path.append(up_dir)
 
 from general.interfaces import DocType
 
-#from pyPdf import PdfFileReader
-
 import re
 
 class PDF(DocType):
@@ -22,10 +20,11 @@ class PDF(DocType):
 
         pageText = []
         for page in self.pdfObject.pages:
+            print 'page'
             pageText.append(page.extractText())
 
         print pageText
-        input()
+        test = input()
 
         self.content = ""
         for line in self.fobj:

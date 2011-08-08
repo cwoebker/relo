@@ -22,6 +22,8 @@ def listFiles(rootDir, hidden):
     total_size = 0
     fileList = os.listdir(rootDir)
     for file in fileList:
+        if file.startswith('.') and hidden==0:
+            continue
         itempath = os.path.join(rootDir, file)
         if os.path.isdir(itempath) or os.path.islink(itempath):
 
