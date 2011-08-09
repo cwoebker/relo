@@ -61,11 +61,6 @@ class Relo:
     def startName(self):
         general.fileNameSearch(self.fileList, self.key)
 
-    def validate(self):
-        sure = 'y' #raw_input("Are you sure you want to perform the given search? (y/n) ")
-        if sure != 'y':
-            sys.exit(2)
-
 def main(argv):
     """
     parses the arguments and starts the application
@@ -102,7 +97,6 @@ def main(argv):
         type = "fileName Search"
     search = Relo(results.debug, results.all, type, results.recursive,
                       results.directory, results.search_key)
-    search.validate()
     search.list()
     if results.content:
         search.filter()
