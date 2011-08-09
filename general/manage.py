@@ -16,7 +16,7 @@ class Manager(object):
         self.key = key
         self.extList = extList
 
-        self.manager = PluginManager()
+        self.manager = PluginManager(plugin_info_ext='relo')
         self.manager.setPluginPlaces(["doctype"])
 
         self.manager.locatePlugins()
