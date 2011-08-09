@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 
-import general
+import core
 
 __author__ = "cwoebker"
-__version__ = general.get_version()
+__version__ = core.get_version()
 __copyright__ = "cwoebker"
 __license__ = "See in LICENSE file"
 
 import sys
 import argparse
 import doctype
-import general.manage
+import core.manage
 import yapsy
 
 class Relo:
@@ -40,26 +40,26 @@ class Relo:
     def list(self):
         if self.recursive:
             print "Listing directory content recursively..."
-            self.total_size, self.fileList = general.recursiveListFiles(self.dir, self.hidden)
+            self.total_size, self.fileList = core.recursiveListFiles(self.dir, self.hidden)
         else:
             print "Listing directory content..."
-            self.total_size, self.fileList = general.listFiles(self.dir, self.hidden)
+            self.total_size, self.fileList = core.listFiles(self.dir, self.hidden)
         print "Supported File Types: " + repr(doctype.__all__)
 
     def filter(self):
-        self.filteredList = general.filterList(self.fileList)
+        self.filteredList = core.filterList(self.fileList)
         for itempath in self.filteredList:
-            item = general.getFileType(itempath)
+            item = core.getFileType(itempath)
             if item not in self.extList:
                 self.extList.append(item)
 
     def start(self):
-        manager = general.manage.Manager(self.key, self.extList)
+        manager = core.manage.Manager(self.key, self.extList)
         for item in self.filteredList:
             manager.start(item)
 
     def startName(self):
-        general.fileNameSearch(self.fileList, self.key)
+        core.fileNameSearch(self.fileList, self.key)
 
 def main(argv):
     """
