@@ -1,12 +1,18 @@
 CHANGELOG for PySearch
 ======================
 
+0.4 beta (2011 Aug 9):
+----------------------
+
+* implement doctypes for pdf (and chm if easily possible)
+* fork own plugin framework based on yapsy and fit it to pysearches needs
+* recursive search option, disabled by default
 
 0.3 alpha (2011 Aug 3):
 -----------------------
 
-Regular Expression Search
-Changed to Yapsy
+* Regular Expression Search
+* Changed to Yapsy
 
 
 0.2 alpha (2011 Aug 1):

@@ -53,10 +53,3 @@ GUI for parts of the app:
 * move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
 * implement Library function register on pypi
 * finalize name
-
-0.4 beta:
------------
-
-* implement doctypes for pdf (and chm if easily possible)
-* fork own plugin framework based on yapsy and fit it to pysearches needs
-* recursive search option, disabled by default
