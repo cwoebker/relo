@@ -20,7 +20,7 @@ class Manager(object):
         self.manager.setPluginPlaces(["doctype"])
 
         self.manager.locatePlugins()
-        self.manager.loadPlugins()
+        self.manager.loadPlugins("<class 'general.interfaces.DocType'>")
 
         pluginList = []
         for plugin in self.manager.getAllPlugins():

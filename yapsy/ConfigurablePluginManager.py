@@ -16,7 +16,7 @@ from yapsy.IPlugin import IPlugin
 
 
 from yapsy.PluginManagerDecorator import PluginManagerDecorator
-from yapsy.PluginManager import PLUGIN_NAME_FORBIDEN_STRING
+from yapsy.PluginManager import PLUGIN_NAME_FORBIDDEN_STRING
 
 
 
@@ -81,13 +81,13 @@ class ConfigurablePluginManager(PluginManagerDecorator):
 		Parse the string describing the list of plugins to activate,
 		to discover their actual names and return them.
 		"""
-		return plugin_list_str.strip(" ").split("%s"%PLUGIN_NAME_FORBIDEN_STRING)
+		return plugin_list_str.strip(" ").split("%s"%PLUGIN_NAME_FORBIDDEN_STRING)
 
 	def __getCategoryPluginsConfigFromList(self, plugin_list):
 		"""
 		Compose a string describing the list of plugins to activate
 		"""
-		return PLUGIN_NAME_FORBIDEN_STRING.join(plugin_list)
+		return PLUGIN_NAME_FORBIDDEN_STRING.join(plugin_list)
 		
 	def __getCategoryOptionsName(self,category_name):
 		"""

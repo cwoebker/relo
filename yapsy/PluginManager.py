@@ -127,7 +127,7 @@ from yapsy.IPlugin import IPlugin
 from yapsy.PluginInfo import PluginInfo
 
 
-PLUGIN_NAME_FORBIDEN_STRING=";;"
+PLUGIN_NAME_FORBIDDEN_STRING=";;"
 """
 .. warning:: This string (';;' by default) is forbidden in plugin
              names, and will be usable to describe lists of plugins
@@ -292,8 +292,8 @@ class PluginManager(object):
 		# check that the given name is valid
 		name = config_parser.get("Core", "Name")
 		name = name.strip()
-		if PLUGIN_NAME_FORBIDEN_STRING in name:
-			logging.debug("Plugin name contains forbiden character: %s (in %s)" % (PLUGIN_NAME_FORBIDEN_STRING,
+		if PLUGIN_NAME_FORBIDDEN_STRING in name:
+			logging.debug("Plugin name contains forbiden character: %s (in %s)" % (PLUGIN_NAME_FORBIDDEN_STRING,
 																				   candidate_infofile))
 			return (None, None)
 		# start collecting essential info
@@ -418,7 +418,7 @@ class PluginManager(object):
 					self._candidates.append((candidate_infofile, candidate_filepath, plugin_info))
 		return len(self._candidates)
 
-	def loadPlugins(self, callback=None):
+	def loadPlugins(self, exclude, callback=None):
 		"""
 		Load the candidate plugins that have been identified through a
 		previous call to locatePlugins.  For each plugin candidate
@@ -468,8 +468,10 @@ class PluginManager(object):
 						if element is not self.categories_interfaces[category_name]:
 							current_category = category_name
 							break
+                if exclude in repr(element):
+                    continue
 				if current_category is not None:
-					if not (candidate_infofile in self._category_file_mapping[current_category]): 
+					if not (candidate_infofile in self._category_file_mapping[current_category]):
 						# we found a new plugin: initialise it and search for the next one
 						plugin_info.plugin_object = element()
 						plugin_info.category = current_category
@@ -621,7 +623,7 @@ class PluginManagerSingleton(object):
 	get = classmethod(get)
 
 
-# For backward compatility import the most basic decorator (it changed
+# For backward compatibility import the most basic decorator (it changed
 # place as of v1.8)
 from yapsy.PluginManagerDecorator import PluginManagerDecorator
 
