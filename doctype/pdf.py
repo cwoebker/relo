@@ -9,6 +9,8 @@ sys.path.append(up_dir)
 
 from general.interfaces import DocType
 
+from pyPdf import PdfFileReader
+
 import re
 
 class PDF(DocType):
@@ -18,18 +20,9 @@ class PDF(DocType):
         self.path = path
         self.pdfObject = PdfFileReader(file(path, "rb"))
 
-        pageText = []
-        for page in self.pdfObject.pages:
-            print 'page'
-            pageText.append(page.extractText())
-
-        print pageText
-        test = input()
-
         self.content = ""
-        for line in self.fobj:
-            self.content += line
-        self.fobj.close()
+        for page in self.pdfObject.pages:
+            self.content += page.extractText() + "\n"
 
     def search(self, key):
         if not (re.search(key, self.content) == None):

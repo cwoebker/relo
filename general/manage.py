@@ -25,8 +25,6 @@ class Manager(object):
         pluginList = []
         for plugin in self.manager.getAllPlugins():
             self.manager.activatePluginByName(plugin.name)
-            print plugin.name
-            print plugin.plugin_object
             pluginList.append(plugin.plugin_object.meta())
         print pluginList
 
