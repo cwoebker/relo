@@ -12,9 +12,6 @@ def get_version():
         version = '%s.%s' % (version, VERSION[2])
     if VERSION[3]:
         version = '%s %s' % (version, VERSION[3])
-    else:
-        if VERSION[3] != 'final':
-            version = '%s %s %s' % (version, VERSION[3], VERSION[4])
     return version
 
 def listFiles(rootDir, hidden):
