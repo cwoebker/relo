@@ -13,10 +13,10 @@ import doctype
 import general.manage
 import yapsy
 
-class pySearch:
+class Relo:
     def __init__(self, _debug, _hidden, _type, _recursive, _directory, _key):
         """
-        Main pySearch class
+        Main Relo class
         """
         self.verbose = _debug
         self.hidden = _hidden
@@ -24,7 +24,7 @@ class pySearch:
         self.dir = _directory
         self.key = _key
         
-        print "pySearch: version %s" % __version__
+        print "Relo: version %s" % __version__
         print "Verbose: " + str(bool(self.verbose))
         print "Hidden Files: " + str(bool(self.hidden))
         print "Recursive: " + str(bool(self.recursive))
@@ -88,9 +88,6 @@ def main(argv):
     parser.add_argument('--debug', '--verbose', action='store_true',
                         help='enable debug/verbose mode')
     
-    '''doctype_group = parser.add_argument_group('doctype arguments')
-    doctype_group.add_argument('--txt', action='store_true', default=False)
-    doctype_group.add_argument('--log', action='store_true', default=False)'''
     try:
         results = parser.parse_args(args=argv)
     except IOError, msg:
@@ -103,7 +100,7 @@ def main(argv):
         type = "content Search"
     else:
         type = "fileName Search"
-    search = pySearch(results.debug, results.all, type, results.recursive,
+    search = Relo(results.debug, results.all, type, results.recursive,
                       results.directory, results.search_key)
     search.validate()
     search.list()
