@@ -13,7 +13,7 @@ setup(
     license = "BSD",
     keywords = "python search document content",
     url = "http://cwoebker.github.com/relo",
-    packages=['relo', 'test'],
+    packages=['relo', 'tests'],
     long_desciption=read('README.rst'),
     scripts = ['relo/relo.py'],
     classifiers=[
