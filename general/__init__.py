@@ -4,7 +4,7 @@ import doctype
 __all__ = ['manage', 'interfaces']
 
 
-VERSION = (0, 3, 0, 'alpha')
+VERSION = (0, 4, 0, 'beta')
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -18,6 +18,23 @@ def get_version():
     return version
 
 def listFiles(rootDir, hidden):
+    returnList = []
+    total_size = 0
+    fileList = os.listdir(rootDir)
+    for file in fileList:
+        if file.startswith('.') and hidden==0:
+            continue
+        itempath = os.path.join(rootDir, file)
+        if os.path.isdir(itempath) or os.path.islink(itempath):
+
+            continue
+        total_size += os.path.getsize(itempath)
+        returnList.append(itempath)
+
+    print "Total Size:", str(total_size)
+    return total_size, returnList
+
+def recursiveListFiles(rootDir, hidden):
     """
     list files in specified directory
     """
@@ -30,6 +47,8 @@ def listFiles(rootDir, hidden):
             if file.startswith('.') and hidden==0:
                 continue
             itempath = os.path.join(root, file)
+            if os.path.islink(itempath):
+                continue
             total_size += os.path.getsize(itempath)
             fileList.append(itempath)
 
@@ -48,7 +67,7 @@ def filterList(fileList):
     filteredList = []
     for path in fileList:
         ext = getFileType(path)
-        if ext in doctype.supported:
+        if ext in doctype.__all__:
             filteredList.append(path)
 
     return filteredList

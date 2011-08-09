@@ -1,3 +1,1 @@
-__all__ = ['txt', 'log']
-
-supported = ['txt', 'log']
+__all__ = ['txt', 'log', 'pdf']
