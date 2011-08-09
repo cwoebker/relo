@@ -15,6 +15,8 @@ CODE OPTIMIZATION!!!
 CODE OPTIMIZATION!!!
 CODE OPTIMIZATION!!!
 
+Add additional doctypes: Office docs etc... chm...
+
 0.9 beta:
 ---------
 
@@ -43,35 +45,11 @@ GUI for parts of the app:
 * add documentation, sphinx and readthedocs.org
 * finsih wiki
 * improve web etc.
+* add option to search through linked directories and in linked files
 
 0.5 beta:
 ---------
 
+* move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
 * implement Library function register on pypi
-
-0.4 beta:
------------
-
-* implement doctypes for pdf (and chm if easily possible)
-<<<<<<< HEAD
-* implement doctypes for office documents
-
-0.3 alpha:
-----------
-
-Regular Expression Search
-implement selective plugin loading, only if needed
-change to yapsy
-
-0.2 alpha:
-----------
-
-* implement different types of searches:
-
-    * file name search
-    * content search
-
-* implement option to search hidden files
-=======
-* implement doctypes for office documents
->>>>>>> release/0.3
+* finalize name
