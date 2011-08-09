@@ -3,4 +3,4 @@ relo/.idea/*
 env/*
 .DS_Store
 relo/testFiles/*
-*.pyc
+*.py[co]
