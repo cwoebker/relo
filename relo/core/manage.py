@@ -2,11 +2,11 @@
 # encoding: utf-8
 
 #import sys, os
-from interfaces import DocType
-import core
-from yapsy.PluginManager import PluginManager
+from relo.core.interfaces import DocType
+from relo import core
+from relo.yapsy.PluginManager import PluginManager
 
-from doctype import *
+from relo.doctype import *
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -17,10 +17,13 @@ class Manager(object):
         self.extList = extList
 
         self.manager = PluginManager(plugin_info_ext='relo')
-        self.manager.setPluginPlaces(["doctype"])
+        self.manager.setPluginPlaces(["relo/doctype"])
 
         self.manager.locatePlugins()
-        self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
+        #self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
+        self.manager.loadPlugins("adsfhasdjhfoaisn")
+
+        print self.manager.getAllPlugins()
 
         pluginList = []
         for plugin in self.manager.getAllPlugins():

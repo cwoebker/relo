@@ -1,4 +1,4 @@
-from yapsy.IPlugin import IPlugin
+from relo.yapsy.IPlugin import IPlugin
 
 class DocType(IPlugin):
     """""

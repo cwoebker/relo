@@ -1,17 +1,16 @@
 #!/usr/bin/env python
 
-import core
+import sys
+import argparse
+from relo import doctype
+from relo import core
+from relo.core import manage
+from relo import yapsy
 
 __author__ = "cwoebker"
 __version__ = core.get_version()
 __copyright__ = "cwoebker"
 __license__ = "See in LICENSE file"
-
-import sys
-import argparse
-import doctype
-import core.manage
-import yapsy
 
 class Relo:
     def __init__(self, _debug, _hidden, _type, _recursive, _directory, _key):
@@ -54,7 +53,7 @@ class Relo:
                 self.extList.append(item)
 
     def start(self):
-        manager = core.manage.Manager(self.key, self.extList)
+        manager = manage.Manager(self.key, self.extList)
         for item in self.filteredList:
             manager.start(item)
 
