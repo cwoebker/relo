@@ -5,3 +5,5 @@ include ROADMAP
 include LICENSE
 include MANIFEST.in
 recursive-include tests *
+recursive-include relo *
+include relo/doctype/*.relo
