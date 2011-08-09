@@ -1,5 +1,5 @@
 import os
-import doctype
+import relo.doctype
 
 __all__ = ['manage', 'interfaces']
 
@@ -64,7 +64,7 @@ def filterList(fileList):
     filteredList = []
     for path in fileList:
         ext = getFileType(path)
-        if ext in doctype.__all__:
+        if ext in relo.doctype.__all__:
             filteredList.append(path)
 
     return filteredList

@@ -1,6 +1,7 @@
-relo/.idea/*
+.idea/*
 *.tmproj
 env/*
+build/*
 .DS_Store
 relo/testFiles/*
 *.py[co]
