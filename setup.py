@@ -1,11 +1,12 @@
 import os
 from setuptools import setup
+
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
+version = __import__('relo.core').get_version()
 setup(
     name = "Relo",
-    version = "0.5.0",
+    version = version.replace(' ', '-'),
     author = "Cecil Woebker",
     author_email = "cwoebker@gmail.com",
     desciption = ("Recursive Document Content Search in python"),
