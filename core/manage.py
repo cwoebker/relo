@@ -3,7 +3,7 @@
 
 #import sys, os
 from interfaces import DocType
-import general
+import core
 from yapsy.PluginManager import PluginManager
 
 from doctype import *
@@ -20,7 +20,7 @@ class Manager(object):
         self.manager.setPluginPlaces(["doctype"])
 
         self.manager.locatePlugins()
-        self.manager.loadPlugins("<class 'general.interfaces.DocType'>")
+        self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
 
         pluginList = []
         for plugin in self.manager.getAllPlugins():
@@ -31,7 +31,7 @@ class Manager(object):
     def start(self, itempath):
         print itempath
         for plugin in self.manager.getAllPlugins():
-            if plugin.name == general.getFileType(itempath).upper():
+            if plugin.name == core.getFileType(itempath).upper():
                 print ("---------- "+itempath+" ----------")
                 print "Using: " + plugin.plugin_object.meta()
                 print "Reading File to memory..."

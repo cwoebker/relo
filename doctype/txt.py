@@ -7,7 +7,7 @@ dirname = os.path.dirname(os.path.abspath(__file__))
 up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)
 
-from general.interfaces import DocType
+from core.interfaces import DocType
 
 import re
 

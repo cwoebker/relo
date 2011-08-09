@@ -9,7 +9,7 @@ setup(
     author = "Cecil Woebker",
     author_email = "cwoebker@gmail.com",
     desciption = ("Recursive Document Content Search in python"),
-    license = "",
+    license = "BSD",
     keywords = "python search document content",
     url = "http://cwoebker.github.com/relo",
     packages=['', ''],
