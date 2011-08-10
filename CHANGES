@@ -1,6 +1,13 @@
 CHANGELOG for Relo
 ==================
 
+0.5 beta (2011 Aug 10):
+-----------------------
+
+* move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
+* implement Library function register on pypi
+* finalize name
+
 0.4 beta (2011 Aug 9):
 ----------------------
 
