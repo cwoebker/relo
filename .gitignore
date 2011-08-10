@@ -1,5 +1,9 @@
 .idea/*
 *.tmproj
+env/*
+build/*
+dist/*
+Relo.egg-info/*
 .DS_Store
-testFiles/*
-*.pyc
+relo/testFiles/*
+*.py[co]

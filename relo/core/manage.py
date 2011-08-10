@@ -2,11 +2,11 @@
 # encoding: utf-8
 
 #import sys, os
-from interfaces import DocType
-import general
-from yapsy.PluginManager import PluginManager
+from relo.core.interfaces import DocType
+from relo import core
+from relo.yapsy.PluginManager import PluginManager
 
-from doctype import *
+from relo.doctype import *
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -16,12 +16,14 @@ class Manager(object):
         self.key = key
         self.extList = extList
 
-        self.manager = PluginManager()
-        self.manager.setPluginPlaces(["doctype"])
+        self.manager = PluginManager(plugin_info_ext='relo')
+        self.manager.setPluginPlaces(["relo/doctype"])
 
-        self.manager.locatePlugins()
-        self.manager.loadPlugins("<class 'general.interfaces.DocType'>")
-
+        self.numPlugins = self.manager.locatePlugins()
+        print "Found %d plugins." % self.numPlugins
+        #self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
+        self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>")
+        
         pluginList = []
         for plugin in self.manager.getAllPlugins():
             self.manager.activatePluginByName(plugin.name)
@@ -31,7 +33,7 @@ class Manager(object):
     def start(self, itempath):
         print itempath
         for plugin in self.manager.getAllPlugins():
-            if plugin.name == general.getFileType(itempath).upper():
+            if plugin.name == core.getFileType(itempath).upper():
                 print ("---------- "+itempath+" ----------")
                 print "Using: " + plugin.plugin_object.meta()
                 print "Reading File to memory..."

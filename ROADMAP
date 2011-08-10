@@ -1,5 +1,5 @@
-ROADMAP for PySearch
-====================
+ROADMAP for Relo
+================
 
 Future:
 -------
@@ -38,6 +38,8 @@ GUI for parts of the app:
     * progressbar where necessary
     * log class to implement debug mode
     * other changes... coloring?
+* add option to only include certain kinds of files
+* load plugins dynamically don't load all of them
 
 0.6 beta:
 ---------
@@ -47,9 +49,3 @@ GUI for parts of the app:
 * improve web etc.
 * add option to search through linked directories and in linked files
 
-0.5 beta:
----------
-
-* move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
-* implement Library function register on pypi
-* finalize name

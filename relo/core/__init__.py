@@ -1,10 +1,11 @@
 import os
-import doctype
+from relo import doctype
+
 
 __all__ = ['manage', 'interfaces']
 
 
-VERSION = (0, 4, 0, 'beta')
+VERSION = (0, 5, 0, 'beta')
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -12,9 +13,6 @@ def get_version():
         version = '%s.%s' % (version, VERSION[2])
     if VERSION[3]:
         version = '%s %s' % (version, VERSION[3])
-    else:
-        if VERSION[3] != 'final':
-            version = '%s %s %s' % (version, VERSION[3], VERSION[4])
     return version
 
 def listFiles(rootDir, hidden):

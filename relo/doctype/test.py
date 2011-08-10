@@ -7,12 +7,12 @@ dirname = os.path.dirname(os.path.abspath(__file__))
 up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)
 
-from general.interfaces import DocType
+from relo.core.interfaces import DocType
 
 import re
 
-class LOG(DocType):
-    name = "LOG Plugin"
+class TEST(DocType):
+    name = "TEST Plugin"
 
     def load(self, path):
         self.path = path
