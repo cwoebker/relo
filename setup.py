@@ -37,14 +37,11 @@ for dirpath, dirnames, filenames in os.walk(relo_dir):
     reloList=[]
     for file in filenames:
         if '.relo' in file:
-            print file
             reloList.append(file)
     if reloList == []:
         continue
     data_files.append((dirpath, reloList))
-    print reloList
 
-print data_files
 #[os.path.join(dirpath, f) for f in filenames]
 
 version = __import__('relo').get_version()
@@ -61,7 +58,7 @@ setup(
     package_data={'relo': ['*.relo', 'doctype/*.relo']},
     #data_files = data_files,
     long_description=read('README.rst'),
-    scripts = ['relo/relo.py'],
+    scripts = ['relo.py'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
