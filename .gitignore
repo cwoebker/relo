@@ -2,6 +2,8 @@
 *.tmproj
 env/*
 build/*
+dist/*
+Relo.egg-info/*
 .DS_Store
 relo/testFiles/*
 *.py[co]
