@@ -6,23 +6,23 @@ def get_version():
     return core.get_version()
 
 class Relo:
-    def __init__(self, _debug=False, _hidden=False, _content=False, _recursive=False, _directory='./', _key=''):
+    def __init__(self, debug=False, hidden=False, content=False, recursive=False, directory='./', key=''):
         """
         Main Relo class
         """
-        self.verbose = _debug
-        self.hidden = _hidden
-        self.recursive = _recursive
-        self.dir = _directory
-        self.key = _key
+        self.debug = debug
+        self.hidden = hidden
+        self.recursive = recursive
+        self.dir = directory
+        self.key = key
 
-        if _content:
+        if content:
             self.type = "content Search"
         else:
             self.type = "fileName Search"
 
         print "Relo: version %s" % get_version()
-        print "Verbose: " + str(bool(self.verbose))
+        print "Verbose: " + str(bool(self.debug))
         print "Hidden Files: " + str(bool(self.hidden))
         print "Recursive: " + str(bool(self.recursive))
         print "Search Type: " + self.type
