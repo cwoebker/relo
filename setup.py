@@ -50,8 +50,9 @@ setup(
     version = version.replace(' ', '-'),
     author = "Cecil Woebker",
     author_email = "cwoebker@gmail.com",
+    maintainer = "Cecil Woebker",
+    maintainer_email = "cwoebker@gmail.com",
     description = ("Recursive Document Content Search in python"),
-    license = "BSD",
     keywords = "python search document content",
     url = "http://cwoebker.github.com/relo",
     packages = packages,
@@ -60,6 +61,7 @@ setup(
     long_description=read('README.rst'),
     scripts = ['relo.py'],
     install_requires=['pypdf >= 1.13'],
+    #requires=['pypdf >= 1.13'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
