@@ -1,6 +1,7 @@
 #!/usr/bin/env python
+#encoding: utf-8
 
-import sys
+import sys, os
 import argparse
 import relo
 from relo import Relo
@@ -39,20 +40,11 @@ def main(argv):
         parser.error(str(msg))
     print results
 
-    if results.name:
-        type = "fileName Search"
-    elif results.content:
-        type = "content Search"
-    else:
-        type = "fileName Search"
-    search = Relo(results.debug, results.all, type, results.recursive,
+    search = Relo(results.debug, results.all, results.content, results.recursive,
                       results.directory, results.search_key)
     search.list()
-    if results.content:
-        search.filter()
-        search.start()
-    else:
-        search.startName()
+    search.filter()
+    search.start()
 
 if __name__ == '__main__':
     main(sys.argv[1:])
