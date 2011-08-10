@@ -59,6 +59,7 @@ setup(
     #data_files = data_files,
     long_description=read('README.rst'),
     scripts = ['relo.py'],
+    install_requires=['pypdf >= 1.13'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
