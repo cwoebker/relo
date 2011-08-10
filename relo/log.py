@@ -4,7 +4,7 @@ import logging, logging.config
 
 class searchLogger(object):
     def __init__(self, debug):
-        LOG_FILENAME = "pySearch.log"
+        LOG_FILENAME = "Relo.log"
 
         #creating logging instances
 

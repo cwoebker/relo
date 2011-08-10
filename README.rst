@@ -1,20 +1,20 @@
-========
-PySearch
-========
-More information is available at the `homepage <http://cwoebker.github.com/pysearch>`_.
+====
+Relo
+====
+More information is available at the `homepage <http://cwoebker.github.com/relo>`_.
 
 What kind of documents are supported?
 -------------------------------------
-For now you have to browse through the `DocType <http://github.com/cwoebker/pysearch/tree/master/doctype/>`_ plugin directory on github.
+For now you have to browse through the `DocType <http://github.com/cwoebker/relo/tree/master/doctype/>`_ plugin directory on github.
 
 Where are the Docs?
 -------------------
-Not done yet, but you can still check out the `github wiki <http://wiki.github.com/cwoebker/pysearch>`_.
+Not done yet, but you can still check out the `github wiki <http://wiki.github.com/cwoebker/relo>`_.
 
-Additionally try running ``python pysearch.py --help`` for basic usage information.
+Additionally try running ``python relo.py --help`` for basic usage information.
 
 
-Need more info or want to constribute?
+Need more info or want to contribute?
 ------------------------------------
 
 Email me with any questions

@@ -1,5 +1,19 @@
-CHANGELOG for PySearch
-======================
+CHANGELOG for Relo
+==================
+
+0.5 beta (2011 Aug 10):
+-----------------------
+
+* move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
+* implement Library function register on pypi
+* finalize name
+
+0.4 beta (2011 Aug 9):
+----------------------
+
+* implement doctypes for pdf (and chm if easily possible)
+* fork own plugin framework based on yapsy and fit it to pysearches needs
+* recursive search option, disabled by default
 
 0.4 beta (2011 Aug 9):
 ----------------------

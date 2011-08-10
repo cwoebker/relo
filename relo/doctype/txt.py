@@ -7,13 +7,13 @@ dirname = os.path.dirname(os.path.abspath(__file__))
 up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)
 
-from general.interfaces import DocType
+from relo.core.interfaces import DocType
 
 import re
 
-class TEST(DocType):
-    name = "TEST Plugin"
-
+class TXT(DocType):
+    name = "TXT Plugin"
+    
     def load(self, path):
         self.path = path
         self.fobj = open(path, "r")
@@ -28,5 +28,5 @@ class TEST(DocType):
                 print "Found at position: " + str(m.start())
         else:
             print "Nothing found"
-
+            
         print "Finished with: " + self.path

@@ -15,9 +15,9 @@ API
 
 from distutils.version import StrictVersion
 
-from yapsy.PluginInfo import PluginInfo
-from yapsy.IPlugin import IPlugin
-from yapsy.PluginManagerDecorator import PluginManagerDecorator
+from relo.yapsy.PluginInfo import PluginInfo
+from relo.yapsy.IPlugin import IPlugin
+from relo.yapsy.PluginManagerDecorator import PluginManagerDecorator
 
 
 class VersionedPluginInfo(PluginInfo):
@@ -59,7 +59,7 @@ class VersionedPluginManager(PluginManagerDecorator):
 				 decorated_manager=None,
 				 categories_filter={"Default":IPlugin}, 
 				 directories_list=None, 
-				 plugin_info_ext="yapsy-plugin"):
+				 plugin_info_ext="relo"):
 		"""
 		Create the plugin manager and record the ConfigParser instance
 		that will be used afterwards.
