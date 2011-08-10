@@ -55,3 +55,4 @@ GUI for parts of the app:
 * move around parts of apps to remove redundant stuff, recursive or not, hidden or not, filename or content
 * implement Library function register on pypi
 * finalize name
+
