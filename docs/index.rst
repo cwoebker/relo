@@ -22,11 +22,12 @@ single script 'relopy' and a library that can be used in other python apps.
 .. rubric:: Example: simple relo library
 
 ::
-    from relo import Relo
 
-    search = Relo(debug=False, hidden=False, content=True, recursive=True, directory='./', key='example')
-    search.list()
-    search.start()
+  from relo import Relo
+
+  search = Relo(debug=False, hidden=False, content=True, recursive=True, directory='./', key='example')
+  search.list()
+  search.start()
 
 Run this script or paste it into a python console, then watch the results come in.
 
