@@ -23,7 +23,7 @@ The basic classes defined by |yapsy| should work "as is" and enable
 you to load and activate your plugins. So that the following code
 should get you a fully working plugin management system::
 
-   from yapsy.PluginManager import PluginManager
+   from relo.yapsy.PluginManager import PluginManager
    
    # Build the manager
    simplePluginManager = PluginManager()

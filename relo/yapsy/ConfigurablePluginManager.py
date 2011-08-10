@@ -12,11 +12,11 @@ API
 ===
 """
 
-from yapsy.IPlugin import IPlugin
+from relo.yapsy.IPlugin import IPlugin
 
 
-from yapsy.PluginManagerDecorator import PluginManagerDecorator
-from yapsy.PluginManager import PLUGIN_NAME_FORBIDDEN_STRING
+from relo.yapsy.PluginManagerDecorator import PluginManagerDecorator
+from relo.yapsy.PluginManager import PLUGIN_NAME_FORBIDDEN_STRING
 
 
 

@@ -123,8 +123,8 @@ import os
 import logging
 import ConfigParser
 
-from yapsy.IPlugin import IPlugin
-from yapsy.PluginInfo import PluginInfo
+from relo.yapsy.IPlugin import IPlugin
+from relo.yapsy.PluginInfo import PluginInfo
 
 
 PLUGIN_NAME_FORBIDDEN_STRING=";;"
@@ -464,8 +464,11 @@ class PluginManager(object):
 						is_correct_subclass = issubclass(element, self.categories_interfaces[category_name])
 					except:
 						continue
+                    print element
+                    print self.categories_interfaces[category_name]
 					if is_correct_subclass:
 						if element is not self.categories_interfaces[category_name]:
+                            print category_name
 							current_category = category_name
 							break
                 if exclude in repr(element):
@@ -473,6 +476,7 @@ class PluginManager(object):
 				if current_category is not None:
 					if not (candidate_infofile in self._category_file_mapping[current_category]):
 						# we found a new plugin: initialise it and search for the next one
+                        print element
 						plugin_info.plugin_object = element()
 						plugin_info.category = current_category
 						self.category_mapping[current_category].append(plugin_info)
@@ -625,5 +629,5 @@ class PluginManagerSingleton(object):
 
 # For backward compatibility import the most basic decorator (it changed
 # place as of v1.8)
-from yapsy.PluginManagerDecorator import PluginManagerDecorator
+from relo.yapsy.PluginManagerDecorator import PluginManagerDecorator
 

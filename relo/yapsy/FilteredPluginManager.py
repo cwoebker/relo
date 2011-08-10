@@ -14,8 +14,8 @@ API
 """
  
 
-from yapsy.IPlugin import IPlugin
-from yapsy.PluginManagerDecorator import  PluginManagerDecorator
+from relo.yapsy.IPlugin import IPlugin
+from relo.yapsy.PluginManagerDecorator import  PluginManagerDecorator
 
 
 class FilteredPluginManager(PluginManagerDecorator):

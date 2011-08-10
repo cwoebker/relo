@@ -17,10 +17,10 @@ import os
 import logging
 import shutil
 
-from yapsy.IPlugin import IPlugin
+from relo.yapsy.IPlugin import IPlugin
 
 
-from yapsy.PluginManagerDecorator import PluginManagerDecorator
+from relo.yapsy.PluginManagerDecorator import PluginManagerDecorator
 
 
 
