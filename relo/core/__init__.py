@@ -5,7 +5,7 @@ from relo import doctype
 __all__ = ['manage', 'interfaces']
 
 
-VERSION = (0, 4, 0, 'beta')
+VERSION = (0, 5, 0, 'beta')
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
