@@ -59,8 +59,8 @@ setup(
     package_data={'relo': ['*.relo', 'doctype/*.relo']},
     #data_files = data_files,
     long_description=read('README.rst'),
-    scripts = ['relo.py'],
-    install_requires=['pypdf >= 1.13'],
+    scripts = ['relopy'],
+    install_requires=['pypdf >= 1.13', 'argparse >= 1.2.1'],
     #requires=['pypdf >= 1.13'],
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -71,6 +71,12 @@ setup(
         "Topic :: Text Processing",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.3",
+        "Programming Language :: Python :: 2.4",
+        "Programming Language :: Python :: 2.5",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
         "License :: OSI Approved :: BSD License",
     ],
 )
