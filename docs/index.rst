@@ -1,13 +1,17 @@
-.. relo documentation master file, created by
-   sphinx-quickstart on Wed Aug 10 16:31:44 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. highlight:: python
+.. currentmodule:: relo
+
+:: _Python: http://python.org/
+:: _issues: https://github.com/cwoebker/relo/issues
+:: _PyPi: http://pypi.python.org/pypi/relo
+:: _doctypes: https://github.com/cwoebker/relo/tree/master/relo/doctype
+:: _tests: https://github.com/cwoebker/relo/tree/master/tests
 
 ========================================
 Relo: Recursive Document Content Search!
 ========================================
 
-Relo is a simple, lightweight and extensible Search tool and framework for Python. It is distributed as a
+Relo is a simple, lightweight and extensible Search tool and framework for Python_. It is distributed as a
 single script 'relopy' and a library that can be used in other python apps.
 
 * **Content Search:** Search files recursively search a folder, with all its containing files, for a certain string.
@@ -38,6 +42,13 @@ Run this script or paste it into a python console, then watch the results come i
 
 .. note::
     Still not fully tested!
+
+.. rubric:: Dependencies
+    Relo needs the argparse library for parsing arguments.
+    Furthermore some of the plugins need libraries that help in loading
+    and reading different kinds of files.
+    As of now these libraries are:
+        * **PyPdf:** Needed for reading pages from pdf files
 
 Content
 =======
