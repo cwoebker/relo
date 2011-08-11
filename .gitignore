@@ -7,6 +7,6 @@ docs/_build/*
 env/*
 build/*
 *.egg-info
-relo/testFiles/*
+testFiles/*
 *.db
 *.sqlite

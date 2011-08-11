@@ -1,5 +1,7 @@
 from relo.yapsy.IPlugin import IPlugin
 
+import re
+
 class DocType(IPlugin):
     """""
     Implements different type of docs
@@ -10,4 +12,10 @@ class DocType(IPlugin):
     def load(self, path):
         pass
     def search(self, key):
-        pass
+        if not (re.search(key, self.content) == None):
+            for m in re.finditer(key, self.content):
+                print "Found at position: " + str(m.start())
+        else:
+            print "Nothing found"
+
+        print "Finished with: " + self.path
