@@ -15,9 +15,9 @@ Release 0.5
 * Completely updated project structure for better support as a library.
 * relo.py script was renamed to relopy (without an ending).
 
-.. rubric:: Performance improvements
+.. rubric:: Improvements
 
-* Nothing major here since relo is still in early development although its already beta.
+* Nothing major here since Relo is still in early development although its already beta.
 
 .. rubric:: Major bugfixes
 
@@ -25,6 +25,6 @@ Release 0.5
 
 .. rubric:: DocType
 
-* No new doctypes were implemented.
-* Pdf doctype was improved significantly.
-* Some minor changes to all doctypes.
+* No new DocTypes were implemented.
+* Pdf DocType was improved significantly.
+* Some minor changes to all DocTypes.
