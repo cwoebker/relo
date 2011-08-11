@@ -1,18 +1,18 @@
 .. highlight:: python
 .. currentmodule:: relo
 
-:: _Python: http://python.org/
-:: _issues: https://github.com/cwoebker/relo/issues
-:: _PyPi: http://pypi.python.org/pypi/relo
-:: _DocType: https://github.com/cwoebker/relo/tree/master/relo/doctype
-:: _tests: https://github.com/cwoebker/relo/tree/master/tests
+.. _Python: http://python.org/
+.. _issues: https://github.com/cwoebker/relo/issues
+.. _PyPi: http://pypi.python.org/pypi/relo
+.. _DocType: https://github.com/cwoebker/relo/tree/master/relo/doctype
+.. _tests: https://github.com/cwoebker/relo/tree/master/tests
 
 ========================================
 Relo: Recursive Document Content Search!
 ========================================
 
 Relo is a simple, lightweight and extensible Search tool and framework for Python_. It is distributed as a
-single script 'relopy' and a library that can be used in other python apps.
+single script ``relopy`` and a library that can be used in other python apps.
 
 * **Content Search:** Search files recursively search a folder, with all its containing files, for a certain string.
 * **Name Search:** Search filenames recursively in a certain folder.
@@ -77,8 +77,8 @@ As of now these libraries are:
         
         pip install argparse
 
-Content
-=======
+Usage Guide
+===========
 Start here:
 
 * **Learn:** how to use the relo library or the relopy script.
@@ -89,6 +89,19 @@ Start here:
 .. toctree::
    :maxdepth: 2
 
+   tutorial
+   plugins/index
+
+Information Base
+================
+A database for tutorials, guides and other links that relate to relo.
+
+.. toctree::
+    :maxdepth: 2
+
+    faq
+    contact
+
 Development and Contribution
 ============================
 
@@ -98,13 +111,14 @@ These chapters are intended for developers interested in helping with the develo
     :maxdepth: 2
 
     changelog
+    roadmap
     development
     plugindev
 
 .. toctree::
     :hidden:
 
-    plugins/index
+    doctypes/index
 
 License
 =======
@@ -114,9 +128,12 @@ Code and documentation are available according to the BSD License:
 .. include:: ../LICENSE.txt
   :literal:
 
-.. rubric:: Footnotes
+Contact
+=======
 
-.. [1] This is a test footnote cause I wanted to use one.
+Email me at cwoebker@gmail.com
+
+or check the :doc:`contact` page
 
 Indices and tables
 ==================
@@ -125,3 +142,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+.. rubric:: Footnotes
+
+.. [1] This is a test footnote cause I wanted to use one.
