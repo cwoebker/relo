@@ -10,7 +10,9 @@ makes it easy to search your computer for anything you like.
 
 .. rubric:: A quick overview:
 
-* blablabla
+* `Installation <#installation>`_
+* `Simple start <#simple>`_
+* `Complex approach <#complex>`_
 
 .. _installation:
 
