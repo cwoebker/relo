@@ -91,7 +91,7 @@ Start here:
 
     relopy
     tutorial
-    plugins/index
+    doctypes/index
 
 Information Base
 ================
