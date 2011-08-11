@@ -44,6 +44,7 @@ Run this script or paste it into a python console, then watch the results come i
     Still not fully tested!
 
 .. rubric:: Dependencies
+
     Relo needs the argparse library for parsing arguments.
     Furthermore some of the plugins need libraries that help in loading
     and reading different kinds of files.
