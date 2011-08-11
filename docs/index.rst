@@ -4,7 +4,7 @@
 :: _Python: http://python.org/
 :: _issues: https://github.com/cwoebker/relo/issues
 :: _PyPi: http://pypi.python.org/pypi/relo
-:: _doctype: https://github.com/cwoebker/relo/tree/master/relo/doctype
+:: _DocType: https://github.com/cwoebker/relo/tree/master/relo/doctype
 :: _tests: https://github.com/cwoebker/relo/tree/master/tests
 
 ========================================
@@ -52,6 +52,9 @@ Run this script or paste it into a python console, then watch the results come i
         * **PyPdf:** Needed for reading pages from pdf files
 
 .. note::
+
+    The dependencies don't install automatically when installing relo for now, some issues
+    wrapping my head around setup.py. Will be fixed soon.
 
 Content
 =======
