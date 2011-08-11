@@ -40,21 +40,38 @@ Run this script or paste it into a python console, then watch the results come i
 
 .. rubric:: Download and Install
 
+.. _download:
+
+You can use easy_install or pip as usual:
+
+    easy_install relo
+    pip install relo
+
 .. note::
     Still not fully tested!
 
 .. rubric:: Dependencies
 
-    Relo needs the argparse library for parsing arguments.
-    Furthermore some of the plugins need libraries that help in loading
-    and reading different kinds of files.
-    As of now these libraries are:
-        * **PyPdf:** Needed for reading pages from pdf files
+.. _dependencies:
+
+Relo needs the argparse library for parsing arguments.
+Furthermore some of the plugins need libraries that help in loading
+and reading different kinds of files.
+As of now these libraries are:
+    * **PyPdf:** Needed for reading pages from pdf files
 
 .. note::
 
     The dependencies don't install automatically when installing relo for now, some issues
     wrapping my head around setup.py. Will be fixed soon.
+
+        easy_install pypdf
+        pip install pypdf
+
+    When argparse doesn't come with your python version installed.
+
+        easy_install argparse
+        pip install argparse
 
 Content
 =======
