@@ -126,7 +126,7 @@ License
 
 Code and documentation are available according to the BSD License:
 
-.. include:: ../LICENSE.txt
+.. include:: ../LICENSE
   :literal:
 
 Contact
