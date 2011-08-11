@@ -4,7 +4,7 @@
 :: _Python: http://python.org/
 :: _issues: https://github.com/cwoebker/relo/issues
 :: _PyPi: http://pypi.python.org/pypi/relo
-:: _doctypes: https://github.com/cwoebker/relo/tree/master/relo/doctype
+:: _doctype: https://github.com/cwoebker/relo/tree/master/relo/doctype
 :: _tests: https://github.com/cwoebker/relo/tree/master/tests
 
 ========================================
@@ -50,6 +50,8 @@ Run this script or paste it into a python console, then watch the results come i
     and reading different kinds of files.
     As of now these libraries are:
         * **PyPdf:** Needed for reading pages from pdf files
+
+.. note::
 
 Content
 =======
