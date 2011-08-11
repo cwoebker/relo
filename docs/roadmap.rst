@@ -9,38 +9,88 @@ Roadmap
 
     Roadmap in project root is outdated a new roadmap will be here soon!
 
+Release 0.6
+===========
+
+.. rubric:: New Features
+
+* **Documentation:** As part of this release the documentation will be finished.
+* **Symbolic Links:** ReloPy can search through directories or files that are being linked symbolically.
+* **All option:** Search files even without a DocType plugin file.
+* **Hidden option:** What used to be called --all will now be a real hidden option to search hidden files.
+* **Specific File Search:** You now can search specific file types as long as there is a DocType if
+All option is not set.
+* **Dynamic DocType loading:** DocType plugins are loaded only if needed.
+
+.. rubric:: Improvements
+
+* **Website improvement:** Website renewed.
+
+.. rubric:: DocType
+
+* **Microsoft Html Help (.chm):** implemented since some ebooks are distributed in this format.
+
 Release 0.7
 ===========
 
 .. rubric:: New Features
 
-.. rubric:: Performance improvements
+* **Logging:** A logging class to implement debugging mode and other features.
+* **DocType Managing:** Install, remove, update and find DocTypes.
+* **Missing DocType:** Notify user when a plugin is needed but available.
 
-.. rubric:: Doctype
+.. rubric:: Improvements
+
+* **Progress Bar:** There is now a progressbar to display how much of the search is done.
+* **Relo Colorful:** (Maybe) Colors for better information flow:
+
+    * **Error:** Red
+    * **INFO:** White
+    * **DEBUG:** Yellow
+
+.. rubric:: DocType
 
 Release 0.8
 ===========
 
 .. rubric:: New Features
 
-.. rubric:: Performance improvements
+* **Graphical User Interface (GUI):** A User interface in wxPython, PyQt4 or whatever fits best.
 
-.. rubric:: Doctype
+    * **Settings and Defaults:** Settings and Defaults stored in ~/.relo(py) .
+    * **Plugin Manager:** Control the Plugin Manager from the GUI.
+    * **MenuBar Icon:** Make relopy easily accessible through the menubar.
+
+
+.. rubric:: Improvements
+
+* **Index DB:** relo created db files for faster searching, either when set or when already searched.
+
+.. rubric:: DocType
 
 Release 0.9
 ===========
 
 .. rubric:: New Features
 
-.. rubric:: Performance improvements
+.. rubric:: Improvements
 
-.. rubric:: Doctype
+.. rubric:: DocType
 
 Release 1.0
 ===========
 
 .. rubric:: New Features
 
-.. rubric:: Performance improvements
+.. rubric:: Improvements
 
-.. rubric:: Doctype
+.. rubric:: DocType
+
+Future
+======
+
+Indexing of files for faster search
+index db generation one time, then changes
+performance needed code in C
+
+More DocTypes
