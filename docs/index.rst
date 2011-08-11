@@ -68,19 +68,22 @@ As of now these libraries are:
     wrapping my head around setup.py. Will be fixed soon.
 
         easy_install pypdf
+
         pip install pypdf
 
     When argparse doesn't come with your python version installed.
 
         easy_install argparse
+        
         pip install argparse
 
 Content
 =======
 Start here:
-* if you want to learn how to use the relo library or the relopy script.
-* if you want to help contribute to the project.
-* if you want to help to add additional doctypes.
+
+* **Learn:** how to use the relo library or the relopy script.
+* **Contribute:**  to the project.
+* **Contribute (DocType)** and add additional doctypes.
 
 
 .. toctree::
