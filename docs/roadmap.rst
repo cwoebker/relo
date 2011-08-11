@@ -5,10 +5,6 @@
 Roadmap
 =======
 
-.. note::
-
-    Roadmap in project root is outdated a new roadmap will be here soon!
-
 Release 0.6
 ===========
 
