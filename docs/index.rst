@@ -44,6 +44,8 @@ Run this script or paste it into a python console, then watch the results come i
 
 You can use easy_install or pip as usual:
 
+::
+
     easy_install relo
     pip install relo
 
