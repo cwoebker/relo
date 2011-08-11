@@ -87,10 +87,11 @@ Start here:
 
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   tutorial
-   plugins/index
+    relopy
+    tutorial
+    plugins/index
 
 Information Base
 ================
