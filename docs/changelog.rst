@@ -19,7 +19,11 @@ Release 0.5
 
 * Nothing major here since relo is still in early development although its already beta.
 
-.. rubric:: DocType News
+.. rubric:: Major bugfixes
+
+* no bugs, yeah
+
+.. rubric:: DocType
 
 * No new doctypes were implemented.
 * Pdf doctype was improved significantly.
