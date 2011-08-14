@@ -5,5 +5,5 @@ Module = test
 [Documentation]
 Author = cwoebker
 Version = 0.1
-Website = http://cwoebker.github.com/pysearch/
-Description = PySearch plugin for testing purposes
+Website = http://cwoebker.github.com/relo/
+Description = Relo plugin for testing purposes
