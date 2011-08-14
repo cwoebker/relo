@@ -28,6 +28,8 @@ def main(argv):
                         help='search hidden files')
     parser.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
+    parser.add_argument('--doctype', action='store',
+                        help='specify doctypes you want to use in your search')
     type_group = parser.add_mutually_exclusive_group()
     type_group.add_argument('-n', '--name', action='store_true',
                             help='search match in fileNames (regex allowed) - (default)')
@@ -43,7 +45,7 @@ def main(argv):
     print results
 
     search = Relo(results.debug, results.all, results.hidden, results.content, results.recursive,
-                      results.directory, results.search_key)
+                    results.doctype, results.directory, results.search_key)
     search.list()
     search.filter()
     print search.fileList

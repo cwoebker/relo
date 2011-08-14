@@ -67,7 +67,14 @@ def filterList(fileList):
         ext = getFileType(path)
         if ext in doctype.__all__:
             filteredList.append(path)
+    return filteredList
 
+def filterDocType(fileList, doctype):
+    filteredList = []
+    for path in fileList:
+        ext = getFileType(path)
+        if ext == doctype:
+            filteredList.append(path)
     return filteredList
 
 def fileNameSearch(fileList, key):

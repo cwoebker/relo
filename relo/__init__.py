@@ -6,7 +6,8 @@ def get_version():
     return core.get_version()
 
 class Relo:
-    def __init__(self, debug=False, all=False, hidden=False, content=False, recursive=False, directory='./', key=''):
+    def __init__(self, debug=False, all=False, hidden=False, content=False, recursive=False,
+                 doctype=None, directory='./', key=''):
         """
         Main Relo class
         """
@@ -14,6 +15,7 @@ class Relo:
         self.all = all
         self.hidden = hidden
         self.recursive = recursive
+        self.doctype = doctype
         self.dir = directory
         self.key = key
 
@@ -48,6 +50,8 @@ class Relo:
     def filter(self):
         if self.all:
             self.filteredList = self.fileList
+        elif not self.doctype=='':
+            self.filteredList = core.filterDocType(self.fileList, self.doctype)
         else:
             self.filteredList = core.filterList(self.fileList)
         for itempath in self.filteredList:
