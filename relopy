@@ -49,7 +49,7 @@ def main(argv):
     print search.fileList
     print search.extList
     print search.filteredList
-    #search.start()
+    search.start()
 
 if __name__ == '__main__':
     main(sys.argv[1:])
