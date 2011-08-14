@@ -6,11 +6,12 @@ def get_version():
     return core.get_version()
 
 class Relo:
-    def __init__(self, debug=False, hidden=False, content=False, recursive=False, directory='./', key=''):
+    def __init__(self, debug=False, all=False, hidden=False, content=False, recursive=False, directory='./', key=''):
         """
         Main Relo class
         """
         self.debug = debug
+        self.all = all
         self.hidden = hidden
         self.recursive = recursive
         self.dir = directory
@@ -23,6 +24,7 @@ class Relo:
 
         print "Relo: version %s" % get_version()
         print "Verbose: " + str(bool(self.debug))
+        print "All Files: " + str(bool(self.all))
         print "Hidden Files: " + str(bool(self.hidden))
         print "Recursive: " + str(bool(self.recursive))
         print "Search Type: " + self.type
@@ -44,7 +46,10 @@ class Relo:
         print "Supported File Types: " + repr(doctype.__all__)
 
     def filter(self):
-        self.filteredList = core.filterList(self.fileList)
+        if self.all:
+            self.filteredList = self.fileList
+        else:
+            self.filteredList = core.filterList(self.fileList)
         for itempath in self.filteredList:
             item = core.getFileType(itempath)
             if item not in self.extList:

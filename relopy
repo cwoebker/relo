@@ -23,7 +23,9 @@ def main(argv):
     parser.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select Directory - (default=current)')
     parser.add_argument('-a', '--all', action='store_true',
-                        help='search all files/hidden files')
+                        help='search all files (even non supported with standard plugin)')
+    parser.add_argument('-s', '--hidden', '--secret', action='store_true',
+                        help='search hidden files')
     parser.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
     type_group = parser.add_mutually_exclusive_group()
@@ -40,11 +42,14 @@ def main(argv):
         parser.error(str(msg))
     print results
 
-    search = Relo(results.debug, results.all, results.content, results.recursive,
+    search = Relo(results.debug, results.all, results.hidden, results.content, results.recursive,
                       results.directory, results.search_key)
     search.list()
     search.filter()
-    search.start()
+    print search.fileList
+    print search.extList
+    print search.filteredList
+    #search.start()
 
 if __name__ == '__main__':
     main(sys.argv[1:])
