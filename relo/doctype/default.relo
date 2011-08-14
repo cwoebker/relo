@@ -1,0 +1,9 @@
+[Core]
+Name = DEFAULT
+Module = default
+
+[Documentation]
+Author = cwoebker
+Version = 0.1
+Website = http://cwoebker.github.com/relo/
+Description = Relo standard plugin
