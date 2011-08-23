@@ -22,18 +22,19 @@ def main(argv):
                         version=('%(prog)s ' + __version__))
     parser.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select Directory - (default=current)')
-    parser.add_argument('-a', '--all', action='store_true',
-                        help='search all files (even non supported with standard plugin)')
     parser.add_argument('-s', '--hidden', '--secret', action='store_true',
                         help='search hidden files')
     parser.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
-    parser.add_argument('--doctype', action='store',
+    doctype_group = parser.add_mutually_exclusive_group()
+    doctype_group.add_argument('--doctype', action='store',
                         help='specify doctypes you want to use in your search')
-    type_group = parser.add_mutually_exclusive_group()
-    type_group.add_argument('-n', '--name', action='store_true',
+    doctype_group.add_argument('-a', '--all', action='store_true',
+                        help='search all files (even non supported with standard plugin)')
+    search_type_group = parser.add_mutually_exclusive_group()
+    search_type_group.add_argument('-n', '--name', action='store_true',
                             help='search match in fileNames (regex allowed) - (default)')
-    type_group.add_argument('-c', '--content', action='store_true',
+    search_type_group.add_argument('-c', '--content', action='store_true',
                             help='search match in content (regex allowed)')
     parser.add_argument('--debug', '--verbose', action='store_true',
                         help='enable debug/verbose mode')
