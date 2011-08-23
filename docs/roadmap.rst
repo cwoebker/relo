@@ -10,11 +10,11 @@ Release 0.6
 
 .. rubric:: New Features
 
-* **Documentation:** As part of this release the documentation will be finished.
+* **Documentation:** As part of this release the documentation will be finished. **IN PROGRESS**
 * **Symbolic Links:** ReloPy can search through directories or files that are being linked symbolically.
-* **All option:** Search files even without a DocType plugin file.
-* **Hidden option:** What used to be called --all will now be a real hidden option to search hidden files.
-* **Specific File Search:** You now can search specific file types as long as there is a DocType if All option is not set.
+* **All option:** Search files even without a DocType plugin file. **DONE**
+* **Hidden option:** What used to be called --all will now be a real hidden option to search hidden files. **DONE**
+* **Specific File Search:** You now can search specific file types as long as there is a DocType if All option is not set. **DONE**
 * **Dynamic DocType loading:** DocType plugins are loaded only if needed.
 
 .. rubric:: Improvements
