@@ -27,10 +27,12 @@ def main(argv):
     parser.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
     doctype_group = parser.add_mutually_exclusive_group()
-    doctype_group.add_argument('--doctype', action='store',
-                        help='specify doctypes you want to use in your search')
     doctype_group.add_argument('-a', '--all', action='store_true',
                         help='search all files (even non supported with standard plugin)')
+    doctype_group.add_argument('--doctype', action='store',
+                        help='specify doctypes you want to use in your search')
+    parser.add_argument('-l', '--links', '--symbolic', action='store_true',
+                        help='search in symbolically linked directories and files')
     search_type_group = parser.add_mutually_exclusive_group()
     search_type_group.add_argument('-n', '--name', action='store_true',
                             help='search match in fileNames (regex allowed) - (default)')
