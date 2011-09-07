@@ -32,26 +32,30 @@ def listFiles(rootDir, hidden):
     print "Total Size:", str(total_size)
     return total_size, returnList
 
-def recursiveListFiles(rootDir, hidden):
+def recursiveListFiles(rootDir, hidden, link):
     """
     list files in specified directory
     """
     fileList = []
     total_size = 0
-    for root, subFolders, files in os.walk(rootDir):
+    for root, subFolders, files in os.walk(rootDir, followlinks=link):
         if not hidden:
             subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
+        print root
         for file in files:
             if file.startswith('.') and hidden==0:
                 continue
             itempath = os.path.join(root, file)
             if os.path.islink(itempath):
+                print "link found" + itempath
                 continue
             total_size += os.path.getsize(itempath)
             fileList.append(itempath)
 
     print "Total Size:", str(total_size)
     return total_size, fileList
+
+#def SymbolicDir()
 
 def getFileType(itempath):
     """
