@@ -43,10 +43,10 @@ class Relo:
     def list(self):
         if self.recursive:
             print "Listing directory content recursively..."
-            self.total_size, self.fileList = core.recursiveListFiles(self.dir, self.hidden)
+            self.total_size, self.fileList = core.recursiveListFiles(self.dir, self.hidden, self.links)
         else:
             print "Listing directory content..."
-            self.total_size, self.fileList = core.listFiles(self.dir, self.hidden)
+            self.total_size, self.fileList = core.listFiles(self.dir, self.hidden, self.links)
         print "Supported File Types: " + repr(doctype.__all__)
 
     def filter(self):
