@@ -28,6 +28,10 @@ class Relo:
         print "Relo: version %s" % get_version()
         print "Verbose: " + str(bool(self.debug))
         print "All Files: " + str(bool(self.all))
+        if self.doctype == None:
+            print "Special Doctype: None"
+        else:
+            print "Special Doctype: " + (self.doctype)
         print "Hidden Files: " + str(bool(self.hidden))
         print "Symbolic Links: " + str(bool(self.links))
         print "Recursive: " + str(bool(self.recursive))
