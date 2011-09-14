@@ -41,13 +41,12 @@ class Manager(object):
                 print "Searching data..."
                 plugin.plugin_object.search(self.key)
                 return
-        for plugin in self.manager.getAllPlugins():
-            if plugin.name == 'DEFAULT':
-                print ("---------- "+itempath+" ----------")
-                print "Using: " + plugin.plugin_object.meta()
-                print "Reading File to memory..."
-                plugin.plugin_object.load(itempath)
-                print "Searching data..."
-                plugin.plugin_object.search(self.key)
+        plugin = self.manager.getPluginByName("DEFAULT")
+        print ("---------- "+itempath+" ----------")
+        print "Using: " + plugin.plugin_object.meta()
+        print "Reading File to memory..."
+        plugin.plugin_object.load(itempath)
+        print "Searching data..."
+        plugin.plugin_object.search(self.key)
 
 
