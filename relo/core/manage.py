@@ -22,7 +22,7 @@ class Manager(object):
         self.numPlugins = self.manager.locatePlugins()
         print "Found %d plugins." % self.numPlugins
         #self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
-        self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>")
+        self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>", extList=extList)
         
         pluginList = []
         for plugin in self.manager.getAllPlugins():
