@@ -10,12 +10,12 @@ Release 0.6
 
 .. rubric:: New Features
 
-* **Documentation:** As part of this release the documentation will be finished. **IN PROGRESS**
-* **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem)**
+* **Documentation:** As part of this release the documentation will be finished. **Mostly Done**
+* **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem), maybe postpone**
 * **All option:** Search files even without a DocType plugin file. **DONE**
 * **Hidden option:** What used to be called --all will now be a real hidden option to search hidden files. **DONE**
 * **Specific File Search:** Search specific file types as long as there is a DocType. **DONE**
-* **Dynamic DocType loading:** DocType plugins are loaded only if needed. **IN PROGRESS**
+* **Dynamic DocType loading:** DocType plugins are loaded only if needed. **DONE (BETA)**
 
 .. rubric:: Improvements
 
@@ -23,7 +23,7 @@ Release 0.6
 
 .. rubric:: DocType
 
-* **Microsoft Html Help (.chm):** implemented since some ebooks are distributed in this format.
+* **Microsoft Html Help (.chm):** Add support for Microsoft HTML Help files.
 
 Release 0.7
 ===========
