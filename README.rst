@@ -9,7 +9,7 @@ For now you have to browse through the `DocType <http://github.com/cwoebker/relo
 
 Where are the Docs?
 -------------------
-Not done yet, but you can still check out the `github wiki <http://wiki.github.com/cwoebker/relo>`_.
+Check `readthedocs.org <http://relo.readthedocs.org/>`_ or you can still check out the `github wiki <http://wiki.github.com/cwoebker/relo>`_.
 
 Additionally try running ``python relo.py --help`` for basic usage information.
 

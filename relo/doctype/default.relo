@@ -1,9 +1,9 @@
 [Core]
-Name = TXT
-Module = txt
+Name = DEFAULT
+Module = default
 
 [Documentation]
 Author = cwoebker
 Version = 0.1
 Website = http://cwoebker.github.com/relo/
-Description = Relo plugin for .txt files
+Description = Relo standard plugin
