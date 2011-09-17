@@ -8,8 +8,8 @@ from relo.yapsy.PluginManager import PluginManager
 
 from relo.doctype import *
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
+#import logging
+#logging.basicConfig(level=logging.DEBUG)
 
 class Manager(object):
     def __init__(self, key, extList):
@@ -20,18 +20,18 @@ class Manager(object):
         self.manager.setPluginPlaces(["relo/doctype"])
 
         self.numPlugins = self.manager.locatePlugins()
-        print "Found %d plugins." % self.numPlugins
+        #print "Found %d plugins." % self.numPlugins
         #self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
-        self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>")
+        self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>", extList=extList)
         
         pluginList = []
         for plugin in self.manager.getAllPlugins():
             self.manager.activatePluginByName(plugin.name)
             pluginList.append(plugin.plugin_object.meta())
-        print pluginList
+        #print pluginList
 
     def start(self, itempath):
-        print itempath
+        #print itempath
         for plugin in self.manager.getAllPlugins():
             if plugin.name == core.getFileType(itempath).upper():
                 print ("---------- "+itempath+" ----------")
@@ -40,6 +40,13 @@ class Manager(object):
                 plugin.plugin_object.load(itempath)
                 print "Searching data..."
                 plugin.plugin_object.search(self.key)
-                break
+                return
+        plugin = self.manager.getPluginByName("DEFAULT")
+        print ("---------- "+itempath+" ----------")
+        print "Using: " + plugin.plugin_object.meta()
+        print "Reading File to memory..."
+        plugin.plugin_object.load(itempath)
+        print "Searching data..."
+        plugin.plugin_object.search(self.key)
 
 

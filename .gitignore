@@ -1,9 +1,12 @@
+.DS_Store
+*.py[co]
 .idea/*
 *.tmproj
+dist/*
+docs/_build/*
 env/*
 build/*
-dist/*
-Relo.egg-info/*
-.DS_Store
-relo/testFiles/*
-*.py[co]
+*.egg-info
+testFiles/*
+*.db
+*.sqlite

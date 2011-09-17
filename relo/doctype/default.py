@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
+
 import sys
 import os
 
@@ -11,8 +12,8 @@ from relo.core.interfaces import DocType
 
 import re
 
-class LOG(DocType):
-    name = "LOG Plugin"
+class TXT(DocType):
+    name = "DEFAULT Plugin"
 
     def load(self, path):
         self.path = path

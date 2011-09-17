@@ -21,12 +21,3 @@ class TEST(DocType):
         for line in self.fobj:
             self.content += line
         self.fobj.close()
-
-    def search(self, key):
-        if not (re.search(key, self.content) == None):
-            for m in re.finditer(key, self.content):
-                print "Found at position: " + str(m.start())
-        else:
-            print "Nothing found"
-
-        print "Finished with: " + self.path
