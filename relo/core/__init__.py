@@ -5,7 +5,7 @@ from relo import doctype
 __all__ = ['manage', 'interfaces']
 
 
-VERSION = (0, 5, 0, 'beta')
+VERSION = (0, 6, 0, 'beta')
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -41,13 +41,13 @@ def recursiveListFiles(rootDir, hidden, link):
     for root, subFolders, files in os.walk(rootDir, followlinks=link):
         if not hidden:
             subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
-        print root
+        #print root
         for file in files:
             if file.startswith('.') and hidden==0:
                 continue
             itempath = os.path.join(root, file)
             if os.path.islink(itempath):
-                print "link found" + itempath
+                #print "link found" + itempath
                 continue
             total_size += os.path.getsize(itempath)
             fileList.append(itempath)

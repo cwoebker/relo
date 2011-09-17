@@ -51,9 +51,9 @@ def main(argv):
                     results.doctype, results.directory, results.search_key)
     search.list()
     search.filter()
-    print search.fileList
-    print search.extList
-    print search.filteredList
+    #print search.fileList
+    #print search.extList
+    #print search.filteredList
     search.start()
 
 if __name__ == '__main__':

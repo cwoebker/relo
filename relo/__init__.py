@@ -72,8 +72,8 @@ class Relo:
             self.startName()
     def startContent(self):
         manager = manage.Manager(self.key, self.extList)
-        print self.filteredList
-        print self.extList
+        #print self.filteredList
+        #print self.extList
         for item in self.filteredList:
             manager.start(item)
     def startName(self):
