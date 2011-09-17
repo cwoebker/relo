@@ -5,25 +5,6 @@
 Roadmap
 =======
 
-Release 0.6
-===========
-
-.. rubric:: New Features
-
-* **Documentation:** As part of this release the documentation will be finished. **Mostly Done**
-* **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem), maybe postpone**
-* **All option:** Search files even without a DocType plugin file. **DONE**
-* **Hidden option:** What used to be called --all will now be a real hidden option to search hidden files. **DONE**
-* **Specific File Search:** Search specific file types as long as there is a DocType. **DONE**
-* **Dynamic DocType loading:** DocType plugins are loaded only if needed. **DONE (BETA)**
-
-.. rubric:: Improvements
-
-* **Website improvement:** Website renewed.
-
-.. rubric:: DocType
-
-* **Microsoft Html Help (.chm):** Add support for Microsoft HTML Help files.
 
 Release 0.7
 ===========
@@ -33,6 +14,9 @@ Release 0.7
 * **Logging:** A logging class to implement debugging mode and other features.
 * **DocType Managing:** Install, remove, update and find DocTypes.
 * **Missing DocType:** Notify user when a plugin is needed but available.
+* **Relo Updater:** You can update the relo library from within relopy itself.
+* **Relo Extensions:** add extensions - thrid party - with updater
+* **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem), postponed**
 
 .. rubric:: Improvements
 
@@ -44,6 +28,9 @@ Release 0.7
     * **DEBUG:** Yellow
 
 .. rubric:: DocType
+
+* **Microsoft Html Help (.chm):** Add support for Microsoft HTML Help files. **postponed**
+
 
 Release 0.8
 ===========

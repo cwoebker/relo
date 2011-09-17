@@ -5,6 +5,25 @@
 Release Notes and Changelog
 ===========================
 
+Release 0.6 (2011 Sep 16)
+=========================
+
+.. rubric:: New Features
+
+* **Documentation:** As part of this release the documentation will be implemented.
+* **All option:** Search files even without a DocType plugin file.
+* **Hidden option:** What used to be called --all will now be a real hidden option to search hidden files.
+* **Specific File Search:** Search specific file types as long as there is a DocType.
+* **Dynamic DocType loading:** DocType plugins are loaded only if needed.
+
+.. rubric:: Improvements
+
+* **Website improvement:** Website renewed.
+
+.. rubric:: DocType
+
+* some minor improvements
+
 Release 0.5 (2011 Aug 10)
 =========================
 
@@ -18,10 +37,6 @@ Release 0.5 (2011 Aug 10)
 .. rubric:: Improvements
 
 * Nothing major here since Relo is still in early development although its already beta.
-
-.. rubric:: Major bugfixes
-
-* no bugs, yeah
 
 .. rubric:: DocType
 

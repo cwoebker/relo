@@ -52,7 +52,7 @@ setup(
     author_email = "cwoebker@gmail.com",
     maintainer = "Cecil Woebker",
     maintainer_email = "cwoebker@gmail.com",
-    description = ("Recursive Document Content Search in python"),
+    description = ("Recursive Document Content Search in Python"),
     keywords = "python search document content",
     url = "http://cwoebker.github.com/relo",
     packages = packages,

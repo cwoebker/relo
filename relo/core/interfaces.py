@@ -19,3 +19,8 @@ class DocType(IPlugin):
             print "Nothing found"
 
         print "Finished with: " + self.path
+
+class Extension(IPlugin):
+    """
+    Implements external extension that can be used withit relo
+    """
