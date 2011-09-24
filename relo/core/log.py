@@ -20,12 +20,12 @@ class Logger(object):
         fh = logging.FileHandler(LOG_FILENAME)
         fh.setLevel(logging.DEBUG)
 
-        formatter = logging.Formatter("[%(asctime)s] - [%(levelname)s] :: %(message)s")
-
+        fileFormatter = logging.Formatter("[%(asctime)s] - [%(levelname)s] :: %(message)s")
+        cmdFormatter = logging.Formatter("[%(levelname)s] :: %(message)s")
         #link logging configuration
 
-        ch.setFormatter(formatter)
-        fh.setFormatter(formatter)
+        ch.setFormatter(cmdFormatter)
+        fh.setFormatter(fileFormatter)
 
         self.log.addHandler(ch)
         self.log.addHandler(fh)
