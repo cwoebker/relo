@@ -15,3 +15,54 @@
 [2011-09-24 00:53:56,791] - [DEBUG] :: Activating plugin: Default.LOG
 [2011-09-24 00:53:56,791] - [DEBUG] :: Activating plugin: Default.PDF
 [2011-09-24 00:53:56,792] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-24 01:03:01,252] - [INFO] :: Special DocType: None
+[2011-09-24 01:03:01,252] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-24 01:03:01,253] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-24 01:03:01,253] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-24 01:03:01,254] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-24 01:03:01,254] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-24 01:03:01,255] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-24 01:03:01,256] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-24 01:03:01,258] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-24 01:03:01,258] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-24 01:03:01,258] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-24 01:03:01,258] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-24 01:05:02,680] - [INFO] :: Special DocType: None
+[2011-09-24 01:05:02,681] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-24 01:05:02,681] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-24 01:05:02,681] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-24 01:05:02,683] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-24 01:05:02,684] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-24 01:05:02,685] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-24 01:05:02,685] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-24 01:05:02,688] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-24 01:05:02,688] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-24 01:05:02,688] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-24 01:05:02,689] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-24 01:05:31,201] - [INFO] :: Special DocType: None
+[2011-09-24 01:05:31,201] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-24 01:05:31,202] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-24 01:05:31,202] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-24 01:05:31,203] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-24 01:05:31,204] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-24 01:05:31,204] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-24 01:05:31,205] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-24 01:05:31,207] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-24 01:05:31,207] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-24 01:05:31,208] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-24 01:05:31,208] - [DEBUG] :: Activating plugin: Default.TXT

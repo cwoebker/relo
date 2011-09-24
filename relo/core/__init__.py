@@ -86,3 +86,6 @@ def fileNameSearch(fileList, key):
         item = os.path.basename(itempath)
         if not item.find(key) == -1:
             print "Found: " + itempath
+
+def genericError():
+    print "An Error has occurred check the log file for more detailed information\nor run again with the debug option set."
