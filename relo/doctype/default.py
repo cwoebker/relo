@@ -14,11 +14,3 @@ import re
 
 class TXT(DocType):
     name = "DEFAULT Plugin"
-
-    def load(self, path):
-        self.path = path
-        self.fobj = open(path, "r")
-        self.content = ""
-        for line in self.fobj:
-            self.content += line
-        self.fobj.close()
