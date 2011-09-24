@@ -1,12 +1,13 @@
 from relo import core
 from relo import doctype
 from relo.core import manage
+from relo.core import log
 
 def get_version():
     return core.get_version()
 
 class Relo:
-    def __init__(self, debug=False, all=False, hidden=False, links=False, content=False, recursive=False,
+    def __init__(self, debug=False, all=False, hidden=False, links=False, filelog=False, content=False, recursive=False,
                  doctype=None, directory='./', key=''):
         """
         Main Relo class
@@ -20,6 +21,8 @@ class Relo:
         self.dir = directory
         self.key = key
 
+        self.log = log.Logger(self.debug)
+
         if content:
             self.type = "content Search"
         else:
@@ -29,9 +32,9 @@ class Relo:
         print "Verbose: " + str(bool(self.debug))
         print "All Files: " + str(bool(self.all))
         if self.doctype == None:
-            print "Special Doctype: None"
+            self.log.info("Special DocType: None")
         else:
-            print "Special Doctype: " + (self.doctype)
+            print "Special DocType: " + (self.doctype)
         print "Hidden Files: " + str(bool(self.hidden))
         print "Symbolic Links: " + str(bool(self.links))
         print "Recursive: " + str(bool(self.recursive))
@@ -44,6 +47,9 @@ class Relo:
         self.total_size = 0
         self.fileList = []
 
+    def initLogger(self):
+        pass
+
     def list(self):
         if self.recursive:
             print "Listing directory content recursively..."
@@ -51,7 +57,7 @@ class Relo:
         else:
             print "Listing directory content..."
             self.total_size, self.fileList = core.listFiles(self.dir, self.hidden, self.links)
-        print "Supported File Types: " + repr(doctype.__all__)
+        self.log.debug("Supported File Types: " + repr(doctype.__all__))
 
     def filter(self):
         if self.all:
@@ -66,6 +72,7 @@ class Relo:
                 self.extList.append(item)
 
     def start(self):
+        self.initLogger()
         if 'content' in self.type:
             self.startContent()
         else:

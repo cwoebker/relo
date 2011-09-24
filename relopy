@@ -24,6 +24,8 @@ def main(argv):
                         help='search hidden files')
     parser.add_argument('-l', '--links', '--symbolic', action='store_true',
                         help='search in symbolically linked directories and files')
+    parser.add_argument('--filelog', action='store_true',
+                        help='log is written to file - always in debug mode')
     parser.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
     doctype_group = parser.add_mutually_exclusive_group()
@@ -47,7 +49,7 @@ def main(argv):
         parser.error(str(msg))
     print results
 
-    search = Relo(results.debug, results.all, results.hidden, results.links, results.content, results.recursive,
+    search = Relo(results.debug, results.all, results.hidden, results.links, results.filelog, results.content, results.recursive,
                     results.doctype, results.directory, results.search_key)
     search.list()
     search.filter()

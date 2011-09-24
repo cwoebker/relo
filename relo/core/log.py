@@ -2,17 +2,17 @@ __name__ = "log"
 
 import logging, logging.config
 
-class searchLogger(object):
+class Logger(object):
     def __init__(self, debug):
-        LOG_FILENAME = "Relo.log"
+        LOG_FILENAME = "relo.log"
 
         #creating logging instances
 
-        self.logger = logging.getLogger()
-        self.logger.setLevel(logging.DEBUG)
+        self.log = logging.getLogger()
+        self.log.setLevel(logging.DEBUG)
 
         ch = logging.StreamHandler()
-        if debug == 1:
+        if debug:
             ch.setLevel(logging.DEBUG)
         else:
             ch.setLevel(logging.INFO)
@@ -27,8 +27,8 @@ class searchLogger(object):
         ch.setFormatter(formatter)
         fh.setFormatter(formatter)
 
-        self.logger.addHandler(ch)
-        self.logger.addHandler(fh)
+        self.log.addHandler(ch)
+        self.log.addHandler(fh)
 
         LEVELS = {
             'debug' : logging.DEBUG,
@@ -39,16 +39,16 @@ class searchLogger(object):
         }
     def debug(self, msg):
         """sends debug message to logger"""
-        self.logger.debug(msg)
+        self.log.debug(msg)
     def info(self, msg):
         """sends info message to logger"""
-        self.logger.info(msg)
+        self.log.info(msg)
     def warning(self, msg):
         """sends warning message to logger"""
-        self.logger.warning(msg)
+        self.log.warning(msg)
     def error(self, msg):
         """sends error message to logger"""
-        self.logger.error(msg)
+        self.log.error(msg)
     def critical(self, msg):
         """sends critical message to logger"""
-        self.logger.critical(msg)
+        self.log.critical(msg)
