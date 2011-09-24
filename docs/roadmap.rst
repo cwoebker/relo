@@ -12,10 +12,10 @@ Release 0.7
 .. rubric:: New Features
 
 * **Logging:** A logging class to implement debugging mode and other features.
-* **DocType Managing:** Install, remove, update and find DocTypes.
-* **Missing DocType:** Notify user when a plugin is needed but available.
 * **Relo Updater:** You can update the relo library from within relopy itself.
-* **Relo Extensions:** add extensions - thrid party - with updater
+    * **Relo Extensions:** add extensions - thrid party - with updater
+    * **DocType Managing:** Install, remove, update and find DocTypes.
+    * **Missing DocType:** Notify user when a plugin is needed but available.
 * **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem), postponed**
 
 .. rubric:: Improvements
