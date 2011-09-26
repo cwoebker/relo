@@ -3,7 +3,7 @@ __name__ = "log"
 import logging, logging.config
 
 class Logger(object):
-    def __init__(self, debug):
+    def __init__(self, info, debug):
         LOG_FILENAME = "relo.log"
 
         #creating logging instances
@@ -12,10 +12,12 @@ class Logger(object):
         self.log.setLevel(logging.DEBUG)
 
         ch = logging.StreamHandler()
-        if debug:
+        if info:
+            ch.setLevel(logging.INFO)
+        elif debug:
             ch.setLevel(logging.DEBUG)
         else:
-            ch.setLevel(logging.INFO)
+            ch.setLevel(logging.WARNING)
 
         fh = logging.FileHandler(LOG_FILENAME)
         fh.setLevel(logging.DEBUG)

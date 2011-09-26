@@ -66,3 +66,185 @@
 [2011-09-24 01:05:31,207] - [DEBUG] :: Activating plugin: Default.LOG
 [2011-09-24 01:05:31,208] - [DEBUG] :: Activating plugin: Default.PDF
 [2011-09-24 01:05:31,208] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-25 23:04:34,608] - [INFO] :: Relo: version 0.6 beta
+[2011-09-25 23:04:34,609] - [INFO] :: Verbose: True
+[2011-09-25 23:04:34,609] - [INFO] :: All Files: True
+[2011-09-25 23:04:34,609] - [INFO] :: Special DocType: None
+[2011-09-25 23:04:34,609] - [INFO] :: Hidden Files: True
+[2011-09-25 23:04:34,609] - [INFO] :: Symbolic Links: False
+[2011-09-25 23:04:34,609] - [INFO] :: Recursive: True
+[2011-09-25 23:04:34,609] - [INFO] :: Search Type: content Search
+[2011-09-25 23:04:34,610] - [INFO] :: Directory: ./testFiles
+[2011-09-25 23:04:34,610] - [INFO] :: Searching for: thethe
+[2011-09-25 23:04:34,610] - [INFO] :: Listing directory content recursively...
+[2011-09-25 23:04:34,624] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-25 23:04:34,624] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-25 23:04:34,624] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-25 23:04:34,625] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-25 23:04:34,626] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-25 23:04:34,626] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-25 23:04:34,627] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-25 23:04:34,646] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-25 23:04:34,646] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-25 23:04:34,646] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-25 23:04:34,646] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-26 16:35:40,148] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 16:35:40,148] - [INFO] :: Verbose: True
+[2011-09-26 16:35:40,149] - [INFO] :: All Files: True
+[2011-09-26 16:35:40,149] - [INFO] :: Special DocType: None
+[2011-09-26 16:35:40,149] - [INFO] :: Hidden Files: True
+[2011-09-26 16:35:40,149] - [INFO] :: Symbolic Links: False
+[2011-09-26 16:35:40,149] - [INFO] :: Recursive: True
+[2011-09-26 16:35:40,149] - [INFO] :: Search Type: content Search
+[2011-09-26 16:35:40,149] - [INFO] :: Directory: ./testFiles
+[2011-09-26 16:35:40,149] - [INFO] :: Searching for: thethe
+[2011-09-26 16:35:40,150] - [INFO] :: Listing directory content recursively...
+[2011-09-26 16:35:40,151] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 16:35:40,151] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-26 16:35:40,152] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-26 16:35:40,153] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-26 16:35:40,154] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-26 16:35:40,154] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-26 16:35:40,155] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-26 16:35:40,158] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-26 16:35:40,158] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-26 16:35:40,158] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-26 16:35:40,158] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-26 16:37:53,153] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 16:37:53,154] - [INFO] :: Verbose: True
+[2011-09-26 16:37:53,154] - [INFO] :: All Files: True
+[2011-09-26 16:37:53,154] - [INFO] :: Special DocType: None
+[2011-09-26 16:37:53,154] - [INFO] :: Hidden Files: True
+[2011-09-26 16:37:53,154] - [INFO] :: Symbolic Links: False
+[2011-09-26 16:37:53,154] - [INFO] :: Recursive: True
+[2011-09-26 16:37:53,154] - [INFO] :: Search Type: content Search
+[2011-09-26 16:37:53,154] - [INFO] :: Directory: ./testFiles
+[2011-09-26 16:37:53,155] - [INFO] :: Searching for: thethe
+[2011-09-26 16:37:53,155] - [INFO] :: Listing directory content recursively...
+[2011-09-26 16:37:53,155] - [DEBUG] :: Total Size: 1640839
+[2011-09-26 16:37:53,155] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 16:37:53,156] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-26 16:37:53,156] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-26 16:37:53,157] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-26 16:37:53,158] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-26 16:37:53,159] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-26 16:37:53,159] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-26 16:37:53,162] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-26 16:37:53,162] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-26 16:37:53,162] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-26 16:37:53,162] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-26 16:38:09,712] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 16:38:09,712] - [INFO] :: Verbose: False
+[2011-09-26 16:38:09,712] - [INFO] :: All Files: True
+[2011-09-26 16:38:09,712] - [INFO] :: Special DocType: None
+[2011-09-26 16:38:09,712] - [INFO] :: Hidden Files: True
+[2011-09-26 16:38:09,712] - [INFO] :: Symbolic Links: False
+[2011-09-26 16:38:09,712] - [INFO] :: Recursive: True
+[2011-09-26 16:38:09,713] - [INFO] :: Search Type: content Search
+[2011-09-26 16:38:09,713] - [INFO] :: Directory: ./testFiles
+[2011-09-26 16:38:09,713] - [INFO] :: Searching for: thethe
+[2011-09-26 16:38:09,713] - [INFO] :: Listing directory content recursively...
+[2011-09-26 16:38:09,713] - [DEBUG] :: Total Size: 1640839
+[2011-09-26 16:38:09,714] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 16:38:09,714] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-26 16:38:09,714] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-26 16:38:09,715] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-26 16:38:09,716] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-26 16:38:09,716] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-26 16:38:09,717] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-26 16:38:09,721] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-26 16:38:09,721] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-26 16:38:09,721] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-26 16:38:09,721] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-26 16:58:15,802] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 16:58:34,750] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 16:58:34,750] - [INFO] :: Mode: Normal
+[2011-09-26 16:58:34,750] - [INFO] :: All Files: True
+[2011-09-26 16:58:34,750] - [INFO] :: Special DocType: None
+[2011-09-26 16:58:34,751] - [INFO] :: Hidden Files: True
+[2011-09-26 16:58:34,751] - [INFO] :: Symbolic Links: False
+[2011-09-26 16:58:34,751] - [INFO] :: Recursive: True
+[2011-09-26 16:58:34,751] - [INFO] :: Search Type: content Search
+[2011-09-26 16:58:34,751] - [INFO] :: Directory: ./testFiles
+[2011-09-26 16:58:34,751] - [INFO] :: Searching for: thethe
+[2011-09-26 16:58:34,751] - [INFO] :: Listing directory content recursively...
+[2011-09-26 16:58:34,752] - [DEBUG] :: Total Size: 1640839
+[2011-09-26 16:58:34,752] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 16:58:34,752] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-26 16:58:34,752] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-26 16:58:34,753] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-26 16:58:34,754] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-26 16:58:34,754] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-26 16:58:34,755] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-26 16:58:34,757] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-26 16:58:34,758] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-26 16:58:34,758] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-26 16:58:34,758] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-26 17:00:08,518] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 17:00:08,518] - [INFO] :: Mode: Normal
+[2011-09-26 17:00:08,518] - [INFO] :: All Files: True
+[2011-09-26 17:00:08,518] - [INFO] :: Special DocType: None
+[2011-09-26 17:00:08,518] - [INFO] :: Hidden Files: True
+[2011-09-26 17:00:08,518] - [INFO] :: Symbolic Links: False
+[2011-09-26 17:00:08,518] - [INFO] :: Recursive: True
+[2011-09-26 17:00:08,518] - [INFO] :: Search Type: content Search
+[2011-09-26 17:00:08,518] - [INFO] :: Directory: ./testFiles
+[2011-09-26 17:00:08,518] - [INFO] :: Searching for: thethe
+[2011-09-26 17:00:08,518] - [DEBUG] :: Namespace(all=True, content=True, debug=False, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-26 17:00:08,519] - [INFO] :: Listing directory content recursively...
+[2011-09-26 17:00:08,519] - [DEBUG] :: Total Size: 1640839
+[2011-09-26 17:00:08,519] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 17:00:32,960] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 17:00:32,960] - [INFO] :: Mode: Normal
+[2011-09-26 17:00:32,960] - [INFO] :: All Files: True
+[2011-09-26 17:00:32,960] - [INFO] :: Special DocType: None
+[2011-09-26 17:00:32,960] - [INFO] :: Hidden Files: True
+[2011-09-26 17:00:32,960] - [INFO] :: Symbolic Links: False
+[2011-09-26 17:00:32,960] - [INFO] :: Recursive: True
+[2011-09-26 17:00:32,961] - [INFO] :: Search Type: content Search
+[2011-09-26 17:00:32,961] - [INFO] :: Directory: ./testFiles
+[2011-09-26 17:00:32,961] - [INFO] :: Searching for: thethe
+[2011-09-26 17:00:32,961] - [DEBUG] :: Namespace(all=True, content=True, debug=False, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-26 17:00:32,961] - [INFO] :: Listing directory content recursively...
+[2011-09-26 17:00:32,962] - [DEBUG] :: Total Size: 1640839
+[2011-09-26 17:00:32,962] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 17:00:32,962] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-26 17:00:32,962] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-26 17:00:32,963] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-26 17:00:32,964] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-26 17:00:32,964] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-26 17:00:32,965] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.TXT
