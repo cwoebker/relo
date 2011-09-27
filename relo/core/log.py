@@ -2,14 +2,49 @@ __name__ = "log"
 
 import logging, logging.config
 
-class Logger(object):
-    def __init__(self, info, debug):
-        LOG_FILENAME = "relo.log"
+BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
 
+RESET_SEQ = "\033[0m"
+COLOR_SEQ = "\033[1;%dm"
+BOLD_SEQ = "\033[1m"
+
+def format_color_message(message, use_color = True):
+    if use_color:
+        message = message.replace("$RESET", RESET_SEQ).replace("$BOLD", BOLD_SEQ)
+    else:
+        message = message.replace("$RESET", "").replace("$BOLD", "")
+    return message
+
+COLORS = {
+    'WARNING': YELLOW,
+    'INFO': WHITE,
+    'DEBUG': BLUE,
+    'CRITICAl': YELLOW,
+    'ERROR': RED
+}
+
+class reloFormatter(logging.Formatter):
+    def __init__(self, msg, use_color=True):
+        logging.Formatter.__init__(self, msg)
+        self.use_color = use_color
+    def format(self, record):
+        levelname = record.levelname
+        print self.use_color
+        if self.use_color and levelname in COLORS:
+            print 'muhahaha'
+            levelname_color = COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
+            record.levelname = levelname_color
+        return logging.Formatter.format(self, record)
+
+class reloLogger(logging.Logger):
+    LOG_FILENAME = "relo.log"
+    FILE_FORMAT = "[%(asctime)s] - [%(name)s] - [%(levelname)s] :: %(message)s"
+    COLOR_FILE_FORMAT = format_color_message(FILE_FORMAT, use_color=False)
+    CONSOLE_FORMAT = "[%(levelname)s] :: %(message)s"
+    COLOR_CONSOLE_FORMAT = format_color_message(CONSOLE_FORMAT)
+    def __init__(self, name, info, debug):
         #creating logging instances
-
-        self.log = logging.getLogger()
-        self.log.setLevel(logging.DEBUG)
+        logging.Logger.__init__(self, name, logging.DEBUG)
 
         ch = logging.StreamHandler()
         if info:
@@ -19,18 +54,19 @@ class Logger(object):
         else:
             ch.setLevel(logging.WARNING)
 
-        fh = logging.FileHandler(LOG_FILENAME)
+        fh = logging.FileHandler(self.LOG_FILENAME)
         fh.setLevel(logging.DEBUG)
 
-        fileFormatter = logging.Formatter("[%(asctime)s] - [%(levelname)s] :: %(message)s")
-        cmdFormatter = logging.Formatter("[%(levelname)s] :: %(message)s")
+        cmdFormatter = reloFormatter(self.COLOR_CONSOLE_FORMAT)
+        fileFormatter = reloFormatter(self.COLOR_FILE_FORMAT, use_color=False)
+
         #link logging configuration
 
         ch.setFormatter(cmdFormatter)
         fh.setFormatter(fileFormatter)
 
-        self.log.addHandler(ch)
-        self.log.addHandler(fh)
+        self.addHandler(ch)
+        self.addHandler(fh)
 
         LEVELS = {
             'debug' : logging.DEBUG,
@@ -39,18 +75,3 @@ class Logger(object):
             'error' : logging.ERROR,
             'critical' : logging.CRITICAL
         }
-    def debug(self, msg):
-        """sends debug message to logger"""
-        self.log.debug(msg)
-    def info(self, msg):
-        """sends info message to logger"""
-        self.log.info(msg)
-    def warning(self, msg):
-        """sends warning message to logger"""
-        self.log.warning(msg)
-    def error(self, msg):
-        """sends error message to logger"""
-        self.log.error(msg)
-    def critical(self, msg):
-        """sends critical message to logger"""
-        self.log.critical(msg)

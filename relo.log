@@ -248,3 +248,179 @@
 [2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.LOG
 [2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.PDF
 [2011-09-26 17:00:32,967] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-26 17:53:29,518] - [INFO] :: Relo: version 0.6 beta
+[2011-09-26 17:53:29,518] - [INFO] :: Mode: Normal
+[2011-09-26 17:53:29,518] - [INFO] :: All Files: True
+[2011-09-26 17:53:29,518] - [INFO] :: Special DocType: None
+[2011-09-26 17:53:29,518] - [INFO] :: Hidden Files: True
+[2011-09-26 17:53:29,518] - [INFO] :: Symbolic Links: False
+[2011-09-26 17:53:29,519] - [INFO] :: Recursive: True
+[2011-09-26 17:53:29,519] - [INFO] :: Search Type: content Search
+[2011-09-26 17:53:29,519] - [INFO] :: Directory: ./testFiles
+[2011-09-26 17:53:29,519] - [INFO] :: Searching for: thethe
+[2011-09-26 17:53:29,519] - [DEBUG] :: Namespace(all=True, content=True, debug=False, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-26 17:53:29,520] - [DEBUG] :: Total Size: 1640839
+[2011-09-26 17:53:29,520] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-26 17:53:29,520] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-26 17:53:29,521] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-26 17:53:29,522] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-26 17:53:29,523] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-26 17:53:29,523] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-26 17:53:29,524] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-26 17:53:29,526] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-26 17:53:29,526] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-26 17:53:29,526] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-26 17:53:29,526] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-27 16:59:11,467] - [INFO] :: Relo: version 0.6 beta
+[2011-09-27 16:59:11,467] - [INFO] :: Mode: Info
+[2011-09-27 16:59:11,468] - [INFO] :: All Files: True
+[2011-09-27 16:59:11,468] - [INFO] :: Special DocType: None
+[2011-09-27 16:59:11,468] - [INFO] :: Hidden Files: True
+[2011-09-27 16:59:11,468] - [INFO] :: Symbolic Links: False
+[2011-09-27 16:59:11,468] - [INFO] :: Recursive: True
+[2011-09-27 16:59:11,468] - [INFO] :: Search Type: content Search
+[2011-09-27 16:59:11,468] - [INFO] :: Directory: ./testFiles
+[2011-09-27 16:59:11,468] - [INFO] :: Searching for: thethe
+[2011-09-27 16:59:11,468] - [DEBUG] :: Namespace(all=True, content=True, debug=False, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=True, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 16:59:11,469] - [DEBUG] :: Total Size: 1640839
+[2011-09-27 16:59:11,469] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 16:59:11,469] - [DEBUG] :: PluginManager walks into directory: /Users/cwoebker/Projects/relo/relo/doctype
+[2011-09-27 16:59:11,469] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/default.relo
+[2011-09-27 16:59:11,470] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/log.relo
+[2011-09-27 16:59:11,471] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/pdf.relo
+[2011-09-27 16:59:11,471] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/test.relo
+[2011-09-27 16:59:11,472] - [DEBUG] :: PluginManager found a candidate:
+    /Users/cwoebker/Projects/relo/relo/doctype/txt.relo
+[2011-09-27 16:59:11,474] - [DEBUG] :: Activating plugin: Default.DEFAULT
+[2011-09-27 16:59:11,475] - [DEBUG] :: Activating plugin: Default.LOG
+[2011-09-27 16:59:11,475] - [DEBUG] :: Activating plugin: Default.PDF
+[2011-09-27 16:59:11,475] - [DEBUG] :: Activating plugin: Default.TXT
+[2011-09-27 17:30:37,511] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:30:37,511] - [[1;37mINFO[0m] :: Mode: Info
+[2011-09-27 17:30:37,511] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:30:37,512] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:30:37,512] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=False, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=True, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:30:37,513] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:30:50,153] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:30:50,153] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:30:50,153] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:30:50,153] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:30:50,153] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:30:50,153] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:30:50,154] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:30:50,154] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:30:50,154] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:30:50,154] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:30:50,154] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:30:50,155] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:34:19,995] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:34:19,995] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:34:19,995] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:34:19,995] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:34:19,995] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:34:19,996] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:34:19,996] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:34:19,996] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:34:19,996] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:34:19,996] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:34:19,996] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:34:19,997] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:36:36,524] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:36:36,525] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:36:36,525] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:36:36,525] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:36:36,525] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:36:36,526] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:43:52,979] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:43:52,979] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:43:52,979] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:43:52,979] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:43:52,979] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:43:52,980] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:43:52,980] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:43:52,980] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:43:52,980] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:43:52,980] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:43:52,980] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:43:52,981] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:45:19,849] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:45:19,849] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:45:19,849] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:45:19,849] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:45:19,849] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:45:19,850] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:45:19,850] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:45:19,850] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:45:19,850] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:45:19,850] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:45:19,850] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:45:19,857] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:46:17,187] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:46:17,187] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:46:17,187] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:46:17,188] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:46:17,188] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:46:17,189] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:49:54,376] - [RELO] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:49:54,376] - [RELO] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:49:54,376] - [RELO] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:49:54,376] - [RELO] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:49:54,376] - [RELO] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:49:54,376] - [RELO] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:49:54,377] - [RELO] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:49:54,377] - [RELO] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:49:54,377] - [RELO] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:49:54,377] - [RELO] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:49:54,377] - [RELO] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:49:54,388] - [RELO] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:52:50,461] - [RELO] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:52:50,462] - [RELO] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:52:50,462] - [RELO] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:52:50,462] - [RELO] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:52:50,462] - [RELO] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:52:50,462] - [RELO] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:52:50,462] - [RELO] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:52:50,463] - [RELO] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:52:50,463] - [RELO] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:52:50,463] - [RELO] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:52:50,463] - [RELO] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:52:50,464] - [RELO] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-27 17:53:09,206] - [RELO] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-27 17:53:09,206] - [RELO] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-27 17:53:09,207] - [RELO] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-27 17:53:09,207] - [RELO] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-27 17:53:09,207] - [RELO] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-27 17:53:09,207] - [RELO] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-27 17:53:09,207] - [RELO] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-27 17:53:09,207] - [RELO] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-27 17:53:09,208] - [RELO] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-27 17:53:09,208] - [RELO] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-27 17:53:09,208] - [RELO] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-27 17:53:09,209] - [RELO] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
