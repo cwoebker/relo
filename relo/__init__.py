@@ -12,6 +12,7 @@ class Relo:
         """
         Main Relo class
         """
+        self.name = "RELO"
         self.info = info
         self.debug = debug
         self.all = all
@@ -22,7 +23,7 @@ class Relo:
         self.dir = directory
         self.key = key
 
-        self.log = log.Logger(self.info, self.debug)
+        self.log = log.reloLogger(self.name, self.info, self.debug)
 
         if content:
             self.type = "content Search"
@@ -55,10 +56,10 @@ class Relo:
 
     def list(self):
         if self.recursive:
-            self.log.info("Listing directory content recursively...")
+            print "Listing directory content recursively..."
             self.total_size, self.fileList = core.recursiveListFiles(self.dir, self.hidden, self.links)
         else:
-            self.log.info("Listing directory content...")
+            print "Listing directory content..."
             self.total_size, self.fileList = core.listFiles(self.dir, self.hidden, self.links)
         self.log.debug("Supported File Types: " + repr(doctype.__all__))
 
@@ -66,10 +67,10 @@ class Relo:
         if self.all:
             self.filteredList = self.fileList
         elif not self.doctype==None:
-            self.log.info("Selecting DocType files...")
+            print "Selecting DocType files..."
             self.filteredList = core.filterDocType(self.fileList, self.doctype)
         else:
-            self.log.info("Filtering file types...")
+            print "Filtering file types..."
             self.filteredList = core.filterList(self.fileList)
         for itempath in self.filteredList:
             item = core.getFileType(itempath)
