@@ -11,7 +11,7 @@ Release 0.7
 
 .. rubric:: New Features
 
-* **Logging:** A logging class to implement debugging mode and other features.
+* **Logging:** A logging class to implement debugging mode and other features. **Mostly implemented - PROGRESS BAR AWAITING**
 * **Relo Updater:** You can update the relo library from within relopy itself.
     * **Relo Extensions:** add extensions - thrid party - with updater
     * **DocType Managing:** Install, remove, update and find DocTypes.
@@ -20,12 +20,8 @@ Release 0.7
 
 .. rubric:: Improvements
 
-* **Progress Bar:** There is now a progressbar to display how much of the search is done.
-* **Relo Colorful:** (Maybe) Colors for better information flow:
-
-    * **Error:** Red
-    * **INFO:** White
-    * **DEBUG:** Yellow
+* **Progress Bar:** There is now a progressbar to display how much of the search is done. **IN PROGRESS**
+* **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
 
 .. rubric:: DocType
 
