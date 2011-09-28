@@ -29,9 +29,7 @@ class reloFormatter(logging.Formatter):
         self.use_color = use_color
     def format(self, record):
         levelname = record.levelname
-        print self.use_color
         if self.use_color and levelname in COLORS:
-            print 'muhahaha'
             levelname_color = COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
             record.levelname = levelname_color
         return logging.Formatter.format(self, record)
@@ -46,6 +44,9 @@ class reloLogger(logging.Logger):
         #creating logging instances
         logging.Logger.__init__(self, name, logging.DEBUG)
 
+        fh = logging.FileHandler(self.LOG_FILENAME)
+        fh.setLevel(logging.DEBUG)
+
         ch = logging.StreamHandler()
         if info:
             ch.setLevel(logging.INFO)
@@ -54,19 +55,16 @@ class reloLogger(logging.Logger):
         else:
             ch.setLevel(logging.WARNING)
 
-        fh = logging.FileHandler(self.LOG_FILENAME)
-        fh.setLevel(logging.DEBUG)
-
-        cmdFormatter = reloFormatter(self.COLOR_CONSOLE_FORMAT)
         fileFormatter = reloFormatter(self.COLOR_FILE_FORMAT, use_color=False)
+        cmdFormatter = reloFormatter(self.COLOR_CONSOLE_FORMAT)
 
         #link logging configuration
 
-        ch.setFormatter(cmdFormatter)
         fh.setFormatter(fileFormatter)
+        ch.setFormatter(cmdFormatter)
 
-        self.addHandler(ch)
         self.addHandler(fh)
+        self.addHandler(ch)
 
         LEVELS = {
             'debug' : logging.DEBUG,

@@ -424,3 +424,27 @@
 [2011-09-27 17:53:09,208] - [RELO] - [[1;37mINFO[0m] :: Searching for: thethe
 [2011-09-27 17:53:09,208] - [RELO] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
 [2011-09-27 17:53:09,209] - [RELO] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-28 13:16:30,517] - [RELO] - [[1;37mINFO[0m] :: Relo: version 0.6 beta
+[2011-09-28 13:16:30,517] - [RELO] - [[1;37mINFO[0m] :: Mode: Debug
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: All Files: True
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: Special DocType: None
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: Hidden Files: True
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: Symbolic Links: False
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: Recursive: True
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: Search Type: content Search
+[2011-09-28 13:16:30,518] - [RELO] - [[1;37mINFO[0m] :: Directory: ./testFiles
+[2011-09-28 13:16:30,519] - [RELO] - [[1;37mINFO[0m] :: Searching for: thethe
+[2011-09-28 13:16:30,519] - [RELO] - [[1;34mDEBUG[0m] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-28 13:16:30,519] - [RELO] - [[1;34mDEBUG[0m] :: Supported File Types: ['txt', 'log', 'pdf']
+[2011-09-28 13:18:44,964] - [RELO] - [INFO] :: Relo: version 0.6 beta
+[2011-09-28 13:18:44,964] - [RELO] - [INFO] :: Mode: Debug
+[2011-09-28 13:18:44,964] - [RELO] - [INFO] :: All Files: True
+[2011-09-28 13:18:44,964] - [RELO] - [INFO] :: Special DocType: None
+[2011-09-28 13:18:44,965] - [RELO] - [INFO] :: Hidden Files: True
+[2011-09-28 13:18:44,965] - [RELO] - [INFO] :: Symbolic Links: False
+[2011-09-28 13:18:44,965] - [RELO] - [INFO] :: Recursive: True
+[2011-09-28 13:18:44,965] - [RELO] - [INFO] :: Search Type: content Search
+[2011-09-28 13:18:44,965] - [RELO] - [INFO] :: Directory: ./testFiles
+[2011-09-28 13:18:44,965] - [RELO] - [INFO] :: Searching for: thethe
+[2011-09-28 13:18:44,966] - [RELO] - [DEBUG] :: Namespace(all=True, content=True, debug=True, directory='./testFiles', doctype=None, filelog=True, hidden=True, info=False, links=False, name=False, recursive=True, search_key='thethe')
+[2011-09-28 13:18:44,966] - [RELO] - [DEBUG] :: Supported File Types: ['txt', 'log', 'pdf']
