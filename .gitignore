@@ -11,3 +11,4 @@ testFiles/*
 *.db
 *.sqlite
 *.log
+relo.log
