@@ -2,6 +2,9 @@ from relo import core
 from relo import doctype
 from relo.core import manage
 from relo.core import log
+import time
+from progressbar import ProgressBar, RotatingMarker,  Bar, ReverseBar, \
+                        Percentage, ETA, Counter, FileTransferSpeed
 
 def get_version():
     return core.get_version()
@@ -54,13 +57,27 @@ class Relo:
         self.total_size = 0
         self.fileList = []
 
+        #Main Progress Bar
+        self.mainWidgets = ['RELO - Search: ', Percentage(), ' ', Bar(marker=RotatingMarker()),
+                   ' ', ETA(), ' ', FileTransferSpeed()]
     def list(self):
+        widgets = ["Listing directory content... ",
+                   Bar('>'), ' ', RotatingMarker(), ' ', ReverseBar('<')]
+        pbar = ProgressBar(widgets=widgets, maxval=100).start()
+        pbar.update(0)
+        time.sleep(0.5)
         if self.recursive:
-            print "Listing directory content recursively..."
+            self.log.debug("Listing directory content recursively...")
+            pbar.update(20)
+            time.sleep(1)
             self.total_size, self.fileList = core.recursiveListFiles(self.dir, self.hidden, self.links)
         else:
-            print "Listing directory content..."
+            self.log.debug("Listing directory content...")
+            pbar.update(20)
+            time.sleep(1)
             self.total_size, self.fileList = core.listFiles(self.dir, self.hidden, self.links)
+        pbar.update(100)
+        pbar.finish()
         self.log.debug("Supported File Types: " + repr(doctype.__all__))
 
     def filter(self):
@@ -78,15 +95,21 @@ class Relo:
                 self.extList.append(item)
 
     def start(self):
+        self.pbar = ProgressBar(widgets=self.mainWidgets, maxval=len(self.filteredList)).start()
         if 'content' in self.type:
             self.startContent()
         else:
             self.startName()
+        self.pbar.finish()
     def startContent(self):
         manager = manage.Manager(self.key, self.extList)
         #print self.filteredList
         #print self.extList
+        i = 0
         for item in self.filteredList:
+            self.pbar.update(i)
             manager.start(item)
+            i = i+1
+            self.pbar.update(i)
     def startName(self):
         core.fileNameSearch(self.fileList, self.key)
