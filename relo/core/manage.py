@@ -5,11 +5,10 @@
 from relo.core.interfaces import DocType
 from relo import core
 from relo.yapsy.PluginManager import PluginManager
+import time
+from progressbar import ProgressBar, RotatingMarker,  Bar, ReverseBar
 
 from relo.doctype import *
-
-#import logging
-#logging.basicConfig(level=logging.DEBUG)
 
 class Manager(object):
     def __init__(self, key, extList):
