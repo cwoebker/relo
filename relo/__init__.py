@@ -58,7 +58,9 @@ class Relo:
         self.total_size = 0
         self.fileList = []
 
-        print "Relo Search -",self.dir,"-",self.key
+        print "-------------------------------------------------"
+        print "Relo Search |",self.dir,"|",self.key
+        print "-------------------------------------------------"
 
         #Main Progress Bar
         self.mainWidgets = ['Searching: ', Percentage(), ' ', Bar('>'),
