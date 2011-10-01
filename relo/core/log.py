@@ -2,6 +2,8 @@ __name__ = "log"
 
 import logging, logging.config
 
+
+
 BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
 
 RESET_SEQ = "\033[0m"
@@ -34,35 +36,36 @@ class reloFormatter(logging.Formatter):
             record.levelname = levelname_color
         return logging.Formatter.format(self, record)
 
-class reloLogger(logging.Logger):
-    LOG_FILENAME = "relo.log"
-    FILE_FORMAT = "[%(asctime)s] - [%(name)s] - [%(levelname)s] :: %(message)s"
-    COLOR_FILE_FORMAT = format_color_message(FILE_FORMAT, use_color=False)
-    CONSOLE_FORMAT = "[%(levelname)s] :: %(message)s"
-    COLOR_CONSOLE_FORMAT = format_color_message(CONSOLE_FORMAT)
-    def __init__(self, name, info, debug, filelog):
-        #creating logging instances
-        logging.Logger.__init__(self, name, logging.DEBUG)
+LOG_FILENAME = "relo.log"
+FILE_FORMAT = "[%(asctime)s] - [%(name)s] - [%(levelname)s] :: %(message)s"
+COLOR_FILE_FORMAT = format_color_message(FILE_FORMAT, use_color=False)
+CONSOLE_FORMAT = "[%(levelname)s] :: %(message)s"
+COLOR_CONSOLE_FORMAT = format_color_message(CONSOLE_FORMAT)
 
-        if filelog:
-            fh = logging.FileHandler(self.LOG_FILENAME)
-            fh.setLevel(logging.DEBUG)
-            fileFormatter = reloFormatter(self.COLOR_FILE_FORMAT, use_color=False)
-            fh.setFormatter(fileFormatter)
-            self.addHandler(fh)
+def setup_log(name, info, debug, filelog):
+    #creating logging instances
+    reloLog = logging.getLogger(name)
+    reloLog.setLevel(logging.DEBUG)
 
-        ch = logging.StreamHandler()
-        if info:
-            ch.setLevel(logging.INFO)
-        elif debug:
-            ch.setLevel(logging.DEBUG)
-        else:
-            ch.setLevel(logging.WARNING)
-        cmdFormatter = reloFormatter(self.COLOR_CONSOLE_FORMAT)
-        ch.setFormatter(cmdFormatter)
-        self.addHandler(ch)
+    if filelog:
+        fh = logging.FileHandler(LOG_FILENAME)
+        fh.setLevel(logging.DEBUG)
+        fileFormatter = reloFormatter(COLOR_FILE_FORMAT, use_color=False)
+        fh.setFormatter(fileFormatter)
+        reloLog.addHandler(fh)
 
-        LEVELS = {
+    ch = logging.StreamHandler()
+    if info:
+        ch.setLevel(logging.INFO)
+    elif debug:
+        ch.setLevel(logging.DEBUG)
+    else:
+        ch.setLevel(logging.WARNING)
+    cmdFormatter = reloFormatter(COLOR_CONSOLE_FORMAT)
+    ch.setFormatter(cmdFormatter)
+    reloLog.addHandler(ch)
+
+    LEVELS = {
             'debug' : logging.DEBUG,
             'info' : logging.INFO,
             'warning' : logging.WARNING,

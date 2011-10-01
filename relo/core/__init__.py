@@ -1,9 +1,9 @@
 import os
 from relo import doctype
 import logging
+logger = logging.getLogger('relo')
 
 __all__ = ['manage', 'interfaces']
-
 
 VERSION = (0, 6, 0, 'beta')
 
@@ -29,7 +29,7 @@ def listFiles(rootDir, hidden):
         total_size += os.path.getsize(itempath)
         returnList.append(itempath)
 
-    logging.debug("Total Size: %d" % total_size)
+    logger.debug("Total Size: %d" % total_size)
     return total_size, returnList
 
 def recursiveListFiles(rootDir, hidden, link):
@@ -52,7 +52,7 @@ def recursiveListFiles(rootDir, hidden, link):
             total_size += os.path.getsize(itempath)
             fileList.append(itempath)
 
-    logging.debug("Total Size: %d" % total_size)
+    logger.debug("Total Size: %d" % total_size)
     return total_size, fileList
 
 #def SymbolicDir()
@@ -88,4 +88,4 @@ def fileNameSearch(fileList, key):
             print "Found: " + itempath
 
 def genericError():
-    logging.error("An Error has occurred check the log file for more detailed information\nor run again with the debug option set.")
+    logger.error("An Error has occurred check the log file for more detailed information\nor run again with the debug option set.")
