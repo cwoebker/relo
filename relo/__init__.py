@@ -18,6 +18,7 @@ class Relo:
         self.name = "RELO"
         self.info = info
         self.debug = debug
+        self.filelog = filelog
         self.all = all
         self.hidden = hidden
         self.links = links
@@ -26,7 +27,7 @@ class Relo:
         self.dir = directory
         self.key = key
 
-        self.log = log.reloLogger(self.name, self.info, self.debug)
+        self.log = log.reloLogger(self.name, self.info, self.debug, self.filelog)
 
         if content:
             self.type = "content Search"
@@ -57,9 +58,11 @@ class Relo:
         self.total_size = 0
         self.fileList = []
 
+        print "Relo Search -",self.dir,"-",self.key
+
         #Main Progress Bar
-        self.mainWidgets = ['RELO - Search: ', Percentage(), ' ', Bar(marker=RotatingMarker()),
-                   ' ', ETA(), ' ', FileTransferSpeed()]
+        self.mainWidgets = ['Searching: ', Percentage(), ' ', Bar('>'),
+                   ' ', RotatingMarker()]
     def list(self):
         widgets = ["Listing directory content... ",
                    Bar('>'), ' ', RotatingMarker(), ' ', ReverseBar('<')]
