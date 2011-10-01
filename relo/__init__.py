@@ -2,6 +2,7 @@ from relo import core
 from relo import doctype
 from relo.core import manage
 from relo.core import log
+import logging
 import time
 from progressbar import ProgressBar, RotatingMarker,  Bar, ReverseBar, \
                         Percentage, ETA, Counter, FileTransferSpeed
@@ -15,7 +16,7 @@ class Relo:
         """
         Main Relo class
         """
-        self.name = "RELO"
+        self.name = "relo"
         self.info = info
         self.debug = debug
         self.filelog = filelog
@@ -27,8 +28,8 @@ class Relo:
         self.dir = directory
         self.key = key
 
-        self.log = log.reloLogger(self.name, self.info, self.debug, self.filelog)
-
+        log.setup_log(self.name, self.info, self.debug, self.filelog)
+        self.log = logging.getLogger(self.name)
         if content:
             self.type = "content Search"
         else:

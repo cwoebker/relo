@@ -5,6 +5,8 @@ from relo.yapsy.IPlugin import IPlugin
 import logging
 import re
 
+reloLog = logging.getLogger('relo')
+
 class DocType(IPlugin):
     """""
     Implements different type of docs
@@ -27,8 +29,8 @@ class DocType(IPlugin):
             self.results.append(str(m.start()))
         self.post_search()
     def post_search(self):
-        logging.debug("Results: " + repr(self.results))
-        logging.debug("Finished with: " + self.path)
+        reloLog.debug("Results: " + repr(self.results))
+        reloLog.debug("Finished with: " + self.path)
 
 class Extension(IPlugin):
     """
