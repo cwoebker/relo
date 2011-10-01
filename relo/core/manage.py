@@ -5,6 +5,7 @@
 from relo.core.interfaces import DocType
 from relo import core
 from relo.yapsy.PluginManager import PluginManager
+import logging
 import time
 from progressbar import ProgressBar, RotatingMarker,  Bar, ReverseBar
 
@@ -33,19 +34,19 @@ class Manager(object):
         #print itempath
         for plugin in self.manager.getAllPlugins():
             if plugin.name == core.getFileType(itempath).upper():
-                print ("---------- "+itempath+" ----------")
-                print "Using: " + plugin.plugin_object.meta()
-                print "Reading File to memory..."
+                logging.debug(("---------- "+itempath+" ----------"))
+                logging.debug("Using: " + plugin.plugin_object.meta())
+                logging.debug("Reading File to memory...")
                 plugin.plugin_object.load(itempath)
-                print "Searching data..."
+                logging.debug("Searching data...")
                 plugin.plugin_object.search(self.key)
                 return
         plugin = self.manager.getPluginByName("DEFAULT")
-        print ("---------- "+itempath+" ----------")
-        print "Using: " + plugin.plugin_object.meta()
-        print "Reading File to memory..."
+        logging.debug(("---------- "+itempath+" ----------"))
+        logging.debug("Using: " + plugin.plugin_object.meta())
+        logging.debug("Reading File to memory...")
         plugin.plugin_object.load(itempath)
-        print "Searching data..."
+        logging.debug("Searching data...")
         plugin.plugin_object.search(self.key)
 
 
