@@ -44,8 +44,12 @@ class reloLogger(logging.Logger):
         #creating logging instances
         logging.Logger.__init__(self, name, logging.DEBUG)
 
-        fh = logging.FileHandler(self.LOG_FILENAME)
-        fh.setLevel(logging.DEBUG)
+        if filelog:
+            fh = logging.FileHandler(self.LOG_FILENAME)
+            fh.setLevel(logging.DEBUG)
+            fileFormatter = reloFormatter(self.COLOR_FILE_FORMAT, use_color=False)
+            fh.setFormatter(fileFormatter)
+            self.addHandler(fh)
 
         ch = logging.StreamHandler()
         if info:
@@ -54,16 +58,8 @@ class reloLogger(logging.Logger):
             ch.setLevel(logging.DEBUG)
         else:
             ch.setLevel(logging.WARNING)
-
-        fileFormatter = reloFormatter(self.COLOR_FILE_FORMAT, use_color=False)
         cmdFormatter = reloFormatter(self.COLOR_CONSOLE_FORMAT)
-
-        #link logging configuration
-
-        fh.setFormatter(fileFormatter)
         ch.setFormatter(cmdFormatter)
-
-        self.addHandler(fh)
         self.addHandler(ch)
 
         LEVELS = {
