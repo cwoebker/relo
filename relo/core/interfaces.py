@@ -2,7 +2,7 @@
 # encoding: utf-8
 import os, sys
 from relo.yapsy.IPlugin import IPlugin
-
+import logging
 import re
 
 class DocType(IPlugin):
@@ -19,14 +19,16 @@ class DocType(IPlugin):
         for line in self.fobj:
             self.content += line
         self.fobj.close()
+    def pre_search(self):
+        self.results = []
     def search(self, key):
-        if not (re.search(key, self.content) == None):
-            for m in re.finditer(key, self.content):
-                print "Found at position: " + str(m.start())
-        else:
-            print "Nothing found"
-
-        print "Finished with: " + self.path
+        self.pre_search()
+        for m in re.finditer(key, self.content):
+            self.results.append(str(m.start()))
+        self.post_search()
+    def post_search(self):
+        logging.debug("Results: " + repr(self.results))
+        logging.debug("Finished with: " + self.path)
 
 class Extension(IPlugin):
     """
