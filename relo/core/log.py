@@ -40,7 +40,7 @@ class reloLogger(logging.Logger):
     COLOR_FILE_FORMAT = format_color_message(FILE_FORMAT, use_color=False)
     CONSOLE_FORMAT = "[%(levelname)s] :: %(message)s"
     COLOR_CONSOLE_FORMAT = format_color_message(CONSOLE_FORMAT)
-    def __init__(self, name, info, debug):
+    def __init__(self, name, info, debug, filelog):
         #creating logging instances
         logging.Logger.__init__(self, name, logging.DEBUG)
 
