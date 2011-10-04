@@ -22,7 +22,8 @@ COLORS = {
     'INFO': WHITE,
     'DEBUG': BLUE,
     'CRITICAl': YELLOW,
-    'ERROR': RED
+    'ERROR': RED,
+    'EXCEPTION': RED,
 }
 
 class reloFormatter(logging.Formatter):
