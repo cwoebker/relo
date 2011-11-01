@@ -13,7 +13,7 @@ I'm 16 years old and originally form Germany. But now I am visiting
 a high school in the United States. Python is my favorite language, but I
 also code in c++ and html/css. Watch me on `twitter <http://twitter.com/cwoebker>`_
 or visit my profile at `GitHub <http://github.com/cwoebker>`_ to get in contact just email
-me at cwoebker@gmail.com.
+me at me@cwoebker.com or visit my website @ `cwoebker.com <http://cwoebker.com>`_.
 
 .. rubric:: About Relo
 

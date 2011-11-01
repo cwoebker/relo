@@ -6,18 +6,20 @@ from relo.core.interfaces import DocType
 from relo import core
 from relo.yapsy.PluginManager import PluginManager
 import logging
-reloLog = logging.getLogger('relo')
+
+import pdb
 
 
-from relo.doctype import *
+from relo.core.doctype import *
 
 class Manager(object):
     def __init__(self, key, extList):
+        self.reloLog = logging.getLogger("relo.log")
         self.key = key
         self.extList = extList
 
         self.manager = PluginManager(plugin_info_ext='relo')
-        self.manager.setPluginPlaces(["relo/doctype"])
+        self.manager.setPluginPlaces(["relo/core/doctype"])
 
         self.numPlugins = self.manager.locatePlugins()
         #print "Found %d plugins." % self.numPlugins
@@ -29,24 +31,24 @@ class Manager(object):
             self.manager.activatePluginByName(plugin.name)
             pluginList.append(plugin.plugin_object.meta())
         #print pluginList
+        self.reloLog.info("Manager initialized...")
 
     def start(self, itempath):
-        #print itempath
         for plugin in self.manager.getAllPlugins():
             if plugin.name == core.getFileType(itempath).upper():
-                reloLog.debug(("---------- "+itempath+" ----------"))
-                reloLog.debug("Using: " + plugin.plugin_object.meta())
-                reloLog.debug("Reading File to memory...")
+                self.reloLog.debug(("---------- "+itempath+" ----------"))
+                self.reloLog.debug("Using: " + plugin.plugin_object.meta())
+                self.reloLog.debug("Reading File to memory...")
                 plugin.plugin_object.load(itempath)
-                reloLog.debug("Searching data...")
+                self.reloLog.debug("Searching data...")
                 plugin.plugin_object.search(self.key)
                 return
         plugin = self.manager.getPluginByName("DEFAULT")
-        reloLog.debug(("---------- "+itempath+" ----------"))
-        reloLog.debug("Using: " + plugin.plugin_object.meta())
-        reloLog.debug("Reading File to memory...")
+        self.reloLog.debug(("---------- "+itempath+" ----------"))
+        self.reloLog.debug("Using: " + plugin.plugin_object.meta())
+        self.reloLog.debug("Reading File to memory...")
         plugin.plugin_object.load(itempath)
-        reloLog.debug("Searching data...")
+        self.reloLog.debug("Searching data...")
         plugin.plugin_object.search(self.key)
 
 

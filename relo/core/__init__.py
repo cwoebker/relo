@@ -1,7 +1,7 @@
 import os
-from relo import doctype
+from relo.core import doctype
 import logging
-logger = logging.getLogger('relo')
+logger = logging.getLogger('relo.log')
 
 __all__ = ['manage', 'interfaces']
 

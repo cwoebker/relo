@@ -5,7 +5,7 @@ from relo.yapsy.IPlugin import IPlugin
 import logging
 import re
 
-reloLog = logging.getLogger('relo')
+reloLog = logging.getLogger('relo.log')
 
 class DocType(IPlugin):
     """""
