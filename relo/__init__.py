@@ -1,5 +1,5 @@
 from relo import core
-from relo import doctype
+from relo.core import doctype
 from relo.core import manage
 from relo.core import log
 import logging

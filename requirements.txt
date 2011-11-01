@@ -1,0 +1,7 @@
+Jinja2==2.6
+Pygments==1.4
+Sphinx==1.1.1
+docutils==0.8.1
+progressbar==2.3
+pyPdf==1.13
+wsgiref==0.1.2

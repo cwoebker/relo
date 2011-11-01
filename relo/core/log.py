@@ -1,4 +1,4 @@
-__name__ = "log"
+__name__ = "relo.log"
 
 import logging, logging.config
 
@@ -45,8 +45,7 @@ COLOR_CONSOLE_FORMAT = format_color_message(CONSOLE_FORMAT)
 
 def setup_log(name, info, debug, filelog):
     #creating logging instances
-    reloLog = logging.getLogger(name)
-    reloLog.setLevel(logging.DEBUG)
+    reloLog = logging.getLogger(__name__)
 
     if filelog:
         fh = logging.FileHandler(LOG_FILENAME)
@@ -65,12 +64,3 @@ def setup_log(name, info, debug, filelog):
     cmdFormatter = reloFormatter(COLOR_CONSOLE_FORMAT)
     ch.setFormatter(cmdFormatter)
     reloLog.addHandler(ch)
-
-    LEVELS = {
-            'debug' : logging.DEBUG,
-            'info' : logging.INFO,
-            'warning' : logging.WARNING,
-            'error' : logging.ERROR,
-            'critical' : logging.CRITICAL,
-            'exception' : logging.ERROR,
-        }
