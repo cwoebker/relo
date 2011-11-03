@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 #encoding: utf-8
 
-import sys, os
+import sys, os, time
+import math
 import argparse
 import relo
 from relo import Relo
+from relo.net import crawl
 from relo import yapsy # Needed for pyinstaller compilation
 
 __author__ = "cwoebker"
@@ -17,50 +19,71 @@ def main(argv):
     parses the arguments and starts the application
     """
     parser = argparse.ArgumentParser(description='Recursive Document Content Search in Python')
-    parser.add_argument('search_key', action='store', help='keyword to search for')
     parser.add_argument('-v', '--version', action='version',
                         version=('%(prog)s ' + __version__))
-    parser.add_argument('-s', '--hidden', '--secret', action='store_true',
+    subparsers = parser.add_subparsers(help='sub-command help')
+    
+    local = subparsers.add_parser('local', help='local help')
+    local.add_argument('search_key', action='store', help='keyword to search for')
+    
+    local.add_argument('-s', '--hidden', '--secret', action='store_true',
                         help='search hidden files')
-    parser.add_argument('-l', '--links', '--symbolic', action='store_true',
+    local.add_argument('-l', '--links', '--symbolic', action='store_true',
                         help='search in symbolically linked directories and files')
-    parser.add_argument('--filelog', action='store_true',
+    local.add_argument('--filelog', action='store_true',
                         help='log is written to file - always in debug mode')
-    parser.add_argument('-r', '--recursive', action='store_true',
+    local.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
-    doctype_group = parser.add_mutually_exclusive_group()
+    doctype_group = local.add_mutually_exclusive_group()
     doctype_group.add_argument('-a', '--all', action='store_true',
                         help='search all files (even non supported with standard plugin)')
     doctype_group.add_argument('--doctype', action='store',
                         help='specify doctypes you want to use in your search')
-    search_type_group = parser.add_mutually_exclusive_group()
+    search_type_group = local.add_mutually_exclusive_group()
     search_type_group.add_argument('-n', '--name', action='store_true',
                             help='search match in fileNames (regex allowed) - (default)')
     search_type_group.add_argument('-c', '--content', action='store_true',
                             help='search match in content (regex allowed)')
-    log_group = parser.add_mutually_exclusive_group()
+    log_group = local.add_mutually_exclusive_group()
     log_group.add_argument('--info', action='store_true',
                             help='enable info mode')
     log_group.add_argument('--debug', '--verbose', action='store_true',
                         help='enable debug/verbose mode')
 
-    parser.add_argument('-d', '--directory', action='store', default='./',
+    local.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select Directory - (default=current)')
     
+    net = subparsers.add_parser('net', help='net help')
+    net.add_argument('url', action='store', help='keyword to search for')
+
+
     try:
         results = parser.parse_args(args=argv)
     except IOError, msg:
         parser.error(str(msg))
+    
+    if sys.argv[1] == 'net':
+        url = results.url
 
-    search = Relo(results.info, results.debug, results.all, results.hidden, results.links, results.filelog, results.content, results.recursive,
-                    results.doctype, results.directory, results.search_key)
-    search.log.debug(results)
-    search.list()
-    search.filter()
-    #print search.fileList
-    #print search.extList
-    #print search.filteredList
-    search.start()
+        sTime = time.time()
+
+        crawler = crawl.Crawler(url, 6)
+        crawler.crawl()
+        print "\n".join(crawler.urls)
+
+        eTime = time.time()
+        tTime = eTime - sTime
+
+        print "Found:    %d" % crawler.links
+        print "Followed: %d" % crawler.followed
+        print "Stats:    (%d/s after %0.2fs)" % (int(math.ceil(float(crawler.links) / tTime)), tTime)
+
+    #search = Relo(results.info, results.debug, results.all, results.hidden, results.links, results.filelog, results.content, results.recursive,
+    #                results.doctype, results.directory, results.search_key)
+    #search.log.debug(results)
+    #search.list()
+    #search.filter()
+    #search.start()
 
 if __name__ == '__main__':
     main(sys.argv[1:])
