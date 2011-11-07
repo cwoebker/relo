@@ -67,7 +67,7 @@ def main(argv):
 
         sTime = time.time()
 
-        crawler = crawl.Crawler(url, 6)
+        crawler = crawl.Crawler(url, 16)
         crawler.crawl()
         print "\n".join(crawler.urls)
 
