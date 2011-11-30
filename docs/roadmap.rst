@@ -37,12 +37,13 @@ Release 0.8
 
     * **Settings and Defaults:** Settings and Defaults stored in ~/.relo(py) .
     * **Plugin Manager:** Control the Plugin Manager from the GUI.
-    * **MenuBar Icon:** Make relopy easily accessible through the menubar.
+    * **MenuBar Icon:** Make relopy easily accessible through the menu bar.
 
+* **Replace:** A replace function that can process all files and replace certain expressions with others.
 
 .. rubric:: Improvements
 
-* **Index DB:** relo created db files for faster searching, either when set or when already searched.
+* **Index DB:** Relo creates db files for faster searching, either when set or when already searched.
 
 .. rubric:: DocType
 
