@@ -1,9 +1,7 @@
-import os
-from relo.core import doctype
-import logging
-logger = logging.getLogger('relo.log')
+#!/usr/bin/env python
+# encoding: utf-8
 
-__all__ = ['manage', 'interfaces']
+##### Listing #####
 
 def listFiles(rootDir, hidden):
     returnList = []
@@ -45,15 +43,7 @@ def recursiveListFiles(rootDir, hidden, link):
     logger.debug("Total Size: %d" % total_size)
     return total_size, fileList
 
-#def SymbolicDir()
-
-def getFileType(itempath):
-    """
-    takes a path and returns a filetype
-    """
-    ext = os.path.splitext(itempath)[1]
-    ext = ext.lstrip('.')
-    return ext
+##### Filters #####
 
 def filterList(fileList):
     filteredList = []
@@ -71,11 +61,12 @@ def filterDocType(fileList, doctype):
             filteredList.append(path)
     return filteredList
 
-def fileNameSearch(fileList, key):
-    for itempath in fileList:
-        item = os.path.basename(itempath)
-        if not item.find(key) == -1:
-            print "Found: " + itempath
+##### Information #####
 
-def genericError():
-    logger.error("An Error has occurred check the log file for more detailed information\nor run again with the debug option set.")
+def getFileType(itempath):
+    """
+    takes a path and returns a filetype
+    """
+    ext = os.path.splitext(itempath)[1]
+    ext = ext.lstrip('.')
+    return ext
