@@ -1,9 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import os
+from relo.core import doctype
+import logging
+logger = logging.getLogger('relo.log')
+
 ##### Listing #####
 
-def listFiles(rootDir, hidden):
+def listFiles(rootDir, hidden, links):
     returnList = []
     total_size = 0
     fileList = os.listdir(rootDir)
