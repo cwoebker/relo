@@ -2,13 +2,14 @@
 # encoding: utf-8
 
 from relo import core
+from relo.local import crawl
 from relo.core import doctype
 from relo.local import manage
 from relo.core import log
 import logging
-import time
+import os, time
 from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
-                        Percentage, ETA, Counter, FileTransferSpeed
+                        Percentage
 
 def fileNameSearch(fileList, key):
     for itempath in fileList:
@@ -49,10 +50,10 @@ class Search:
         else:
             self.log.info("Mode: Normal")
         self.log.info("All Files: " + str(bool(self.all)))
-        if self.doctype == None:
+        if self.doctype is None:
             self.log.info("Special DocType: None")
         else:
-            self.log.info("Special DocType: " + (self.doctype))
+            self.log.info("Special DocType: " + self.doctype)
         self.log.info("Hidden Files: " + str(bool(self.hidden)))
         self.log.info("Symbolic Links: " + str(bool(self.links)))
         self.log.info("Recursive: " + str(bool(self.recursive)))
@@ -82,12 +83,12 @@ class Search:
             self.log.debug("Listing directory content recursively...")
             pbar.update(20)
             time.sleep(1)
-            self.total_size, self.fileList = core.recursiveListFiles(self.dir, self.hidden, self.links)
+            self.total_size, self.fileList = crawl.recursiveListFiles(self.dir, self.hidden, self.links)
         else:
             self.log.debug("Listing directory content...")
             pbar.update(20)
             time.sleep(1)
-            self.total_size, self.fileList = core.listFiles(self.dir, self.hidden, self.links)
+            self.total_size, self.fileList = crawl.listFiles(self.dir, self.hidden, self.links)
         pbar.update(100)
         pbar.finish()
         self.log.debug("Supported File Types: " + repr(doctype.__all__))
@@ -95,14 +96,14 @@ class Search:
     def filter(self):
         if self.all:
             self.filteredList = self.fileList
-        elif not self.doctype==None:
+        elif not self.doctype is None:
             print "Selecting DocType files..."
-            self.filteredList = core.filterDocType(self.fileList, self.doctype)
+            self.filteredList = crawl.filterDocType(self.fileList, self.doctype)
         else:
             print "Filtering file types..."
-            self.filteredList = core.filterList(self.fileList)
+            self.filteredList = crawl.filterList(self.fileList)
         for itempath in self.filteredList:
-            item = core.getFileType(itempath)
+            item = crawl.getFileType(itempath)
             if item not in self.extList:
                 self.extList.append(item)
 
@@ -121,7 +122,7 @@ class Search:
         for item in self.filteredList:
             self.pbar.update(i)
             manager.start(item)
-            i = i+1
+            i += 1
             self.pbar.update(i)
     def startName(self):
-        core.fileNameSearch(self.fileList, self.key)
+        fileNameSearch(self.fileList, self.key)

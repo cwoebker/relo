@@ -9,7 +9,5 @@ sys.path.append(up_dir)
 
 from relo.core.interfaces import DocType
 
-import re
-
 class TXT(DocType):
     name = "TXT Plugin"

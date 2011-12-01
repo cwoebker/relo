@@ -73,7 +73,7 @@ class Crawler(object):
                                 self.links += 1
                                 q.put(url)
                                 self.urls.append(url)
-                        if n > self.depth and self.depth > 0:
+                        if n > self.depth > 0:
                             break
                 except Exception, e:
                     print "ERROR: Can't process url '%s' (%s)" % (url, e)
@@ -98,7 +98,7 @@ class Fetcher(object):
             handle = urllib2.build_opener()
         except IOError:
             return None
-        return (request, handle)
+        return request, handle
 
     def fetch(self):
         request, handle = self.open()
