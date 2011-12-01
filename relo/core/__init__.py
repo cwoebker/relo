@@ -3,8 +3,6 @@ from relo.core import doctype
 import logging
 logger = logging.getLogger('relo.log')
 
-__all__ = ['manage', 'interfaces']
-
 def listFiles(rootDir, hidden):
     returnList = []
     total_size = 0

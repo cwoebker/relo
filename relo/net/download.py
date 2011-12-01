@@ -10,13 +10,14 @@ import shutil
 class AbstractDownloader(object):
     def __init__(self):
         pass
-    def url2name(self):
+    def url2name(self, url):
         return basename(urlsplit(url)[2])
-    def download(url, localFileName = None):
+    def download(self, url, localFileName = None):
         pass
 
 class HTTPDownloader(AbstractDownloader):
     def __init__(self):
+        AbstractDownloader.__init__(self)
         pass
     def download(self, url, fileName = None):
         def getFileName(url,openUrl):
@@ -42,13 +43,16 @@ class HTTPDownloader(AbstractDownloader):
 
 class FTPDownloader(AbstractDownloader):
     def __init__(self):
+        AbstractDownloader.__init__(self)
         pass
 
 class GITDownloader(AbstractDownloader):
     def __init__(self):
+        AbstractDownloader.__init__(self)
         pass
 
 class SVNDownloader(AbstractDownloader):
     def __init__(self):
+        AbstractDownloader.__init__(self)
         pass
 

@@ -14,7 +14,7 @@ from os.path import *
 boolStrings = ['off', 'on']
 
 class Options:
-    'Holds program options as object attributes'
+    """Holds program options as object attributes"""
     def __init__(self):
         # When adding a new option, initialize it here.
         self.cumPercent = 80
@@ -29,24 +29,24 @@ class Options:
 
     def dump(self):
         print 'Options:'
-        print 'TopN option = %s' % (self.topNOption)
+        print 'TopN option = %s' % self.topNOption
         if self.topNOption == 'c':
-            print 'Cumulative percentage = %d' % (self.cumPercent)
+            print 'Cumulative percentage = %d' % self.cumPercent
         elif self.topNOption == 'p':
-            print 'Percentage = %d' % (self.percent)
+            print 'Percentage = %d' % self.percent
         else:
             if self.topN > 0:
-                print 'TopN = %d' % (self.topN)
+                print 'TopN = %d' % self.topN
             else:
                 print 'TopN = all'
         if self.maxDepth >= 0:
-            print 'Max depth = %d' % (self.maxDepth)
+            print 'Max depth = %d' % self.maxDepth
         else:
             print 'Max depth = any'
         print 'Show files = %s' % (boolStrings[self.showFiles])
-        print 'Indent size = %d' % (self.indentSize)
+        print 'Indent size = %d' % self.indentSize
         print 'Follow links = %s' % (boolStrings[self.followLinks])
-        print 'Units = %s' % (self.units)
+        print 'Units = %s' % self.units
         print
 
 def getIndentStr(depth, isDir, options):
@@ -122,14 +122,14 @@ def dirSize (dirPath, depth, options):
             print 'Cannot stat %s' % path
             continue
         size = stats[6]
-        if isdir (path) and (options.followLinks or \
-            (not options.followLinks and not islink (path))):
+        if isdir (path) and (options.followLinks or
+                             (not options.followLinks and not islink (path))):
             dsize, items = dirSize (path, depth + 1, options)
             size += dsize
-            if (options.maxDepth == -1 or depth < options.maxDepth):
+            if options.maxDepth == -1 or depth < options.maxDepth:
                 itemList.append([size, item, items])
         elif options.showFiles:
-            if (options.maxDepth == -1 or depth < options.maxDepth):
+            if options.maxDepth == -1 or depth < options.maxDepth:
                 itemList.append([size, item])
         total += size
     # Sort in descending order
