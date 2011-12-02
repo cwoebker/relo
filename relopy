@@ -23,6 +23,15 @@ def main(argv):
                         version=('%(prog)s ' + __version__))
     reloParsers = parser.add_subparsers(help='sub-command help')
 
+    ##### Config Arguments #####
+
+    update = reloParsers.add_parser('update', help='update help')
+    update.set_defaults(which='update')
+    update
+
+    config = reloParsers.add_parser('config', help='config help')
+    config.set_defaults(which='config')
+
     ##### Local Argumnets #####
 
     search = reloParsers.add_parser('search', help='search help')
@@ -69,7 +78,11 @@ def main(argv):
         parser.error(str(msg))
         return 1
     
-    if results.which == 'crawl':
+    if results.which == 'config':
+        pass
+    elif results.which == 'update':
+        pass
+    elif results.which == 'crawl':
         url = results.url
 
         sTime = time.time()

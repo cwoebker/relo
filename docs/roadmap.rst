@@ -11,21 +11,20 @@ Release 0.7
 
 .. rubric:: New Features
 
-* **Logging:** A logging class to implement debugging mode and other features. **Mostly implemented - PROGRESS BAR AWAITING**
 * **Relo Updater:** You can update the relo library from within relopy itself.
     * **Relo Extensions:** add extensions - thrid party - with updater
     * **DocType Managing:** Install, remove, update and find DocTypes.
     * **Missing DocType:** Notify user when a plugin is needed but available.
 * **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem), postponed**
 
+* **Better Printing**: improved way of posting information
+
+* **Index Option** index files before search them, more efficient, nice database used for, redis?!?
+
 .. rubric:: Improvements
 
 * **Progress Bar:** There is now a progressbar to display how much of the search is done. **IN PROGRESS**
 * **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
-
-.. rubric:: DocType
-
-* **Microsoft Html Help (.chm):** Add support for Microsoft HTML Help files. **postponed**
 
 
 Release 0.8
@@ -46,6 +45,8 @@ Release 0.8
 * **Index DB:** Relo creates db files for faster searching, either when set or when already searched.
 
 .. rubric:: DocType
+
+* **Many advancements** you will see soon
 
 Release 0.9
 ===========
