@@ -18,7 +18,7 @@ def fileNameSearch(fileList, key):
             print "Found: " + itempath
 
 class Search:
-    def __init__(self, info=False, debug=False, all=False, hidden=False, links=False, filelog=False, content=False, recursive=False,
+    def __init__(self, info=False, debug=False, all=False, hidden=False, filelog=False, content=False, recursive=False,
                  doctype=None, directory='./', key=''):
         """
         Main Relo class
@@ -29,7 +29,6 @@ class Search:
         self.filelog = filelog
         self.all = all
         self.hidden = hidden
-        self.links = links
         self.recursive = recursive
         self.doctype = doctype
         self.dir = directory
@@ -55,7 +54,6 @@ class Search:
         else:
             self.log.info("Special DocType: " + self.doctype)
         self.log.info("Hidden Files: " + str(bool(self.hidden)))
-        self.log.info("Symbolic Links: " + str(bool(self.links)))
         self.log.info("Recursive: " + str(bool(self.recursive)))
         self.log.info("Search Type: " + self.type)
         self.log.info("Directory: " + self.dir)

@@ -40,8 +40,6 @@ def main(argv):
     
     search.add_argument('-s', '--hidden', '--secret', action='store_true',
                         help='search hidden files')
-    search.add_argument('-l', '--links', '--symbolic', action='store_true',
-                        help='search in symbolically linked directories and files')
     search.add_argument('--filelog', action='store_true',
                         help='log is written to file - always in debug mode')
     search.add_argument('-r', '--recursive', action='store_true',
@@ -98,7 +96,7 @@ def main(argv):
         print "Followed: %d" % crawler.followed
         print "Stats:    (%d/s after %0.2fs)" % (int(math.ceil(float(crawler.links) / tTime)), tTime)
     elif results.which == 'search':
-        search = Search(results.info, results.debug, results.all, results.hidden, results.links, results.filelog, results.content, results.recursive,
+        search = Search(results.info, results.debug, results.all, results.hidden, results.filelog, results.content, results.recursive,
                     results.doctype, results.directory, results.search_key)
         search.log.debug(results)
         search.list()
