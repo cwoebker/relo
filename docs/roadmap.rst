@@ -15,7 +15,6 @@ Release 0.7
     * **Relo Extensions:** add extensions - thrid party - with updater
     * **DocType Managing:** Install, remove, update and find DocTypes.
     * **Missing DocType:** Notify user when a plugin is needed but available.
-* **Symbolic Links:** Search through directories/files that are being linked symbolically. **IN PROGRESS (Python link support problem), postponed**
 
 * **Better Printing**: improved way of posting information
 
