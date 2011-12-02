@@ -3,7 +3,7 @@
 
 #import sys, os
 from relo.core.interfaces import DocType
-from relo import core
+from relo.local import crawl
 from relo.yapsy.PluginManager import PluginManager
 import logging
 
@@ -35,7 +35,7 @@ class Manager(object):
 
     def start(self, itempath):
         for plugin in self.manager.getAllPlugins():
-            if plugin.name == core.getFileType(itempath).upper():
+            if plugin.name == crawl.getFileType(itempath).upper():
                 self.reloLog.debug(("---------- "+itempath+" ----------"))
                 self.reloLog.debug("Using: " + plugin.plugin_object.meta())
                 self.reloLog.debug("Reading File to memory...")
