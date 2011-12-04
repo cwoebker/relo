@@ -81,7 +81,7 @@ class Search:
             self.log.debug("Listing directory content recursively...")
             pbar.update(20)
             time.sleep(1)
-            self.total_size, self.fileList = crawl.recursiveListFiles(self.dir, self.hidden, self.links)
+            self.total_size, self.fileList = crawl.recursiveListFiles(self.dir, self.hidden)
         else:
             self.log.debug("Listing directory content...")
             pbar.update(20)

@@ -8,7 +8,7 @@ logger = logging.getLogger('relo.log')
 
 ##### Listing #####
 
-def listFiles(rootDir, hidden, links):
+def listFiles(rootDir, hidden):
     returnList = []
     total_size = 0
     fileList = os.listdir(rootDir)
@@ -25,13 +25,13 @@ def listFiles(rootDir, hidden, links):
     logger.debug("Total Size: %d" % total_size)
     return total_size, returnList
 
-def recursiveListFiles(rootDir, hidden, link):
+def recursiveListFiles(rootDir, hidden):
     """
     list files in specified directory
     """
     fileList = []
     total_size = 0
-    for root, subFolders, files in os.walk(rootDir, followlinks=link):
+    for root, subFolders, files in os.walk(rootDir):
         if not hidden:
             subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
         #print root

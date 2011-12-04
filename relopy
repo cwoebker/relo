@@ -4,7 +4,9 @@
 import sys, time
 import math
 import argparse
+from relo import core
 from relo.core import config
+from relo.core.config import conf
 from relo.local.search import Search
 from relo.net import crawl as rawl
 from relo import yapsy # Needed for pyinstaller compilation
@@ -29,7 +31,17 @@ def main(argv):
     update.set_defaults(which='update')
 
     config = reloParsers.add_parser('config', help='config help')
-    config.set_defaults(which='config')
+    #config.set_defaults(which='config')
+    configParsers = config.add_subparsers()
+    list = configParsers.add_parser('list', help="lists all available config fields")
+    list.set_defaults(which='config.list')
+    read = configParsers.add_parser('read', help="read a specific option from the config")
+    read.set_defaults(which='config.read')
+    read.add_argument('key', help="config key")
+    write = configParsers.add_parser('write', help="write a specific value to the config")
+    write.set_defaults(which='config.write')
+    write.add_argument('key', help="config key")
+    write.add_argument('value', help="new value")
 
     ##### Local Argumnets #####
 
@@ -89,9 +101,16 @@ def main(argv):
     except IOError, msg:
         parser.error(str(msg))
         return 1
-    
-    if results.which == 'config':
-        pass
+
+    core.init()
+
+    if results.which.startswith('config'):
+        if results.which == 'config.list':
+            conf.listConfig(None)
+        if results.which == 'config.write':
+            conf.writeConfig(results.key, results.value)
+        if results.which == 'config.read':
+            conf.readConfig(results.key)
     elif results.which == 'update':
         pass
     elif results.which == 'crawl':
