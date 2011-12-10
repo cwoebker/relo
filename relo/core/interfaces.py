@@ -36,3 +36,34 @@ class Extension(IPlugin):
     """
     Implements external extension that can be used within relo
     """
+
+class Backend(IPlugin):
+    """
+    Implements external backends that can be used to store indexes and alike
+    """
+    name = ""
+    def meta(self):
+        return name
+    def init(self):
+        pass
+    def check(self):
+        """
+        checks for old index
+        """
+    def load(self):
+        """
+        loads the current index on start
+        """
+        pass
+    def save(self):
+        """
+        saves the new index to the drive
+        """
+        pass
+    def add(self, path, hash, size, type):
+        """
+        adds a new file to the index
+        """
+        pass
+    def end(self):
+        pass

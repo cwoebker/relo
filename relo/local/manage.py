@@ -6,7 +6,7 @@ from relo.core.interfaces import DocType
 from relo.local import crawl
 from relo.yapsy.PluginManager import PluginManager
 import logging
-
+logging.basicConfig(level=logging.DEBUG)
 import pdb
 
 
