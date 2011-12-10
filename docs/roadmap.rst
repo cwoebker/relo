@@ -11,12 +11,12 @@ Release 0.7
 
 .. rubric:: New Features
 
-* **Relo Updater:** You can update the relo library from within relopy itself.
-    * **Relo Extensions:** add extensions - thrid party - with updater
-    * **DocType Managing:** Install, remove, update and find DocTypes.
-    * **Missing DocType:** Notify user when a plugin is needed but available.
+* **Relo Updater:** Notifies about new versions (auto download?)
 
 * **Better Printing**: improved way of posting information
+
+    * **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
+
 
 * **Index Option** index files before search them, more efficient, nice database used for, redis?!?
 
@@ -24,6 +24,8 @@ Release 0.7
 
 * **Progress Bar:** There is now a progressbar to display how much of the search is done. **IN PROGRESS**
 * **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
+
+* **Code Restructuring** Code has been completely revamped
 
 
 Release 0.8
