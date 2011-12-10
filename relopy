@@ -8,6 +8,7 @@ from relo import core
 from relo.core import config
 from relo.core.config import conf
 from relo.local.search import Search
+from relo.local.index import Index
 from relo.net import crawl as rawl
 from relo import yapsy # Needed for pyinstaller compilation
 
@@ -50,12 +51,10 @@ def main(argv):
 
     index.add_argument('-s', '--hidden', '--secret', action='store_true',
         help='search hidden files')
-    index.add_argument('-r', '--recursive', action='store_true',
-        help='search recursively')
     index.add_argument('-d', '--directory', action='store', default='./',
-        dest='directory', help='select Directory - (default=current)')
+        dest='directory', help='select Directory')
     index_type_group = index.add_mutually_exclusive_group()
-    index_type_group.add_argument('-n', '--name', action='store_true',
+    index_type_group.add_argument('-m', '--meta', action='store_true',
         help='search match in fileNames')
     index_type_group.add_argument('-c', '--content', action='store_true',
         help='search match in content')
@@ -135,6 +134,9 @@ def main(argv):
         search.list()
         search.filter()
         search.start()
+    elif results.which == 'index':
+        index = Index(results.directory, results.hidden, results.content)
+
 
 if __name__ == '__main__':
     main(sys.argv[1:])
