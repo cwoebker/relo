@@ -1,6 +1,6 @@
 [Core]
-Name = RedisDB
-Module = redis_db
+Name = REDISDB
+Module = redisdb
 
 [Documentation]
 Author = cwoebker
