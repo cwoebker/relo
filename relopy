@@ -136,6 +136,7 @@ def main(argv):
         search.start()
     elif results.which == 'index':
         index = Index(results.directory, results.hidden, results.content)
+        index.list()
 
 
 if __name__ == '__main__':

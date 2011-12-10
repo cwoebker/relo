@@ -43,7 +43,7 @@ class Backend(IPlugin):
     """
     name = ""
     def meta(self):
-        return name
+        return self.name
     def init(self):
         pass
     def check(self):
