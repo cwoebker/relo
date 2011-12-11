@@ -29,9 +29,10 @@ class DocType(IPlugin):
             self.results.append(str(m.start()))
         self.post_search()
     def post_search(self):
-        reloLog.debug("Results: " + repr(self.results))
-        reloLog.debug("Finished with: " + self.path)
-
+        #reloLog.debug("Results: " + repr(self.results))
+        #reloLog.debug("Finished with: " + self.path)
+        print "Results: " + repr(self.results)
+        print "Finished with: " + self.path
 class Extension(IPlugin):
     """
     Implements external extension that can be used within relo
