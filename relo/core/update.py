@@ -49,3 +49,10 @@ class ExtensionUpdater(AbstractUpdater):
 	"""
 	def __init__(self):
 		super.__init__()
+
+class BackendUpdater(AbstractUpdater):
+    """
+    Updates index backends
+    """
+    def __init__(self):
+        super.__init__()

@@ -8,6 +8,18 @@ logger = logging.getLogger('relo.log')
 
 ##### Listing #####
 
+def countFiles(rootDir):
+    count = 0
+    for path, dirs, files in os.walk(rootDir):
+        for file in files:
+            if file.startswith('.'):
+                continue
+            itempath = os.path.join(path, file)
+            if os.path.islink(itempath):
+                continue
+            count += 1
+    return count
+
 def listFiles(rootDir, hidden):
     returnList = []
     total_size = 0

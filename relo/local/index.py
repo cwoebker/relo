@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import os
+import os, time
 from relo.local import crawl
 from relo.core.interfaces import Backend
 from relo.yapsy.PluginManager import PluginManager
 import logging
 import hashlib
+from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, FormatLabel
 #logger = logging.getLogger('relo.log')
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 
 from relo.core.backend import *
 
@@ -19,9 +20,10 @@ class Index(object):
         """
         self.directory = directory
         f = lambda content: content==True and 'content' or 'meta'
-        print "-------------------------------------------------"
-        print "Relo Index |",directory,"|", f(content)
-        print "-------------------------------------------------"
+        line = "| Relo Index | " + f(content) + " | "  +  directory + " |"
+        print "+" + "-" * (len(line)-2) + "+"
+        print line
+        print "+" + "-" * (len(line)-2) + "+"
 
         self.manager = PluginManager(plugin_info_ext='relo')
         self.manager.setPluginPlaces(["relo/core/backend"])
@@ -42,8 +44,14 @@ class Index(object):
                 print "Using Default: Redis"
                 print plugin.plugin_object.init()
                 self.backend = plugin.plugin_object
-
     def list(self):
+        sTime = time.time()
+        print "Preparing Index..."
+        max = crawl.countFiles(self.directory)
+        print "Indexing %d files..." % max
+        pTime = time.time()
+        widgets = [FormatLabel(self.directory), ' ', Percentage(), ' ', Bar('/'), ' ', RotatingMarker(), ' ', ETA()]
+        pbar = ProgressBar(widgets=widgets, maxval=max).start()
         for root, subFolders, files in os.walk(self.directory):
             for file in files:
                 if file.startswith('.'):
@@ -58,10 +66,17 @@ class Index(object):
                     for chunk in iter(lambda: f.read(8192), ''):
                         md5.update(chunk)
                 hash = md5.digest()
+                modified = time.ctime(os.path.getmtime(itempath))
                 type = crawl.getFileType(itempath)
-                self.backend.add(itempath, hash, size, type)
-                print "ADD:", itempath, hash, size, type
-
+                self.backend.add(itempath, modified, hash, size, type)
+                pbar.update(pbar.currval + 1)
+                #print "ADD:", itempath, modified, hash, size, type
+        pbar.finish()
+        eTime = time.time()
+        iTime = eTime - pTime
+        setupTime = pTime - sTime
+        tTime = eTime - sTime
+        print "(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime)
     def go(self):
         pass
     def end(self):
