@@ -16,15 +16,15 @@ class REDISDB(Backend):
     expiretime = 60*60*24*7
     def init(self):
         print "Connecting to Redis"
-        self.db = redis.StrictRedis(host='localhost', port=6379, db=9)
+        self.db = redis.StrictRedis(host='localhost', port=6379, db=11)
     def check(self):
         print "check not needed with redis"
     def load(self):
         print "Redis auto loads"
     def save(self):
         self.db.save()
-    def add(self, path, hash, size, type):
-        self.db.hmset(path, dict(hash=hash, size=size, type=type))
+    def add(self, path, modified, hash, size, type):
+        self.db.hmset(path, dict(modified=modified, hash=hash, size=size, type=type))
         self.db.expire(path, self.expiretime)
     def end(self):
         self.db.shutdown()

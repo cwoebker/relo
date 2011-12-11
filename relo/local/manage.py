@@ -6,7 +6,6 @@ from relo.core.interfaces import DocType
 from relo.local import crawl
 from relo.yapsy.PluginManager import PluginManager
 import logging
-logging.basicConfig(level=logging.DEBUG)
 import pdb
 
 
@@ -28,7 +27,6 @@ class Manager(object):
         
         pluginList = []
         for plugin in self.manager.getAllPlugins():
-            print plugin.name
             self.manager.activatePluginByName(plugin.name)
             pluginList.append(plugin.plugin_object.meta())
         #print pluginList
