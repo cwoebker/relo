@@ -2,6 +2,9 @@
 # encoding: utf-8
 
 import os, time
+
+from relo.core.config import conf
+
 from relo.local import crawl
 from relo.core.interfaces import Backend
 from relo.yapsy.PluginManager import PluginManager
@@ -14,10 +17,10 @@ from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, Forma
 from relo.core.backend import *
 
 class Index(object):
+    """
+    Main indexing class
+    """
     def __init__(self, directory, hidden=False, content=False):
-        """
-        Main indexing class
-        """
         self.directory = directory
         f = lambda content: content==True and 'content' or 'meta'
         line = "| Relo Index | " + f(content) + " | "  +  directory + " |"
@@ -29,7 +32,7 @@ class Index(object):
         self.manager.setPluginPlaces(["relo/core/backend"])
         self.manager.locatePlugins()
         print "Loading"
-        self.manager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis']) #
+        self.manager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
 
         pluginList = []
         for plugin in self.manager.getAllPlugins():
@@ -40,7 +43,7 @@ class Index(object):
 
         for plugin in self.manager.getAllPlugins():
             print plugin.name
-            if plugin.name == "REDISDB":
+            if plugin.name == conf.readConfig('core.index'):
                 print "Using Default: Redis"
                 print plugin.plugin_object.init()
                 self.backend = plugin.plugin_object

@@ -28,7 +28,7 @@ class ReloConfig(object):
         self.config.add_section('core')
 
         self.config.set('core', 'version', VERSION)
-        #self.config.set('core', '')
+        self.config.set('core', 'index', 'REDISDB')
 
         ### config section for the local module
         self.config.add_section('local')
@@ -87,7 +87,7 @@ class ReloConfig(object):
 
     def readConfig(self, key):
         section, option = key.split('.')
-        print self.config.get(section, option)
+        return self.config.get(section, option)
     def writeConfig(self, key, value):
         section, option = key.split('.')
         self.config.set(section, option, value)
