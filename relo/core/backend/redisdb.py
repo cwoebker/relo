@@ -24,7 +24,10 @@ class REDISDB(Backend):
     def save(self):
         self.db.save()
     def add(self, path, modified, hash, size, type):
-        self.db.hmset(path, dict(modified=modified, hash=hash, size=size, type=type))
-        self.db.expire(path, self.expiretime)
+        pipe = self.db.pipeline()
+        pipe.hmset(path, dict(modified=modified, hash=hash, size=size, type=type)).expire(path, self.expiretime).execute()
+        del pipe
+    def find(self, key):
+        return self.db.keys(pattern='*'+key+'*')
     def end(self):
         self.db.shutdown()
