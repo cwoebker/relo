@@ -2,9 +2,59 @@
 # encoding: utf-8
 
 import os
+from collections import defaultdict
 from relo.core import doctype
 import logging
 logger = logging.getLogger('relo.log')
+
+FILE_Marker = '<files>'
+
+##### Format #####
+
+def paths2tree(paths):
+    "a list of paths to a list of tree elements"
+    def attach(branch, trunk):
+        """
+        Insert a branch of directories on its trunk
+        """
+        parts = branch.split('/', 1)
+        if len(parts) == 1: # is a file
+            trunk[FILE_Marker].append(parts[0])
+        else: # is a directory
+            node, others = parts
+            if node not in trunk:
+                trunk[node] = defaultdict(dict, ((FILE_Marker, []),))
+            attach(others, trunk[node])
+
+
+    main_dict = defaultdict(dict, ((FILE_Marker, []),))
+    for path in paths:
+        attach(path, main_dict)
+    return main_dict
+
+def tree2paths(tree):
+    "a list of tree elements to a list of paths"
+    for key, value in tree.iteritems():
+        #print key + ' -+- ' + repr(value)
+        #NOT WORKING YEY
+        #CAN BE DERIVED FROM PRINT TREE FUNCTION
+        pass
+
+def printTree(tree, indent=0):
+    """
+    Print the file tree structure with proper indentation.
+    """
+    for key, value in tree.iteritems():
+        if key == FILE_Marker:
+            if value:
+                print '  ' * indent + str(value)
+        else:
+            print ' ' * indent + str(key)
+            if isinstance(value, dict):
+                printTree(value, indent+1)
+            else:
+                print '  ' * (indent+1) + str(value)
+
 
 ##### Listing #####
 

@@ -16,6 +16,14 @@ from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, Forma
 
 from relo.core.backend import *
 
+class InvertedIndex(object):
+    def __init__(self):
+        pass
+    def setUp(self):
+        pass
+    def end(self):
+        pass
+
 class Index(object):
     """
     Main indexing class
@@ -47,7 +55,7 @@ class Index(object):
                 print "Using Default: Redis"
                 print plugin.plugin_object.init()
                 self.backend = plugin.plugin_object
-    def list(self):
+    def meta(self):
         sTime = time.time()
         print "Preparing Index..."
         max = crawl.countFiles(self.directory)
@@ -80,6 +88,8 @@ class Index(object):
         setupTime = pTime - sTime
         tTime = eTime - sTime
         print "(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime)
+    def content(self):
+        pass
     def go(self):
         pass
     def end(self):
