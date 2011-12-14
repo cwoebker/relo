@@ -145,7 +145,12 @@ def main(argv):
         search.start()
     elif results.which == 'index':
         index = Index(results.directory, results.hidden, results.content)
-        index.list()
+        if results.meta:
+            index.meta()
+        elif results.content():
+            index.content()
+        else:
+            print "Please use either -c/-m option"
     elif results.which == 'stats':
         stats = Stats(results.directory, results.module, results.hidden)
         if stats.check():
