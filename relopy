@@ -8,7 +8,7 @@ from relo import core
 from relo.core import config
 from relo.core.config import conf
 from relo.local.search import Search
-from relo.local.index import Index
+from relo.local.index import MetaIndex, InvertedIndex
 from relo.local.stats import Stats
 from relo.net import crawl as rawl
 from relo import yapsy # Needed for pyinstaller compilation
@@ -144,11 +144,12 @@ def main(argv):
         search.filter()
         search.start()
     elif results.which == 'index':
-        index = Index(results.directory, results.hidden, results.content)
         if results.meta:
-            index.meta()
-        elif results.content():
-            index.content()
+            index = MetaIndex(results.directory, results.hidden)
+            index.run()
+        elif results.content:
+            index = InvertedIndex(results.directory, results.hidden)
+            index.run()
         else:
             print "Please use either -c/-m option"
     elif results.which == 'stats':
