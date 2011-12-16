@@ -70,6 +70,25 @@ def countFiles(rootDir):
             count += 1
     return count
 
+def getTotalSize(rootDir, hidden):
+    """
+    get total size in directory (recursively)
+    """
+    total_size = 0
+    for root, subFolders, files in os.walk(rootDir):
+        if not hidden:
+            subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
+            #print root
+        for file in files:
+            if file.startswith('.') and hidden==0:
+                continue
+            itempath = os.path.join(root, file)
+            if os.path.islink(itempath):
+                #print "link found" + itempath
+                continue
+            total_size += os.path.getsize(itempath)
+    return total_size
+
 def listFiles(rootDir, hidden):
     returnList = []
     total_size = 0
