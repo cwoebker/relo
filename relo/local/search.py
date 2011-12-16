@@ -2,14 +2,17 @@
 # encoding: utf-8
 
 from relo import core
+from relo.core.interfaces import DocType
+from relo.yapsy.PluginManager import PluginManager
 from relo.local import crawl
 from relo.core import doctype
-from relo.local import manage
-from relo.core import log
+#from relo.core import log
 import logging
 import os, time
 from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
                         Percentage
+
+from relo.core.doctype import *
 
 def fileNameSearch(fileList, key):
     for itempath in fileList:
@@ -34,7 +37,7 @@ class Search:
         self.dir = directory
         self.key = key
 
-        log.setup_log(self.name, self.info, self.debug, self.filelog)
+        #log.setup_log(self.name, self.info, self.debug, self.filelog)
         self.log = logging.getLogger(self.name)
         if content:
             self.type = "content Search"
@@ -112,15 +115,49 @@ class Search:
         else:
             self.startName()
         self.pbar.finish()
+    def startName(self):
+        fileNameSearch(self.fileList, self.key)
     def startContent(self):
-        manager = manage.Manager(self.key, self.extList)
+        self.setUpDocType(self.extList)
         #print self.filteredList
         #print self.extList
         i = 0
         for item in self.filteredList:
             self.pbar.update(i)
-            manager.start(item)
+            self.load(item)
             i += 1
             self.pbar.update(i)
-    def startName(self):
-        fileNameSearch(self.fileList, self.key)
+    def preSearch(self):
+        self.results = []
+    def search(self):
+        self.pre_search()
+        for m in re.finditer(key, self.content):
+            self.results.append(str(m.start()))
+        self.post_search()
+    def postSearch(self):
+        print "Results: " + repr(self.results)
+        print "Finished with: " + self.path
+    def setUpDocType(self, extList):
+        self.reloLog = logging.getLogger("relo.log")
+        self.extList = extList
+
+        self.manager = PluginManager(plugin_info_ext='relo')
+        self.manager.setPluginPlaces(["relo/core/doctype"])
+
+        self.numPlugins = self.manager.locatePlugins()
+        #print "Found %d plugins." % self.numPlugins
+        #self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
+        self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>", extList=extList)
+
+        pluginList = []
+        for plugin in self.manager.getAllPlugins():
+            self.manager.activatePluginByName(plugin.name)
+            pluginList.append(plugin.plugin_object.meta())
+            #print pluginList
+
+    def load(self, itempath):
+        for plugin in self.manager.getAllPlugins():
+            if plugin.name == crawl.getFileType(itempath).upper():
+                return plugin.plugin_object.load(itempath)
+        plugin = self.manager.getPluginByName("DEFAULT")
+        plugin.plugin_object.load(itempath)
