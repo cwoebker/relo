@@ -30,10 +30,10 @@ MIN_WORD_LENGTH = 3
 PUNCTUATION_CHARS = ".,;:!?@£$%^&*()-–<>[]{}\\|/`~'\""
 
     # A redis key to store a list of metaphones present in this project
-REDIS_KEY_METAPHONES = "project_id:%(project_id)s:fulltext_search:metaphones"
+REDIS_KEY_METAPHONES = "id:%(project_id)s:metaphones"
 
     # A redis key to store a list of item IDs which have the given metaphone within the given project
-REDIS_KEY_METAPHONE = "project_id:%(project_id)s:fulltext_search:metaphone:%(metaphone)s"
+REDIS_KEY_METAPHONE = "id:%(project_id)s:mp:%(metaphone)s"
 
 class CustomIndex(object):
     def __init__(self):
@@ -148,8 +148,9 @@ class InvertedIndex(CustomIndex):
         """Get the metaphones for a given list of words"""
         metaphones = set()
         for word in words:
-            metaphone = double_metaphone(unicode(word))
-
+            metaphone = double_metaphone(unicode(word, errors='ignore'))
+            print word
+            print metaphone
             metaphones.add(metaphone[0].strip())
             if(metaphone[1]):
                 metaphones.add(metaphone[1].strip())
@@ -219,7 +220,6 @@ class InvertedIndex(CustomIndex):
                     continue
 
                 content = self.load(itempath)
-                print content
                 print itempath
                 self.index_item(itempath, content)
 
