@@ -42,3 +42,4 @@ class PDF(DocType):
 
         self.content = restr.getvalue()
         restr.close()
+        return self.content
