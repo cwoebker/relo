@@ -39,18 +39,18 @@ class CustomIndex(object):
     def __init__(self):
         pass
     def setUpBackend(self):
-        self.manager = PluginManager(plugin_info_ext='relo')
-        self.manager.setPluginPlaces(["relo/core/backend"])
-        self.manager.locatePlugins()
+        self.backendManager = PluginManager(plugin_info_ext='relo')
+        self.backendManager.setPluginPlaces(["relo/core/backend"])
+        self.backendManager.locatePlugins()
         print "Loading"
-        self.manager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
+        self.backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
 
-        for plugin in self.manager.getAllPlugins():
-            self.manager.activatePluginByName(plugin.name)
+        for plugin in self.backendManager.getAllPlugins():
+            self.backendManager.activatePluginByName(plugin.name)
 
         print "Plugin init done"
 
-        for plugin in self.manager.getAllPlugins():
+        for plugin in self.backendManager.getAllPlugins():
             print plugin.name
             if plugin.name == conf.readConfig('core.index'):
                 print "Using Default: Redis"
@@ -106,7 +106,7 @@ class MetaIndex(CustomIndex):
         tTime = eTime - sTime
         print "(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime)
     def __end__(self):
-        self.db.shutdown()
+        self.db.end()
 
 class InvertedIndex(CustomIndex):
     def __init__(self, directory, hidden=False):
@@ -118,8 +118,21 @@ class InvertedIndex(CustomIndex):
         self.setUpBackend()
         self.punctuation_regex = re.compile(r"[%s]" % re.escape(PUNCTUATION_CHARS))
         super(InvertedIndex, self).__init__()
-    def setUpDocType(self):
-        pass
+    def setUpDocType(self, extList):
+        self.reloLog = logging.getLogger("relo.log")
+        self.extList = extList
+
+        self.docTypeManager = PluginManager(plugin_info_ext='relo')
+        self.docTypeManager.setPluginPlaces(["relo/core/doctype"])
+
+        self.numPlugins = self.docTypeManager.locatePlugins()
+        self.docTypeManager.loadPlugins("<class 'relo.core.interfaces.DocType'>", extList=extList)
+
+        pluginList = []
+        for plugin in self.docTypeManager.getAllPlugins():
+            self.docTypeManager.activatePluginByName(plugin.name)
+            pluginList.append(plugin.plugin_object.meta())
+
     def get_words_from_text(self, text):
         """Extract a list of words to index from the given text"""
         if not text:
@@ -141,10 +154,10 @@ class InvertedIndex(CustomIndex):
             if(metaphone[1]):
                 metaphones.add(metaphone[1].strip())
         return metaphones
-    def index_item(self, item):
+    def index_item(self, item, content):
         """Indexes a certain content"""
 
-        words = self.get_words_from_text(item)
+        words = self.get_words_from_text(content)
 
         metaphones = self.get_metaphones(words)
 
@@ -174,17 +187,28 @@ class InvertedIndex(CustomIndex):
             self.db.redis.delete(REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone": project_metaphone})
 
         return True
-    def index_project(self, project_id):
-        """Index a project"""
-
+    def load(self, itempath):
+        for plugin in self.docTypeManager.getAllPlugins():
+            if plugin.name == crawl.getFileType(itempath).upper():
+                return plugin.plugin_object.load(itempath)
+        plugin = self.docTypeManager.getPluginByName("DEFAULT")
+        return plugin.plugin_object.load(itempath)
     def run(self):
         sTime = time.time()
         print "Preparing Index..."
-        max = crawl.countFiles(self.directory)
-        print "Indexing %d files..." % max
+        count = crawl.countFiles(self.directory)
+        size, list = crawl.recursiveListFiles(self.directory, False)
+        extList = []
+        for item in list:
+            type = crawl.getFileType(item)
+            if type not in extList:
+                extList.append(type)
+        del list
+        self.setUpDocType(extList)
+        print "Indexing %d files..." % count
         pTime = time.time()
         widgets = [FormatLabel(self.directory), ' ', Percentage(), ' ', Bar('/'), ' ', RotatingMarker(), ' ', ETA()]
-        pbar = ProgressBar(widgets=widgets, maxval=max).start()
+        pbar = ProgressBar(widgets=widgets, maxval=count).start()
         for root, subFolders, files in os.walk(self.directory):
             for file in files:
                 if file.startswith('.'):
@@ -194,9 +218,10 @@ class InvertedIndex(CustomIndex):
                     #print "link found" + itempath
                     continue
 
-                ### CODE FOR INDEX START HERE ###
-
-                ### END ###
+                content = self.load(itempath)
+                print content
+                print itempath
+                self.index_item(itempath, content)
 
                 pbar.update(pbar.currval + 1)
         pbar.finish()
@@ -206,6 +231,6 @@ class InvertedIndex(CustomIndex):
         tTime = eTime - sTime
         print "(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime)
     def __end__(self):
-        self.db.shutdown()
+        self.db.end()
 
 
