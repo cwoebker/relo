@@ -138,7 +138,6 @@ class Search:
         print "Results: " + repr(self.results)
         print "Finished with: " + self.path
     def setUpDocType(self, extList):
-        self.reloLog = logging.getLogger("relo.log")
         self.extList = extList
 
         self.manager = PluginManager(plugin_info_ext='relo')
@@ -160,4 +159,4 @@ class Search:
             if plugin.name == crawl.getFileType(itempath).upper():
                 return plugin.plugin_object.load(itempath)
         plugin = self.manager.getPluginByName("DEFAULT")
-        plugin.plugin_object.load(itempath)
+        return plugin.plugin_object.load(itempath)
