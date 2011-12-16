@@ -17,13 +17,10 @@ class ReloPlugin(IPlugin):
     def meta(self):
         return self.name
 
-class DocType(IPlugin):
+class DocType(ReloPlugin):
     """""
     Implements different type of docs
     """""
-    name = ""
-    def meta(self):
-        return self.name
     def load(self, path):
         self.path = path
         self.fobj = open(path, "r")
@@ -31,18 +28,8 @@ class DocType(IPlugin):
         for line in self.fobj:
             self.content += line
         self.fobj.close()
-    def pre_search(self):
-        self.results = []
-    def search(self, key):
-        self.pre_search()
-        for m in re.finditer(key, self.content):
-            self.results.append(str(m.start()))
-        self.post_search()
-    def post_search(self):
-        #reloLog.debug("Results: " + repr(self.results))
-        #reloLog.debug("Finished with: " + self.path)
-        print "Results: " + repr(self.results)
-        print "Finished with: " + self.path
+        return self.content
+
 class Extension(IPlugin):
     """
     Implements external extension that can be used within relo
