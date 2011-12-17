@@ -56,6 +56,8 @@ Release 0.9
 
 .. rubric:: Improvements
 
+* **Total modularization** The relo library is going to be split up into its counterparts so it can be used more effectively
+
 .. rubric:: DocType
 
 Release 1.0
@@ -63,7 +65,11 @@ Release 1.0
 
 .. rubric:: New Features
 
+* **Cython** speed improvements
+
 .. rubric:: Improvements
+
+* **Code Check** Code is going to be checked completely. w/ pylint, pyflakes and pep8
 
 .. rubric:: DocType
 
