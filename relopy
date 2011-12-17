@@ -145,13 +145,21 @@ def main(argv):
         search.start()
     elif results.which == 'index':
         if results.meta:
-            index = MetaIndex(results.directory, results.hidden)
-            index.run()
+            meta = MetaIndex(results.directory, results.hidden)
+            meta.run()
         elif results.content:
-            index = InvertedIndex(results.directory, results.hidden)
-            index.run()
+            inverted = InvertedIndex(results.directory, results.hidden)
+            inverted.run()
         else:
-            print "Please use either -c/-m option"
+            print "Relo: Meta + Search Index"
+            sTime = time.time()
+            meta = MetaIndex(results.directory, results.hidden)
+            meta.run()
+            inverted = InvertedIndex(results.directory, results.hidden)
+            inverted.run()
+            eTime = time.time()
+            dTime = eTime - sTime
+            print "(Meta+Search: %0.2fs)" % (dTime)
     elif results.which == 'stats':
         stats = Stats(results.directory, results.module, results.hidden)
         if stats.check():
