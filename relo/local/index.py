@@ -35,6 +35,8 @@ REDIS_KEY_METAPHONES = "id:%(project_id)s:metaphones"
     # A redis key to store a list of item IDs which have the given metaphone within the given project
 REDIS_KEY_METAPHONE = "id:%(project_id)s:mp:%(metaphone)s"
 
+REDIS_KEY_DOCUMENT = "id%(project_id)s:doc:%(document)s"
+
 class CustomIndex(object):
     def __init__(self):
         pass
@@ -42,19 +44,13 @@ class CustomIndex(object):
         self.backendManager = PluginManager(plugin_info_ext='relo')
         self.backendManager.setPluginPlaces(["relo/core/backend"])
         self.backendManager.locatePlugins()
-        print "Loading"
         self.backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
 
         for plugin in self.backendManager.getAllPlugins():
             self.backendManager.activatePluginByName(plugin.name)
 
-        print "Plugin init done"
-
         for plugin in self.backendManager.getAllPlugins():
-            print plugin.name
             if plugin.name == conf.readConfig('core.index'):
-                print "Using Default: Redis"
-                print plugin.plugin_object.init()
                 self.db = plugin.plugin_object
     def run(self):
         pass
@@ -66,7 +62,7 @@ class MetaIndex(CustomIndex):
     Main indexing class
     """
     def __init__(self, directory, hidden=False):
-        self.directory = directory
+        self.directory = os.path.abspath(directory)
         line = "| Relo Index | meta | "  +  directory + " |"
         print "+" + "-" * (len(line)-2) + "+"
         print line
@@ -96,7 +92,8 @@ class MetaIndex(CustomIndex):
                 hash = md5.digest()
                 modified = time.ctime(os.path.getmtime(itempath))
                 type = crawl.getFileType(itempath)
-                self.db.add(itempath, modified, hash, size, type)
+                key = REDIS_KEY_DOCUMENT % {"project_id": self.directory, "document": itempath}
+                self.db.addMeta(key, modified, hash, size, type)
                 pbar.update(pbar.currval + 1)
                 #print "ADD:", itempath, modified, hash, size, type
         pbar.finish()
@@ -110,7 +107,7 @@ class MetaIndex(CustomIndex):
 
 class InvertedIndex(CustomIndex):
     def __init__(self, directory, hidden=False):
-        self.directory = directory
+        self.directory = os.path.abspath(directory)
         line = "| Relo Index | content | "  +  directory + " |"
         print "+" + "-" * (len(line)-2) + "+"
         print line
@@ -149,8 +146,7 @@ class InvertedIndex(CustomIndex):
         metaphones = set()
         for word in words:
             metaphone = double_metaphone(unicode(word, errors='ignore'))
-            print word
-            print metaphone
+
             metaphones.add(metaphone[0].strip())
             if(metaphone[1]):
                 metaphones.add(metaphone[1].strip())
@@ -167,11 +163,11 @@ class InvertedIndex(CustomIndex):
     def _link_item_and_metaphone(self, item, metaphone):
         # Add the item to the metaphone key
         redis_key = REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone": metaphone}
-        self.db.sadd(redis_key, item)
+        self.db.addSet(redis_key, item)
 
         # Make sure we record that this project contains this metaphone
         redis_key = REDIS_KEY_METAPHONES % {"project_id": self.directory}
-        self.db.sadd(redis_key, metaphone)
+        self.db.addSet(redis_key, metaphone)
 
     def remove_project(self):
         """Remove the existing index for the project"""
@@ -220,7 +216,6 @@ class InvertedIndex(CustomIndex):
                     continue
 
                 content = self.load(itempath)
-                print itempath
                 self.index_item(itempath, content)
 
                 pbar.update(pbar.currval + 1)

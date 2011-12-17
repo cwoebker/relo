@@ -58,7 +58,7 @@ class Backend(IPlugin):
         saves the new index to the drive
         """
         pass
-    def add(self, path, modified, hash, size, type):
+    def addMeta(self, path, modified, hash, size, type):
         """
         adds a new file to the index
         """
