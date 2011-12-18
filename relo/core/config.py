@@ -8,8 +8,13 @@
 #####################################################################
 #####################################################################
 import os
-import ConfigParser
+import re
+try:
+    import ConfigParser
+except:
+    import configparser as ConfigParser
 
+# relo version
 VERSION = (0, 6, 0, 'beta')
 
 def get_version():
@@ -19,6 +24,49 @@ def get_version():
     if VERSION[3]:
         version = '%s %s' % (version, VERSION[3])
     return version
+
+###### Root #####
+# relo root path
+ROOT = os.environ.get("RELO_ROOT")
+if not ROOT:
+    ROOT = os.path.join(os.environ["HOME"], ".relo")
+
+# directories
+# Put paths here
+
+# files
+PATH_BIN_RELO = os.path.join(PATH_BIN, 'relo')
+PATH_ETC = os.path.join(ROOT, 'etc')
+PATH_ETC_CONFIG = os.path.join(PATH_ETC, 'config.cfg')
+
+##### Home #####
+# relo home path
+PATH_HOME = os.environ.get("RELO_HOME")
+if not PATH_HOME:
+    PATH_HOME = os.path.join(os.environ["HOME"], ".relo")
+
+# directories
+PATH_HOME_ETC = os.path.join(PATH_HOME, 'etc')
+
+# files
+
+##### Config #####
+conf = ConfigParser.SafeConfigParser()
+conf.read([PATH_ETC_CONFIG, os.path.join(INSTALLER_ROOT)])
+def _get_or_default(section, option, default=''):
+    try:
+        return conf.get(section, option)
+    except:
+        return default
+
+### Relo Downloads ###
+RELO_UPDATE_URL_MASTER = _get_or_default('core', 'master')
+RELO_UPDATE_URL_DEVELOP = _get_or_default('core', 'develop')
+RELO_UPDATE_URL_PYPI = _get_or_default('core', 'pypi')
+RELO_UPDATE_URL_CONFIG = _get_or_default('core', 'config')
+
+RELO_STABLE_VERSION_URL = _get_or_default('relo', 'stable-version')
+
 
 class ReloConfig(object):
     def __init__(self):
