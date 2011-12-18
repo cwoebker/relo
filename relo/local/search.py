@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
+import re
 
 from relo import core
 from relo.core.interfaces import DocType
@@ -124,19 +125,20 @@ class Search:
         i = 0
         for item in self.filteredList:
             self.pbar.update(i)
-            self.load(item)
+            content = self.load(item)
+            self.search(content, item)
             i += 1
             self.pbar.update(i)
     def preSearch(self):
         self.results = []
-    def search(self):
-        self.pre_search()
-        for m in re.finditer(key, self.content):
+    def search(self, string, item):
+        self.preSearch()
+        for m in re.finditer(self.key, string):
             self.results.append(str(m.start()))
-        self.post_search()
-    def postSearch(self):
+        self.postSearch(item)
+    def postSearch(self, item):
         print "Results: " + repr(self.results)
-        print "Finished with: " + self.path
+        print "Finished with: " + item
     def setUpDocType(self, extList):
         self.extList = extList
 

@@ -15,17 +15,14 @@ Release 0.7
 
 * **Better Printing**: improved way of posting information
 
-    * **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
-
+    * **Relo Colorful:** (Maybe) Colors for better information flow.
+    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **IN PROGRESS**
 
 * **Index Option** index files before search them, more efficient, nice database used for, redis?!?
 
 .. rubric:: Improvements
 
-* **Progress Bar:** There is now a progressbar to display how much of the search is done. **IN PROGRESS**
-* **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
-
-* **Code Restructuring** Code has been completely revamped
+* **Code Restructuring** Code has been completely revamped -> means many changes
 
 
 Release 0.8
@@ -43,7 +40,7 @@ Release 0.8
 
 .. rubric:: Improvements
 
-* **Index DB:** Relo creates db files for faster searching, either when set or when already searched.
+* **New Argument System** for better integration with the gui
 
 .. rubric:: DocType
 
@@ -57,8 +54,11 @@ Release 0.9
 .. rubric:: Improvements
 
 * **Total modularization** The relo library is going to be split up into its counterparts so it can be used more effectively
+* **maybe go away from yapsy** implement own plugin system
 
 .. rubric:: DocType
+
+* **This is the point where I have to actually add more doctypes...**
 
 Release 1.0
 ===========
