@@ -15,15 +15,15 @@ except:
     import configparser as ConfigParser
 
 # relo version
-VERSION = (0, 6, 0, 'beta')
+VERSION = (0, 6, 'beta')
 
 def get_version():
-    version = '%s.%s' % (VERSION[0], VERSION[1])
-    if VERSION[2]:
-        version = '%s.%s' % (version, VERSION[2])
-    if VERSION[3]:
-        version = '%s %s' % (version, VERSION[3])
-    return version
+    return '%s.%s' % (VERSION[0], VERSION[1])
+def get_long_version():
+    return '%s.%s %s' % (VERSION[0], VERSION[1], VERSION[2])
+
+# relo installer root path
+INSTALLER_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 ###### Root #####
 # relo root path
@@ -32,11 +32,14 @@ if not ROOT:
     ROOT = os.path.join(os.environ["HOME"], ".relo")
 
 # directories
-# Put paths here
+PATH_ETC = os.path.join(ROOT, 'etc')
+PATH_BIN = os.path.join(ROOT, 'bin')
+PATH_LOG = os.path.join(ROOT, 'log')
+
+PATH_SCRIPTS = os.path.join(ROOT, 'scripts')
 
 # files
 PATH_BIN_RELO = os.path.join(PATH_BIN, 'relo')
-PATH_ETC = os.path.join(ROOT, 'etc')
 PATH_ETC_CONFIG = os.path.join(PATH_ETC, 'config.cfg')
 
 ##### Home #####
@@ -51,65 +54,13 @@ PATH_HOME_ETC = os.path.join(PATH_HOME, 'etc')
 # files
 
 ##### Config #####
-conf = ConfigParser.SafeConfigParser()
-conf.read([PATH_ETC_CONFIG, os.path.join(INSTALLER_ROOT)])
-def _get_or_default(section, option, default=''):
-    try:
-        return conf.get(section, option)
-    except:
-        return default
-
-### Relo Downloads ###
-RELO_UPDATE_URL_MASTER = _get_or_default('core', 'master')
-RELO_UPDATE_URL_DEVELOP = _get_or_default('core', 'develop')
-RELO_UPDATE_URL_PYPI = _get_or_default('core', 'pypi')
-RELO_UPDATE_URL_CONFIG = _get_or_default('core', 'config')
-
-RELO_STABLE_VERSION_URL = _get_or_default('relo', 'stable-version')
-
-
 class ReloConfig(object):
     def __init__(self):
-        self.config = ConfigParser.RawConfigParser()
-    def createDefaultConfig(self):
-        ### config section for the core module
-        self.config.add_section('core')
-
-        self.config.set('core', 'version', VERSION)
-        self.config.set('core', 'index', 'REDISDB')
-
-        ### config section for the local module
-        self.config.add_section('local')
-
-        ### config section for the net module
-        self.config.add_section('net')
-
-        self.config.set('net', 'depth', 3)
-
-        ### Creating configfile
-        home = os.getenv('HOME')
-        print "Need to create config file."
-        os.system("touch ~/.relo")
-        with open(os.path.join(home,'.relo'), 'wb') as configfile:
-            print "Config File created"
-            self.config.write(configfile)
-
-    def checkConfig(self):
-        home = os.getenv('HOME')
-        if os.path.isfile(os.path.join(home, '.relo')):
-            return True
-        try:
-            open(os.path.join(home, '.relo'))
-        except IOError as e:
-            print 'Config does not exist'
-            print e
-            return False
-
+        self.config = ConfigParser.SafeConfigParser()
     def loadConfig(self):
-        home = os.getenv('HOME')
-        self.config.read(os.path.join(home, '.relo'))
+        self.config.read([PATH_ETC_CONFIG, os.path.join(INSTALLER_ROOT, 'etc', 'config.cfg')])
     def saveConfig(self):
-        pass
+        self.config.write(PATH_ETC_CONFIG)
     def listConfig(self, category):
         def listCore():
             print "[Core]"
@@ -140,3 +91,12 @@ class ReloConfig(object):
         section, option = key.split('.')
         self.config.set(section, option, value)
 conf = ReloConfig()
+conf.loadConfig()
+
+### Relo Downloads ###
+RELO_UPDATE_URL_MASTER = conf.readConfig('core.master')
+RELO_UPDATE_URL_DEVELOP = conf.readConfig('core.develop')
+RELO_UPDATE_URL_PYPI = conf.readConfig('core.pypi')
+RELO_UPDATE_URL_CONFIG = conf.readConfig('core.config')
+
+RELO_STABLE_VERSION_URL = conf.readConfig('core.stable-version')
