@@ -113,7 +113,7 @@ class Logger(object):
         self._stderr(Color.error("ERROR: %s\n" % msg))
 
     def critical(self, msg):
-        self._stderr(Color.critical("CRITICAL: %s\n" msg))
+        self._stderr(Color.critical("CRITICAL: %s\n" % msg))
 
     def _stdout(self, msg):
         sys.stdout.write(msg)
