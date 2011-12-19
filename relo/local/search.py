@@ -3,23 +3,22 @@
 import re
 
 from relo import core
-from relo.core.interfaces import DocType
+# from relo.core.interfaces import DocType
 from relo.yapsy.PluginManager import PluginManager
 from relo.local import util
 from relo.core import doctype
-#from relo.core import log
-import logging
+from relo.core.log import logger
 import os, time
 from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
                         Percentage
 
-from relo.core.doctype import *
+# from relo.core.doctype import *
 
 def fileNameSearch(fileList, key):
     for itempath in fileList:
         item = os.path.basename(itempath)
         if not item.find(key) == -1:
-            print "Found: " + itempath
+            logger.log("Found: " + itempath)
 
 class Search:
     def __init__(self, info=False, debug=False, all=False, hidden=False, filelog=False, content=False, recursive=False,
@@ -38,39 +37,35 @@ class Search:
         self.dir = directory
         self.key = key
 
-        #log.setup_log(self.name, self.info, self.debug, self.filelog)
-        self.log = logging.getLogger(self.name)
         if content:
             self.type = "content Search"
         else:
             self.type = "fileName Search"
 
-        self.log.info("Relo: version %s" % core.config.get_version())
+        logger.info("Relo: version %s" % core.config.get_version())
         if self.info:
-            self.log.info("Mode: Info")
+            logger.info("Mode: Info")
         elif self.debug:
-            self.log.info("Mode: Debug")
+            logger.info("Mode: Debug")
         else:
-            self.log.info("Mode: Normal")
-        self.log.info("All Files: " + str(bool(self.all)))
+            logger.info("Mode: Normal")
+        logger.info("All Files: " + str(bool(self.all)))
         if self.doctype is None:
-            self.log.info("Special DocType: None")
+            logger.info("Special DocType: None")
         else:
-            self.log.info("Special DocType: " + self.doctype)
-        self.log.info("Hidden Files: " + str(bool(self.hidden)))
-        self.log.info("Recursive: " + str(bool(self.recursive)))
-        self.log.info("Search Type: " + self.type)
-        self.log.info("Directory: " + self.dir)
-        self.log.info("Searching for: " + self.key)
+            logger.info("Special DocType: " + self.doctype)
+        logger.info("Hidden Files: " + str(bool(self.hidden)))
+        logger.info("Recursive: " + str(bool(self.recursive)))
+        logger.info("Search Type: " + self.type)
+        logger.info("Directory: " + self.dir)
+        logger.info("Searching for: " + self.key)
 
         self.filteredList = []
         self.extList = []
         self.total_size = 0
         self.fileList = []
 
-        print "-------------------------------------------------"
-        print "Relo Search |",self.dir,"|",self.key
-        print "-------------------------------------------------"
+        logger.head("Relo Search | " + self.dir + " | '" + self.key + "'")
 
         #Main Progress Bar
         self.mainWidgets = ['Searching: ', Percentage(), ' ', Bar('>'),
@@ -82,27 +77,28 @@ class Search:
         pbar.update(0)
         time.sleep(0.5)
         if self.recursive:
-            self.log.debug("Listing directory content recursively...")
+            logger.debug("Listing directory content recursively...")
             pbar.update(20)
             time.sleep(1)
             self.total_size, self.fileList = util.recursiveListFiles(self.dir, self.hidden)
         else:
-            self.log.debug("Listing directory content...")
+            logger.debug("Listing directory content...")
             pbar.update(20)
             time.sleep(1)
             self.total_size, self.fileList = util.listFiles(self.dir, self.hidden, self.links)
         pbar.update(100)
         pbar.finish()
-        self.log.debug("Supported File Types: " + repr(doctype.__all__))
+        logger.debug("Supported File Types: " + repr(doctype.__all__))
+        logger.info("Size of directory - %d" % self.total_size)
 
     def filter(self):
         if self.all:
             self.filteredList = self.fileList
         elif not self.doctype is None:
-            print "Selecting DocType files..."
+            logger.log("Selecting DocType files...")
             self.filteredList = util.filterDocType(self.fileList, self.doctype)
         else:
-            print "Filtering file types..."
+            logger.log("Filtering file types...")
             self.filteredList = util.filterList(self.fileList)
         for itempath in self.filteredList:
             item = util.getFileType(itempath)
@@ -121,8 +117,6 @@ class Search:
         fileNameSearch(self.fileList, self.key)
     def startContent(self):
         self.setUpDocType(self.extList)
-        #print self.filteredList
-        #print self.extList
         i = 0
         self.results = {}
         for item in self.filteredList:
@@ -131,18 +125,18 @@ class Search:
             self.search(content, item)
             i += 1
             self.pbar.update(i)
-        self.printResults()
     def search(self, string, item):
         found = []
         for m in re.finditer(self.key, string):
             found.append(str(m.start()))
         self.results[item] = found
     def printResults(self):
-        print "##### RESULTS #####"
+        logger.head("Search Results | " + self.dir + " | '" + self.key + "'")
         for key, value in self.results.iteritems():
             if not value:
                 continue
-            print key + " - " + repr(value)
+            logger.item(key)
+            logger.subitem(repr(value))
     def setUpDocType(self, extList):
         self.extList = extList
 

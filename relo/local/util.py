@@ -4,8 +4,6 @@
 import os
 from collections import defaultdict
 from relo.core import doctype
-import logging
-logger = logging.getLogger('relo.log')
 
 FILE_Marker = '<files>'
 
@@ -125,8 +123,6 @@ def recursiveListFiles(rootDir, hidden):
                 continue
             total_size += os.path.getsize(itempath)
             fileList.append(itempath)
-
-    logger.debug("Total Size: %d" % total_size)
     return total_size, fileList
 
 ##### Filters #####

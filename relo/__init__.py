@@ -113,7 +113,7 @@ def main():
 
     try:
         results = parser.parse_args(args=sys.argv[1:])
-        print results
+        logger.debug(results)
     except IOError, msg:
         parser.error(str(msg))
         return 1
@@ -147,7 +147,6 @@ def main():
     elif results.which == 'search':
         search = Search(results.info, results.debug, results.all, results.hidden, results.filelog, results.content, results.recursive,
                     results.doctype, results.directory, results.search_key)
-        search.log.debug(results)
         search.list()
         search.filter()
         search.start()

@@ -71,15 +71,24 @@ def setup_log(name, info, debug, filelog):
 
 class Color(object):
     DEBUG = '\033[1;35m' # Magenta Bold
+    HEAD = '\033[1m' # Bold White (Standard Color)
     INFO = '\033[32m' # Green Normal
     WARNING = '\033[31m' # Yellow Normal
     ERROR = '\033[33m' # Red Normal
     CRITICAL = '\033[1;33m' # Red Bold
+
+    # SPECIAL
+    ITEM = '\033[1;37m' # Black Bold/Bright
+    SUBITEM = '\033[37m' # White Normal
+
     ENDC = '\033[0m'
 
     @classmethod
     def _deco(cls, msg, color):
         return '%s%s%s' % (color, msg, cls.ENDC)
+    @classmethod
+    def head(cls, msg):
+        return cls._deco(msg, cls.HEAD)
     @classmethod
     def debug(cls, msg):
         return cls._deco(msg, cls.DEBUG)
@@ -96,15 +105,25 @@ class Color(object):
     def critical(cls, msg):
         return cls._deco(msg, cls.CRITICAL)
 
+    @classmethod
+    def item(cls, msg):
+        return cls._deco(msg, cls.ITEM)
+    @classmethod
+    def subitem(cls, msg):
+        return cls._deco(msg, cls.SUBITEM)
+
 class Logger(object):
     def debug(self, msg):
         self._stdout(Color.debug("DEBUG: %s\n" % msg))
 
+    def head(self, msg):
+        self._stdout(Color.head("%s\n") % msg)
+
     def log(self, msg):
-        self._stdout("%s\n" % (msg))
+        self._stdout("%s\n" % msg)
 
     def info(self, msg):
-        self._stdout(Color.info("Info: %s\n" % msg))
+        self._stdout(Color.info("INFO: %s\n" % msg))
 
     def warning(self, msg):
         self._stdout(Color.warning("WARNING: %s\n" % msg))
@@ -114,6 +133,11 @@ class Logger(object):
 
     def critical(self, msg):
         self._stderr(Color.critical("CRITICAL: %s\n" % msg))
+
+    def item(self, msg):
+        self._stdout(Color.item(" - %s\n" % msg))
+    def subitem(self, msg):
+        self._stdout(Color.subitem("   @ %s\n" % msg))
 
     def _stdout(self, msg):
         sys.stdout.write(msg)
