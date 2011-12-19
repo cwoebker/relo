@@ -6,15 +6,14 @@ import os, time, re
 from metaphone import dm as double_metaphone
 
 from relo.core.config import conf
+from relo.core.log import logger
 
 from relo.local import util
 from relo.core.interfaces import Backend
 from relo.yapsy.PluginManager import PluginManager
-import logging
 import hashlib
 from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, FormatLabel
-#logger = logging.getLogger('relo.log')
-#logging.basicConfig(level=logging.DEBUG)
+
 
 from relo.core.backend import *
 
@@ -63,16 +62,13 @@ class MetaIndex(CustomIndex):
     """
     def __init__(self, directory, hidden=False):
         self.directory = os.path.abspath(directory)
-        line = "| Relo Index | meta | "  +  directory + " |"
-        print "+" + "-" * (len(line)-2) + "+"
-        print line
-        print "+" + "-" * (len(line)-2) + "+"
+        logger.head("Relo Index | meta | "  +  directory)
         self.setUpBackend()
     def run(self):
         sTime = time.time()
-        print "Preparing Index..."
+        logger.log("Preparing Index...")
         max = util.countFiles(self.directory)
-        print "Indexing %d files..." % max
+        logger.info("Indexing %d files..." % max)
         pTime = time.time()
         widgets = [FormatLabel(self.directory), ' ', Percentage(), ' ', Bar('/'), ' ', RotatingMarker(), ' ', ETA()]
         pbar = ProgressBar(widgets=widgets, maxval=max).start()
@@ -101,17 +97,14 @@ class MetaIndex(CustomIndex):
         iTime = eTime - pTime
         setupTime = pTime - sTime
         tTime = eTime - sTime
-        print "(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime)
+        logger.debug("(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime))
     def __end__(self):
         self.db.end()
 
 class InvertedIndex(CustomIndex):
     def __init__(self, directory, hidden=False):
         self.directory = os.path.abspath(directory)
-        line = "| Relo Index | content | "  +  directory + " |"
-        print "+" + "-" * (len(line)-2) + "+"
-        print line
-        print "+" + "-" * (len(line)-2) + "+"
+        logger.head("| Relo Index | content | "  +  directory)
         self.setUpBackend()
         self.punctuation_regex = re.compile(r"[%s]" % re.escape(PUNCTUATION_CHARS))
         super(InvertedIndex, self).__init__()
@@ -192,7 +185,7 @@ class InvertedIndex(CustomIndex):
         return plugin.plugin_object.load(itempath)
     def run(self):
         sTime = time.time()
-        print "Preparing Index..."
+        logger.log("Preparing Index...")
         count = util.countFiles(self.directory)
         size, list = util.recursiveListFiles(self.directory, False)
         extList = []
@@ -202,7 +195,7 @@ class InvertedIndex(CustomIndex):
                 extList.append(type)
         del list
         self.setUpDocType(extList)
-        print "Indexing %d files..." % count
+        logger.info("Indexing %d files..." % count)
         pTime = time.time()
         widgets = [FormatLabel(self.directory), ' ', Percentage(), ' ', Bar('/'), ' ', RotatingMarker(), ' ', ETA()]
         pbar = ProgressBar(widgets=widgets, maxval=count).start()
@@ -224,7 +217,7 @@ class InvertedIndex(CustomIndex):
         iTime = eTime - pTime
         setupTime = pTime - sTime
         tTime = eTime - sTime
-        print "(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime)
+        logger.debug("(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime))
     def __end__(self):
         self.db.end()
 

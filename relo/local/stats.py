@@ -4,13 +4,12 @@
 import os, time
 
 from relo.core.config import conf
+from relo.core.log import logger
 
 from relo.core.interfaces import Statistic
 from relo.yapsy.PluginManager import PluginManager
 from relo.local.statistics import *
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
 
 class Stats(object):
     """
