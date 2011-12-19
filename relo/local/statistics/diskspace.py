@@ -9,7 +9,7 @@ up_dir = os.path.dirname(dirname)
 sys.path.append(up_dir)
 
 from relo.core.config import conf
-from relo.local import crawl
+from relo.local import util
 
 from relo.core.interfaces import Statistic
 
