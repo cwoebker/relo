@@ -7,7 +7,7 @@ from metaphone import dm as double_metaphone
 
 from relo.core.config import conf
 
-from relo.local import crawl
+from relo.local import util
 from relo.core.interfaces import Backend
 from relo.yapsy.PluginManager import PluginManager
 import logging
@@ -71,7 +71,7 @@ class MetaIndex(CustomIndex):
     def run(self):
         sTime = time.time()
         print "Preparing Index..."
-        max = crawl.countFiles(self.directory)
+        max = util.countFiles(self.directory)
         print "Indexing %d files..." % max
         pTime = time.time()
         widgets = [FormatLabel(self.directory), ' ', Percentage(), ' ', Bar('/'), ' ', RotatingMarker(), ' ', ETA()]
@@ -91,7 +91,7 @@ class MetaIndex(CustomIndex):
                         md5.update(chunk)
                 hash = md5.digest()
                 modified = time.ctime(os.path.getmtime(itempath))
-                type = crawl.getFileType(itempath)
+                type = util.getFileType(itempath)
                 key = REDIS_KEY_DOCUMENT % {"project_id": self.directory, "document": itempath}
                 self.db.addMeta(key, modified, hash, size, type)
                 pbar.update(pbar.currval + 1)
@@ -186,18 +186,18 @@ class InvertedIndex(CustomIndex):
         return True
     def load(self, itempath):
         for plugin in self.docTypeManager.getAllPlugins():
-            if plugin.name == crawl.getFileType(itempath).upper():
+            if plugin.name == util.getFileType(itempath).upper():
                 return plugin.plugin_object.load(itempath)
         plugin = self.docTypeManager.getPluginByName("DEFAULT")
         return plugin.plugin_object.load(itempath)
     def run(self):
         sTime = time.time()
         print "Preparing Index..."
-        count = crawl.countFiles(self.directory)
-        size, list = crawl.recursiveListFiles(self.directory, False)
+        count = util.countFiles(self.directory)
+        size, list = util.recursiveListFiles(self.directory, False)
         extList = []
         for item in list:
-            type = crawl.getFileType(item)
+            type = util.getFileType(item)
             if type not in extList:
                 extList.append(type)
         del list
