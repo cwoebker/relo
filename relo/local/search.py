@@ -5,7 +5,7 @@ import re
 from relo import core
 from relo.core.interfaces import DocType
 from relo.yapsy.PluginManager import PluginManager
-from relo.local import crawl
+from relo.local import util
 from relo.core import doctype
 #from relo.core import log
 import logging
@@ -85,12 +85,12 @@ class Search:
             self.log.debug("Listing directory content recursively...")
             pbar.update(20)
             time.sleep(1)
-            self.total_size, self.fileList = crawl.recursiveListFiles(self.dir, self.hidden)
+            self.total_size, self.fileList = util.recursiveListFiles(self.dir, self.hidden)
         else:
             self.log.debug("Listing directory content...")
             pbar.update(20)
             time.sleep(1)
-            self.total_size, self.fileList = crawl.listFiles(self.dir, self.hidden, self.links)
+            self.total_size, self.fileList = util.listFiles(self.dir, self.hidden, self.links)
         pbar.update(100)
         pbar.finish()
         self.log.debug("Supported File Types: " + repr(doctype.__all__))
@@ -100,12 +100,12 @@ class Search:
             self.filteredList = self.fileList
         elif not self.doctype is None:
             print "Selecting DocType files..."
-            self.filteredList = crawl.filterDocType(self.fileList, self.doctype)
+            self.filteredList = util.filterDocType(self.fileList, self.doctype)
         else:
             print "Filtering file types..."
-            self.filteredList = crawl.filterList(self.fileList)
+            self.filteredList = util.filterList(self.fileList)
         for itempath in self.filteredList:
-            item = crawl.getFileType(itempath)
+            item = util.getFileType(itempath)
             if item not in self.extList:
                 self.extList.append(item)
 
@@ -116,6 +116,7 @@ class Search:
         else:
             self.startName()
         self.pbar.finish()
+        self.printResults()
     def startName(self):
         fileNameSearch(self.fileList, self.key)
     def startContent(self):
@@ -123,22 +124,25 @@ class Search:
         #print self.filteredList
         #print self.extList
         i = 0
+        self.results = {}
         for item in self.filteredList:
             self.pbar.update(i)
             content = self.load(item)
             self.search(content, item)
             i += 1
             self.pbar.update(i)
-    def preSearch(self):
-        self.results = []
+        self.printResults()
     def search(self, string, item):
-        self.preSearch()
+        found = []
         for m in re.finditer(self.key, string):
-            self.results.append(str(m.start()))
-        self.postSearch(item)
-    def postSearch(self, item):
-        print "Results: " + repr(self.results)
-        print "Finished with: " + item
+            found.append(str(m.start()))
+        self.results[item] = found
+    def printResults(self):
+        print "##### RESULTS #####"
+        for key, value in self.results.iteritems():
+            if not value:
+                continue
+            print key + " - " + repr(value)
     def setUpDocType(self, extList):
         self.extList = extList
 
@@ -146,8 +150,6 @@ class Search:
         self.manager.setPluginPlaces(["relo/core/doctype"])
 
         self.numPlugins = self.manager.locatePlugins()
-        #print "Found %d plugins." % self.numPlugins
-        #self.manager.loadPlugins("<class 'core.interfaces.DocType'>")
         self.manager.loadPlugins("<class 'relo.core.interfaces.DocType'>", extList=extList)
 
         pluginList = []
@@ -158,7 +160,7 @@ class Search:
 
     def load(self, itempath):
         for plugin in self.manager.getAllPlugins():
-            if plugin.name == crawl.getFileType(itempath).upper():
+            if plugin.name == util.getFileType(itempath).upper():
                 return plugin.plugin_object.load(itempath)
         plugin = self.manager.getPluginByName("DEFAULT")
         return plugin.plugin_object.load(itempath)
