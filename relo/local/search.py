@@ -20,7 +20,11 @@ def fileNameSearch(fileList, key):
         if not item.find(key) == -1:
             logger.log("Found: " + itempath)
 
-class Search:
+class CustomSearch(object):
+    def __init__(self):
+        pass
+
+class Search(CustomSearch):
     def __init__(self, info=False, debug=False, all=False, hidden=False, filelog=False, content=False, recursive=False,
                  doctype=None, directory='./', key=''):
         """
