@@ -14,7 +14,6 @@ from relo.yapsy.PluginManager import PluginManager
 import hashlib
 from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, FormatLabel
 
-
 from relo.core.backend import *
 
 ##### Inverted Index Variables #####
@@ -34,7 +33,12 @@ REDIS_KEY_METAPHONES = "id:%(project_id)s:metaphones"
     # A redis key to store a list of item IDs which have the given metaphone within the given project
 REDIS_KEY_METAPHONE = "id:%(project_id)s:mp:%(metaphone)s"
 
+    # A redis key to store meta information which are associated with the document within the given project
 REDIS_KEY_DOCUMENT = "id%(project_id)s:doc:%(document)s"
+
+    # A redis key to store a list of projects stored in the database
+REDIS_KEY_PROJECTS = "projects"
+
 
 class CustomIndex(object):
     def __init__(self):
@@ -51,6 +55,9 @@ class CustomIndex(object):
         for plugin in self.backendManager.getAllPlugins():
             if plugin.name == conf.readConfig('core.index'):
                 self.db = plugin.plugin_object
+                self.db.init()
+    def setUpProject(self, type):
+        self.db.addProject(REDIS_KEY_PROJECTS, self.directory, type)
     def run(self):
         pass
     def __end__(self):
@@ -64,6 +71,7 @@ class MetaIndex(CustomIndex):
         self.directory = os.path.abspath(directory)
         logger.head("Relo Index | meta | "  +  directory)
         self.setUpBackend()
+
     def run(self):
         sTime = time.time()
         logger.log("Preparing Index...")
@@ -109,7 +117,6 @@ class InvertedIndex(CustomIndex):
         self.punctuation_regex = re.compile(r"[%s]" % re.escape(PUNCTUATION_CHARS))
         super(InvertedIndex, self).__init__()
     def setUpDocType(self, extList):
-        self.reloLog = logging.getLogger("relo.log")
         self.extList = extList
 
         self.docTypeManager = PluginManager(plugin_info_ext='relo')
@@ -179,6 +186,7 @@ class InvertedIndex(CustomIndex):
         return True
     def load(self, itempath):
         for plugin in self.docTypeManager.getAllPlugins():
+            print plugin.name
             if plugin.name == util.getFileType(itempath).upper():
                 return plugin.plugin_object.load(itempath)
         plugin = self.docTypeManager.getPluginByName("DEFAULT")
@@ -188,13 +196,15 @@ class InvertedIndex(CustomIndex):
         logger.log("Preparing Index...")
         count = util.countFiles(self.directory)
         size, list = util.recursiveListFiles(self.directory, False)
-        extList = []
+        extList = ['default']
         for item in list:
             type = util.getFileType(item)
+            #print repr(item) + '----' + repr(type)
             if type not in extList:
                 extList.append(type)
         del list
         self.setUpDocType(extList)
+        del extList
         logger.info("Indexing %d files..." % count)
         pTime = time.time()
         widgets = [FormatLabel(self.directory), ' ', Percentage(), ' ', Bar('/'), ' ', RotatingMarker(), ' ', ETA()]
@@ -209,7 +219,9 @@ class InvertedIndex(CustomIndex):
                     continue
 
                 content = self.load(itempath)
+                logger.debug(itempath + ' loaded')
                 self.index_item(itempath, content)
+                logger.debug(itempath + ' searched')
 
                 pbar.update(pbar.currval + 1)
         pbar.finish()

@@ -23,6 +23,9 @@ class REDISDB(Backend):
         print "Redis auto loads"
     def save(self):
         self.connection.save()
+    def addProject(self, key, project, type):
+        project_string = project + ":::" + type
+        self.connection.sadd(key, project_string)
     def addMeta(self, path, modified, hash, size, type):
         pipe = self.connection.pipeline()
         pipe.hmset(path, dict(modified=modified, hash=hash, size=size, type=type)).expire(path, self.expiretime).execute()

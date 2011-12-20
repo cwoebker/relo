@@ -10,5 +10,5 @@ sys.path.append(up_dir)
 
 from relo.core.interfaces import DocType
 
-class TXT(DocType):
+class DEFAULT(DocType):
     name = "DEFAULT Plugin"

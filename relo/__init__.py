@@ -60,8 +60,8 @@ def main():
 
     index.add_argument('-s', '--hidden', '--secret', action='store_true',
         help='search hidden files')
-    index.add_argument('-d', '--directory', action='store', default='./',
-        dest='directory', help='select directory')
+    index.add_argument('directory', action='store', default='./',
+        help='select directory')
     index_type_group = index.add_mutually_exclusive_group()
     index_type_group.add_argument('-m', '--meta', action='store_true',
         help='search match in fileNames')
@@ -153,20 +153,25 @@ def main():
     elif results.which == 'index':
         if results.meta:
             meta = MetaIndex(results.directory, results.hidden)
+            meta.setUpProject('meta')
             meta.run()
         elif results.content:
             inverted = InvertedIndex(results.directory, results.hidden)
+            inverted.setUpProject('search')
             inverted.run()
         else:
-            print "Relo: Meta + Search Index"
+            line = "Relo: Meta + Search Index"
+            logger.head(line)
+            logger.log('-' * len(line))
             sTime = time.time()
             meta = MetaIndex(results.directory, results.hidden)
             meta.run()
             inverted = InvertedIndex(results.directory, results.hidden)
+            inverted.setUpProject('meta:::search') ### make index more modular and fix this nasty code
             inverted.run()
             eTime = time.time()
             dTime = eTime - sTime
-            print "(Meta+Search: %0.2fs)" % (dTime)
+            logger.info("(Meta+Search: %0.2fs)" % (dTime))
     elif results.which == 'stats':
         stats = Stats(results.directory, results.module, results.hidden)
         if stats.check():
