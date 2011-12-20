@@ -11,18 +11,18 @@ Release 0.7
 
 .. rubric:: New Features
 
-* **Relo Updater:** Notifies about new versions (auto download?)
+* **Relo Updater:** Notifies about new versions (auto download?) **IN PROGRESS**
 
-* **Better Printing**: improved way of posting information
+* **Better Printing**: improved way of posting information **Done, need to fix old code**
 
-    * **Relo Colorful:** (Maybe) Colors for better information flow.
-    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **IN PROGRESS**
+    * **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
+    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **Done, but not part of the actual printing module**
 
-* **Index Option** index files before search them, more efficient, nice database used for, redis?!?
+* **Index Option** index files before search them, more efficient **IN PROGRESS, done but unsearchable... as of now -> useless**
 
 .. rubric:: Improvements
 
-* **Code Restructuring** Code has been completely revamped -> means many changes
+* **Code Restructuring** Code has been completely revamped -> means many changes. I have worked a lot on this recently and I want to have less new releases but more new features instead, that's why its taking so long. When looking at the progress I expect an release before the end of the year of 0.7.
 
 
 Release 0.8
