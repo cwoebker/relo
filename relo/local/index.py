@@ -33,8 +33,11 @@ REDIS_KEY_METAPHONES = "id:%(project_id)s:metaphones"
     # A redis key to store a list of item IDs which have the given metaphone within the given project
 REDIS_KEY_METAPHONE = "id:%(project_id)s:mp:%(metaphone)s"
 
+    # A redis key to store a list of documents present in this project
+REDIS_KEY_DOCUMENTS = "id:%(project_id)s:docs"
+
     # A redis key to store meta information which are associated with the document within the given project
-REDIS_KEY_DOCUMENT = "id%(project_id)s:doc:%(document)s"
+REDIS_KEY_DOCUMENT = "id:%(project_id)s:doc:%(document)s"
 
     # A redis key to store a list of projects stored in the database
 REDIS_KEY_PROJECTS = "projects"
@@ -58,6 +61,16 @@ class CustomIndex(object):
                 self.db.init()
     def setUpProject(self, type):
         self.db.addProject(REDIS_KEY_PROJECTS, self.directory, type)
+    def listProject(self):
+        for root, subFolders, files in os.walk(self.directory):
+            for file in files:
+                if file.startswith('.'):
+                    continue
+                itempath = os.path.join(root, file)
+                if os.path.islink(itempath):
+                    #print "link found" + itempath
+                    continue
+                self.db.addSet(REDIS_KEY_DOCUMENTS % {"project_id": self.directory}, itempath)
     def run(self):
         pass
     def __end__(self):
@@ -219,9 +232,9 @@ class InvertedIndex(CustomIndex):
                     continue
 
                 content = self.load(itempath)
-                logger.debug(itempath + ' loaded')
+                #logger.debug(itempath + ' loaded')
                 self.index_item(itempath, content)
-                logger.debug(itempath + ' searched')
+                #logger.debug(itempath + ' searched')
 
                 pbar.update(pbar.currval + 1)
         pbar.finish()

@@ -100,3 +100,27 @@ RELO_UPDATE_URL_PYPI = conf.readConfig('core.pypi')
 RELO_UPDATE_URL_CONFIG = conf.readConfig('core.config')
 
 RELO_STABLE_VERSION_URL = conf.readConfig('core.stable-version')
+
+### Relo Index -> move to config file later
+##### Inverted Index Variables #####
+
+# Words which should not be indexed
+STOP_WORDS = ("the", "of", "to", "and", "a", "in", "is", "it", "you", "that")
+
+# Do not index any words shorter than this
+MIN_WORD_LENGTH = 3
+
+# Consider these characters to be punctuation (they will be replaced with spaces prior to word extraction)
+PUNCTUATION_CHARS = ".,;:!?@£$%^&*()-–<>[]{}\\|/`~'\""
+
+# A redis key to store a list of metaphones present in this project
+REDIS_KEY_METAPHONES = "id:%(project_id)s:metaphones"
+
+# A redis key to store a list of item IDs which have the given metaphone within the given project
+REDIS_KEY_METAPHONE = "id:%(project_id)s:mp:%(metaphone)s"
+
+# A redis key to store meta information which are associated with the document within the given project
+REDIS_KEY_DOCUMENT = "id%(project_id)s:doc:%(document)s"
+
+# A redis key to store a list of projects stored in the database
+REDIS_KEY_PROJECTS = "projects"
