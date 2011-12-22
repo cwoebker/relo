@@ -10,7 +10,7 @@ from relo import core
 from relo.core.log import logger
 from relo.core import config
 from relo.core.config import conf
-from relo.local.search import Search
+from relo.local.search import Search, checkIndex
 from relo.local.index import MetaIndex, InvertedIndex
 from relo.local.stats import Stats
 from relo.net import crawl as rawl
@@ -145,19 +145,25 @@ def main():
         print "Followed: %d" % crawler.followed
         print "Stats:    (%d/s after %0.2fs)" % (int(math.ceil(float(crawler.links) / tTime)), tTime)
     elif results.which == 'search':
-        search = Search(results.info, results.debug, results.all, results.hidden, results.filelog, results.content, results.recursive,
+        check = checkIndex(results.directory)
+        if check is not None:
+            pass
+        else:
+            search = Search(results.info, results.debug, results.all, results.hidden, results.filelog, results.content, results.recursive,
                     results.doctype, results.directory, results.search_key)
-        search.list()
-        search.filter()
-        search.start()
+            search.list()
+            search.filter()
+            search.start()
     elif results.which == 'index':
         if results.meta:
             meta = MetaIndex(results.directory, results.hidden)
             meta.setUpProject('meta')
+            meta.listProject()
             meta.run()
         elif results.content:
             inverted = InvertedIndex(results.directory, results.hidden)
             inverted.setUpProject('search')
+            inverted.listProject()
             inverted.run()
         else:
             line = "Relo: Meta + Search Index"
@@ -165,6 +171,7 @@ def main():
             logger.log('-' * len(line))
             sTime = time.time()
             meta = MetaIndex(results.directory, results.hidden)
+            meta.listProject()
             meta.run()
             inverted = InvertedIndex(results.directory, results.hidden)
             inverted.setUpProject('meta:::search') ### make index more modular and fix this nasty code

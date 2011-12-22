@@ -7,12 +7,37 @@ from relo import core
 from relo.yapsy.PluginManager import PluginManager
 from relo.local import util
 from relo.core import doctype
+from relo.core import config
+from relo.core.config import conf
 from relo.core.log import logger
 import os, time
 from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
                         Percentage
 
 # from relo.core.doctype import *
+
+def checkIndex(path):
+    absolute = os.path.abspath(path)
+    def setUpBackend():
+        backendManager = PluginManager(plugin_info_ext='relo')
+        backendManager.setPluginPlaces(["relo/core/backend"])
+        backendManager.locatePlugins()
+        backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
+
+        for plugin in backendManager.getAllPlugins():
+            backendManager.activatePluginByName(plugin.name)
+
+        for plugin in backendManager.getAllPlugins():
+            if plugin.name == conf.readConfig('core.index'):
+                db = plugin.plugin_object
+                db.init()
+                return db
+    db = setUpBackend()
+    project_list = db.listProjects(config.REDIS_KEY_PROJECTS)
+    for project in project_list:
+        if project[0] == absolute:
+            return project[1:]
+    return None
 
 def fileNameSearch(fileList, key):
     for itempath in fileList:
@@ -22,6 +47,27 @@ def fileNameSearch(fileList, key):
 
 class CustomSearch(object):
     def __init__(self):
+        pass
+
+class IndexSearch(CustomSearch):
+    def __init__(self):
+        self.setUpBackend()
+    def setUpBackend(self):
+        self.backendManager = PluginManager(plugin_info_ext='relo')
+        self.backendManager.setPluginPlaces(["relo/core/backend"])
+        self.backendManager.locatePlugins()
+        self.backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
+
+        for plugin in self.backendManager.getAllPlugins():
+            self.backendManager.activatePluginByName(plugin.name)
+
+        for plugin in self.backendManager.getAllPlugins():
+            if plugin.name == conf.readConfig('core.index'):
+                self.db = plugin.plugin_object
+                self.db.init()
+    def nameSearch(self):
+        pass
+    def contentSearch(self):
         pass
 
 class Search(CustomSearch):
