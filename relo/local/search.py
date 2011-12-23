@@ -50,7 +50,8 @@ class CustomSearch(object):
         pass
 
 class IndexSearch(CustomSearch):
-    def __init__(self):
+    def __init__(self, directory):
+        self.directory = directory
         self.setUpBackend()
     def setUpBackend(self):
         self.backendManager = PluginManager(plugin_info_ext='relo')
@@ -65,8 +66,13 @@ class IndexSearch(CustomSearch):
             if plugin.name == conf.readConfig('core.index'):
                 self.db = plugin.plugin_object
                 self.db.init()
+    def loadFiles(self):
+        return self.db.getSet(config.REDIS_KEY_DOCUMENTS % {"project_id": self.directory})
     def nameSearch(self):
-        pass
+        files = self.loadFiles()
+        names = util.paths2names(files)
+        print files
+        print names
     def contentSearch(self):
         pass
 

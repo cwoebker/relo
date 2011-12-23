@@ -199,7 +199,6 @@ class InvertedIndex(CustomIndex):
         return True
     def load(self, itempath):
         for plugin in self.docTypeManager.getAllPlugins():
-            print plugin.name
             if plugin.name == util.getFileType(itempath).upper():
                 return plugin.plugin_object.load(itempath)
         plugin = self.docTypeManager.getPluginByName("DEFAULT")

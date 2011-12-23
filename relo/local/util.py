@@ -152,3 +152,17 @@ def getFileType(itempath):
     ext = os.path.splitext(itempath)[1]
     ext = ext.lstrip('.')
     return ext
+
+##### List Conversion #####
+
+def paths2names(pathList):
+    """
+    takes a list of path
+    returns list of names
+    """
+    nameList = []
+    for item in pathList:
+        file = os.path.basename(item)
+        name = os.path.splitext(file)[0]
+        nameList.append(name)
+    return nameList

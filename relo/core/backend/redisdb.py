@@ -38,6 +38,8 @@ class REDISDB(Backend):
         del pipe
     def addSet(self, key, value):
         self.connection.sadd(key, value)
+    def getSet(self, key):
+        return self.connection.smembers(key)
     def get(self, key, field):
         return self.connection.hget(key, field)
     def find(self, key):
