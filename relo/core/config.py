@@ -119,6 +119,9 @@ REDIS_KEY_METAPHONES = "id:%(project_id)s:metaphones"
 # A redis key to store a list of item IDs which have the given metaphone within the given project
 REDIS_KEY_METAPHONE = "id:%(project_id)s:mp:%(metaphone)s"
 
+# A redis key to store a list of documents present in this project
+REDIS_KEY_DOCUMENTS = "id:%(project_id)s:docs"
+
 # A redis key to store meta information which are associated with the document within the given project
 REDIS_KEY_DOCUMENT = "id%(project_id)s:doc:%(document)s"
 

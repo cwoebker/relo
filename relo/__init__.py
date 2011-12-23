@@ -10,7 +10,7 @@ from relo import core
 from relo.core.log import logger
 from relo.core import config
 from relo.core.config import conf
-from relo.local.search import Search, checkIndex
+from relo.local.search import Search, IndexSearch, checkIndex
 from relo.local.index import MetaIndex, InvertedIndex
 from relo.local.stats import Stats
 from relo.net import crawl as rawl
@@ -147,7 +147,8 @@ def main():
     elif results.which == 'search':
         check = checkIndex(results.directory)
         if check is not None:
-            pass
+            search = IndexSearch(results.directory)
+            search.nameSearch()
         else:
             search = Search(results.info, results.debug, results.all, results.hidden, results.filelog, results.content, results.recursive,
                     results.doctype, results.directory, results.search_key)
