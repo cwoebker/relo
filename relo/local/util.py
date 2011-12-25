@@ -4,6 +4,7 @@
 import os
 from collections import defaultdict
 from relo.core import doctype
+from relo.core.log import logger
 
 FILE_Marker = '<files>'
 
