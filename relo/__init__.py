@@ -86,6 +86,8 @@ def main():
                         help='log is written to file - always in debug mode')
     search.add_argument('-r', '--recursive', action='store_true',
                         help='search recursively')
+    search.add_argument('-f', '--forceSearch', action='store_true',
+                        help='force a real file system search')
     doctype_group = search.add_mutually_exclusive_group()
     doctype_group.add_argument('-a', '--all', action='store_true',
                         help='search all files (even non supported with standard plugin)')
@@ -146,7 +148,8 @@ def main():
         print "Stats:    (%d/s after %0.2fs)" % (int(math.ceil(float(crawler.links) / tTime)), tTime)
     elif results.which == 'search':
         check = checkIndex(results.directory)
-        if check is not None:
+        if check is not None and not results.forceSearch:
+            logger.info("Index found.")
             search = IndexSearch(results.directory, results.search_key)
             if results.content:
                 search.contentSearch()

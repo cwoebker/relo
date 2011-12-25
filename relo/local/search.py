@@ -159,7 +159,7 @@ class Search(CustomSearch):
             logger.debug("Listing directory content...")
             pbar.update(20)
             time.sleep(1)
-            self.total_size, self.fileList = util.listFiles(self.dir, self.hidden, self.links)
+            self.total_size, self.fileList = util.listFiles(self.dir, self.hidden)
         pbar.update(100)
         pbar.finish()
         logger.debug("Supported File Types: " + repr(doctype.__all__))
@@ -167,6 +167,7 @@ class Search(CustomSearch):
 
     def filter(self):
         if self.all:
+            logger.info("No filter applied")
             self.filteredList = self.fileList
         elif not self.doctype is None:
             logger.log("Selecting DocType files...")
@@ -180,6 +181,9 @@ class Search(CustomSearch):
                 self.extList.append(item)
 
     def start(self):
+        if len(self.filteredList) == 0:
+            logger.error("No files in range.")
+            return 0
         self.pbar = ProgressBar(widgets=self.mainWidgets, maxval=len(self.filteredList)).start()
         if 'content' in self.type:
             self.startContent()
