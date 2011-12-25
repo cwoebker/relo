@@ -162,7 +162,6 @@ def paths2names(pathList):
     """
     nameList = []
     for item in pathList:
-        file = os.path.basename(item)
-        name = os.path.splitext(file)[0]
+        name = os.path.basename(item)
         nameList.append(name)
     return nameList

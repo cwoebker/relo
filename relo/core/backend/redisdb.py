@@ -4,6 +4,7 @@
 import sys
 import os
 import redis
+from relo.core.log import logger
 
 dirname = os.path.dirname(os.path.abspath(__file__))
 up_dir = os.path.dirname(dirname)
@@ -13,14 +14,14 @@ from relo.core.interfaces import Backend
 
 class REDISDB(Backend):
     name = "redis"
-    expiretime = 60*60*24*7
+    expiretime = 60*60*24*7 # for a week
     def init(self):
-        print "Connecting to Redis"
+        logger.debug("Connecting to Redis")
         self.connection = redis.StrictRedis(host='localhost', port=6379, db=12)
     def check(self):
-        print "check not needed with redis"
+        logger.debug("check not needed with redis")
     def load(self):
-        print "Redis auto loads"
+        logger.debug("Redis auto loads")
     def save(self):
         self.connection.save()
     def addProject(self, key, project, type):

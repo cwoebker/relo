@@ -13,6 +13,7 @@ from relo.core.log import logger
 import os, time
 from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
                         Percentage
+from metaphone import dm as double_metaphone
 
 # from relo.core.doctype import *
 
@@ -50,9 +51,11 @@ class CustomSearch(object):
         pass
 
 class IndexSearch(CustomSearch):
-    def __init__(self, directory):
+    def __init__(self, directory, key):
         self.directory = directory
+        self.key = key
         self.setUpBackend()
+        self.results = []
     def setUpBackend(self):
         self.backendManager = PluginManager(plugin_info_ext='relo')
         self.backendManager.setPluginPlaces(["relo/core/backend"])
@@ -68,13 +71,28 @@ class IndexSearch(CustomSearch):
                 self.db.init()
     def loadFiles(self):
         return self.db.getSet(config.REDIS_KEY_DOCUMENTS % {"project_id": self.directory})
+    def loadMetaphones(self):
+        return self.db.getSet(config.REDIS_KEY_METAPHONES % {"project_id": self.directory})
     def nameSearch(self):
         files = self.loadFiles()
-        names = util.paths2names(files)
-        print files
-        print names
+        for file in files:
+            item = os.path.basename(file)
+            if not item.find(self.key) == -1:
+                self.results.append(file)
     def contentSearch(self):
-        pass
+        metaphones = self.loadMetaphones() ## do part of search in redis itself in the future so we dont hae to laod everything, keys *mp*
+        # or just try to load metaphone and see what you get
+        key_mps = double_metaphone(unicode(self.key, errors='ignore'))
+        for mp in metaphones: # filter, map and reduce should help here in future
+            for key_mp in key_mps:
+                if key_mp == mp:
+                    self.results.extend(self.db.getSet(config.REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone":key_mp}))
+    def printResult(self):
+        if len(self.results) == 0:
+            logger.item("No results found")
+        else:
+            for item in self.results:
+                logger.item(item)
 
 class Search(CustomSearch):
     def __init__(self, info=False, debug=False, all=False, hidden=False, filelog=False, content=False, recursive=False,
