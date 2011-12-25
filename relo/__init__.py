@@ -147,8 +147,12 @@ def main():
     elif results.which == 'search':
         check = checkIndex(results.directory)
         if check is not None:
-            search = IndexSearch(results.directory)
-            search.nameSearch()
+            search = IndexSearch(results.directory, results.search_key)
+            if results.content:
+                search.contentSearch()
+            else:
+                search.nameSearch()
+            search.printResult()
         else:
             search = Search(results.info, results.debug, results.all, results.hidden, results.filelog, results.content, results.recursive,
                     results.doctype, results.directory, results.search_key)
