@@ -18,7 +18,7 @@ from relo.core.config import PATH_HOME_ETC
 from relo.core.util import mkdirs
 
 __author__ = "cwoebker"
-__version__ = config.get_long_version()
+__version__ = config.get_version()
 __copyright__ = "© cwoebker"
 __license__ = "See in LICENSE file"
 
@@ -39,6 +39,7 @@ def main():
 
     update = reloParsers.add_parser('update', help='update help')
     update.set_defaults(which='update')
+    update.add_argument('key', help="master/develop")
 
     config = reloParsers.add_parser('config', help='config help')
     #config.set_defaults(which='config')
@@ -122,6 +123,7 @@ def main():
 
     core.init()
 
+    ########## CONFIG ##########
     if results.which.startswith('config'):
         if results.which == 'config.list':
             conf.listConfig(None)
@@ -129,8 +131,18 @@ def main():
             conf.writeConfig(results.key, results.value)
         if results.which == 'config.read':
             print conf.readConfig(results.key)
+    ########## UPDATE ##########
     elif results.which == 'update':
-        pass
+        from relo.core.update import ReloUpdater
+        curVersion = __version__
+        relo = ReloUpdater(curVersion)
+        if results.key in ['master', 'develop']:
+            relo.update(results.key)
+            logger.info(relo.localVersion)
+            logger.info(relo.remoteVersion)
+        else:
+            logger.error('Invalid Repo-Key')
+    ########## CRAWL ##########
     elif results.which == 'crawl':
         url = results.url
 

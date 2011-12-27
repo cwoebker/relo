@@ -99,7 +99,8 @@ RELO_UPDATE_URL_DEVELOP = conf.readConfig('core.develop')
 RELO_UPDATE_URL_PYPI = conf.readConfig('core.pypi')
 RELO_UPDATE_URL_CONFIG = conf.readConfig('core.config')
 
-RELO_STABLE_VERSION_URL = conf.readConfig('core.stable-version')
+RELO_MASTER_VERSION_URL = conf.readConfig('core.master-version')
+RELO_DEVELOP_VERSION_URL = conf.readConfig('core.develop-version')
 
 ### Relo Index -> move to config file later
 ##### Inverted Index Variables #####
