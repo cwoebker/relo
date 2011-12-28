@@ -70,22 +70,31 @@ def setup_log(name, info, debug, filelog):
 
 
 class Color(object):
-    DEBUG = '\033[1;35m' # Magenta Bold
-    HEAD = '\033[1m' # Bold White (Standard Color)
-    INFO = '\033[32m' # Green Normal
-    WARNING = '\033[31m' # Yellow Normal
-    ERROR = '\033[33m' # Red Normal
-    CRITICAL = '\033[1;33m' # Red Bold
+    ESCAPE = '\033[%sm'
+    BOLD = '1;%s'
+    UNDERLINE = '4;%s'
+
+    BLUE_ARROW = ESCAPE % (BOLD % '34') # Blue Bold
+
+    DEBUG = ESCAPE % (BOLD % '35') # Magenta Bold
+    HEAD = ESCAPE % (BOLD % '1') # Bold White (Standard Color)
+    INFO = ESCAPE % '32' # Green Normal
+    WARNING = ESCAPE % '33' # Yellow Normal
+    ERROR = ESCAPE % '31' # Red Normal
+    CRITICAL = ESCAPE % (UNDERLINE % '31') # Red Underline
 
     # SPECIAL
-    ITEM = '\033[1;37m' # Black Bold/Bright
-    SUBITEM = '\033[37m' # White Normal
+    ITEM = ESCAPE % (BOLD % '37') # Black Bold/Bright
+    SUBITEM = ESCAPE % '37' # White Normal
 
     ENDC = '\033[0m'
 
     @classmethod
     def _deco(cls, msg, color):
         return '%s%s%s' % (color, msg, cls.ENDC)
+    @classmethod
+    def blueArrow(cls, msg):
+        return cls._deco(msg, cls.BLUE_ARROW)
     @classmethod
     def head(cls, msg):
         return cls._deco(msg, cls.HEAD)
@@ -117,19 +126,19 @@ class Logger(object):
         self._stdout(Color.debug("DEBUG: %s\n" % msg))
 
     def head(self, msg):
-        self._stdout(Color.head("%s\n") % msg)
+        self._stdout(Color.blueArrow('=> ') + Color.head("%s\n") % msg)
 
     def log(self, msg):
         self._stdout("%s\n" % msg)
 
     def info(self, msg):
-        self._stdout(Color.info("INFO: %s\n" % msg))
+        self._stdout(Color.info("INFO: ") + "%s\n" % msg)
 
     def warning(self, msg):
         self._stdout(Color.warning("WARNING: %s\n" % msg))
 
     def error(self, msg):
-        self._stderr(Color.error("ERROR: %s\n" % msg))
+        self._stderr(Color.error("ERROR: ") + "%s\n" % msg)
 
     def critical(self, msg):
         self._stderr(Color.critical("CRITICAL: %s\n" % msg))
