@@ -9,26 +9,18 @@ Roadmap
 Release 0.7
 ===========
 
-.. rubric:: New Features
-
 * **Relo Updater:** Notifies about new versions (auto download?) **IN PROGRESS**
 
-* **Better Printing**: improved way of posting information **Done, need to fix old code**
+* **Better Printing**: improved way of posting information **DONE**
 
     * **Relo Colorful:** (Maybe) Colors for better information flow. **DONE**
-    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **Done, but not part of the actual printing module**
+    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **DONE (but not part of the actual printing module)**
 
-* **Index Option** index files before search them, more efficient **IN PROGRESS, done but unsearchable... as of now -> useless**
-
-.. rubric:: Improvements
-
-* **Code Restructuring** Code has been completely revamped -> means many changes. I have worked a lot on this recently and I want to have less new releases but more new features instead, that's why its taking so long. When looking at the progress I expect an release before the end of the year of 0.7.
+* **Index Option** index files before search them, more efficient **DONE**
 
 
 Release 0.8
 ===========
-
-.. rubric:: New Features
 
 * **Graphical User Interface (GUI):** A User interface in wxPython, PyQt4 or whatever fits best.
 
@@ -38,46 +30,26 @@ Release 0.8
 
 * **Replace:** A replace function that can process all files and replace certain expressions with others.
 
-.. rubric:: Improvements
-
 * **New Argument System** for better integration with the gui
 
-.. rubric:: DocType
 
-* **Many advancements** you will see soon
+* **Many new doctypes** you will see soon
 
 Release 0.9
 ===========
 
-.. rubric:: New Features
-
-.. rubric:: Improvements
-
 * **Total modularization** The relo library is going to be split up into its counterparts so it can be used more effectively
 * **maybe go away from yapsy** implement own plugin system
-
-.. rubric:: DocType
-
-* **This is the point where I have to actually add more doctypes...**
 
 Release 1.0
 ===========
 
-.. rubric:: New Features
-
 * **Cython** speed improvements
-
-.. rubric:: Improvements
 
 * **Code Check** Code is going to be checked completely. w/ pylint, pyflakes and pep8
 
-.. rubric:: DocType
+* **Tests** are going to be added
 
 Future
 ======
 
-Indexing of files for faster search
-index db generation one time, then changes
-performance needed code in C
-
-More DocTypes
