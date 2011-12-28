@@ -138,8 +138,6 @@ def main():
         relo = ReloUpdater(curVersion)
         if results.key in ['master', 'develop']:
             relo.update(results.key)
-            logger.info(relo.localVersion)
-            logger.info(relo.remoteVersion)
         else:
             logger.error('Invalid Repo-Key')
     ########## CRAWL ##########

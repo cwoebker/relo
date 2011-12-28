@@ -6,20 +6,28 @@ from os.path import basename
 import urllib2
 import urlparse
 import shutil
+import subprocess
+
+from relo.core.log import logger
+
+def curl(url, path):
+    command = "curl -L -# -o '%s' '%s'" % (path, url)
+    logger.debug(command)
+    subprocess.call(command, shell=True)
 
 class AbstractDownloader(object):
     def __init__(self):
         pass
     def url2name(self, url):
         return basename(urlsplit(url)[2])
-    def download(self, url, localFileName = None):
+    def download(self, url, path, localFileName = None):
         pass
 
 class HTTPDownloader(AbstractDownloader):
     def __init__(self):
         AbstractDownloader.__init__(self)
         pass
-    def download(self, url, fileName = None):
+    def download(self, url, path, fileName = None):
         def getFileName(url,openUrl):
             if 'Content-Disposition' in openUrl.info():
                 # If the response has Content-Disposition, try to get filename from it
@@ -35,7 +43,7 @@ class HTTPDownloader(AbstractDownloader):
         r = urllib2.urlopen(urllib2.Request(url))
         try:
             fileName = fileName or getFileName(url,r)
-            with open(fileName, 'wb') as f:
+            with open(os.path.join(path, fileName), 'wb') as f:
                 shutil.copyfileobj(r,f)
         finally:
             r.close()
