@@ -33,6 +33,9 @@ def main():
     parser = argparse.ArgumentParser(description='Recursive Document Content Search in Python')
     parser.add_argument('-v', '--version', action='version',
                         version=('%(prog)s ' + __version__))
+    log_group = parser.add_mutually_exclusive_group()
+    log_group.add_argument('-i', '--info', action='store_true', help='prints extra information')
+    log_group.add_argument('-d', '--debug', action='store_true', help='prints debug information')
     reloParsers = parser.add_subparsers(help='sub-command help')
 
     ##### Config Arguments #####
@@ -116,12 +119,21 @@ def main():
 
     try:
         results = parser.parse_args(args=sys.argv[1:])
-        logger.debug(results)
+        ########## PREP ##########
+        if results.info:
+            logger.level = 1
+        elif results.debug:
+            logger.level = 2
+
     except IOError, msg:
         parser.error(str(msg))
+        logger.error(str(msg))
         return 1
 
+    ########## INIT ##########
+    logger.debug(results)
     core.init()
+
 
     ########## CONFIG ##########
     if results.which.startswith('config'):
@@ -156,6 +168,7 @@ def main():
         print "Found:    %d" % crawler.links
         print "Followed: %d" % crawler.followed
         print "Stats:    (%d/s after %0.2fs)" % (int(math.ceil(float(crawler.links) / tTime)), tTime)
+    ########## SEARCH ##########
     elif results.which == 'search':
         check = checkIndex(results.directory)
         if check is not None and not results.forceSearch:
@@ -172,6 +185,7 @@ def main():
             search.list()
             search.filter()
             search.start()
+    ########## INDEX ##########
     elif results.which == 'index':
         if results.meta:
             meta = MetaIndex(results.directory, results.hidden)
@@ -197,6 +211,7 @@ def main():
             eTime = time.time()
             dTime = eTime - sTime
             logger.info("(Meta+Search: %0.2fs)" % (dTime))
+    ########## STATS ##########
     elif results.which == 'stats':
         stats = Stats(results.directory, results.module, results.hidden)
         if stats.check():

@@ -33,13 +33,11 @@ class ReloUpdater(AbstractUpdater):
         except:
             logger.error('Could not determine local version.')
             sys.exit()
-        logger.info('Local Version - ' + self.localVersion)
     def check(self):
         if self.key == 'master':
             url = RELO_MASTER_VERSION_URL
         elif self.key == 'develop':
             url = RELO_DEVELOP_VERSION_URL
-        logger.head('Checking for update...')
         remote = urllib.urlopen(url)
         self.remoteVersion = remote.read()
         try:
@@ -47,6 +45,7 @@ class ReloUpdater(AbstractUpdater):
         except:
             logger.error('Could not determine remote version.')
             sys.exit()
+        logger.info('Local Version - ' + self.localVersion)
         logger.info('Remote Version - ' + self.remoteVersion)
         if float(self.remoteVersion) > float(self.localVersion):
             logger.log("Found new version: " + self.remoteVersion)
@@ -55,7 +54,6 @@ class ReloUpdater(AbstractUpdater):
             logger.head("Already Up-To-Date")
             return False
     def download(self):
-        logger.head('Downloading relo... (%s)' % self.key)
         if self.key == 'master':
             url = RELO_UPDATE_URL_MASTER
         elif self.key == 'develop':
@@ -68,7 +66,6 @@ class ReloUpdater(AbstractUpdater):
             logger.error('Download error.')
             sys.exit()
     def extract(self):
-        logger.head('Extracting update...')
         file = tarfile.open(self.localPath, 'r:gz')
         logger.debug('Archive opened')
         try:
@@ -79,9 +76,12 @@ class ReloUpdater(AbstractUpdater):
             sys.exit()
     def update(self, key):
         self.key = key
+        logger.head('Checking for update...')
         if self.check():
             util.mkdirs(os.path.join(os.getcwd(), 'tmp'))
+            logger.head('Downloading relo... (%s)' % self.key)
             self.download()
+            logger.head('Extracting update...')
             self.extract()
         else:
             sys.exit()
