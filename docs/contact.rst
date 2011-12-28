@@ -4,7 +4,7 @@ Contact
 
 .. rubric:: About the author
 
-.. image:: http://www.gravatar.com/avatar/08f391968a5dcd91795e388f76f867f4?s=64
+.. image:: http://www.gravatar.com/avatar/08f391968a5dcd91795e388f76f867f4?s=256
     :alt: Photo
     :class: floatright
 
