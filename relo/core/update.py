@@ -39,7 +39,7 @@ class ReloUpdater(AbstractUpdater):
             url = RELO_MASTER_VERSION_URL
         elif self.key == 'develop':
             url = RELO_DEVELOP_VERSION_URL
-        logger.log('Checking remote version...')
+        logger.head('Checking for update...')
         remote = urllib.urlopen(url)
         self.remoteVersion = remote.read()
         try:
@@ -62,11 +62,21 @@ class ReloUpdater(AbstractUpdater):
             url = RELO_UPDATE_URL_DEVELOP
         logger.info('Download URL - %s' % url)
         self.localPath = os.path.join(os.getcwd(), 'tmp', 'relo-%s.tar.gz' % self.remoteVersion)
-        curl(url, self.localPath)
+        try:
+            curl(url, self.localPath)
+        except:
+            logger.error('Download error.')
+            sys.exit()
     def extract(self):
         logger.head('Extracting update...')
         file = tarfile.open(self.localPath, 'r:gz')
-        file.extractall(os.path.join(os.getcwd(), 'tmp'))
+        logger.debug('Archive opened')
+        try:
+            file.extractall(os.path.join(os.getcwd(), 'tmp'))
+            file.close()
+        except:
+            logger.error('Extract error.')
+            sys.exit()
     def update(self, key):
         self.key = key
         if self.check():
