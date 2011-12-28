@@ -4,11 +4,11 @@ Contact
 
 .. rubric:: About the author
 
-.. image:: _static/avatar.png
+.. image:: http://www.gravatar.com/avatar/08f391968a5dcd91795e388f76f867f4?s=64
     :alt: Photo
     :class: floatright
 
-Hello, my name is *Cecil Woebker* (aka *cwoebker*), author of `Relo <http://cwoebker.github.com/relo>`_.
+Hello, my name is *Cecil Woebker* (aka *cwoebker*), author of `Relo <http://cwoebker.com/relo>`_.
 I'm 16 years old and originally form Germany. But now I am visiting
 a high school in the United States. Python is my favorite language, but I
 also code in c++ and html/css. Watch me on `twitter <http://twitter.com/cwoebker>`_
