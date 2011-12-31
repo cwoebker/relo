@@ -18,7 +18,7 @@ Release 0.7
 
 * **Index Option** index files before search them, more efficient **DONE**
 
-* **Settings** config file plus a way to change settings
+* **Settings** config file plus a way to change settings **DONE**
 
 
 Release 0.8
@@ -30,7 +30,7 @@ Release 0.8
     * **Plugin Manager:** Control the Plugin Manager from the GUI.
     * **MenuBar Icon:** Make relopy easily accessible through the menu bar.
 
-* **Replace:** A replace function that can process all files and replace certain expressions with others.
+* **Adapt new plugin system** custom plugin system instead of yapsy
 
 * **New Argument System** for better integration with the gui
 
