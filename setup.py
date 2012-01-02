@@ -50,11 +50,12 @@ setup(
     version = version.replace(' ', '-'),
     author = "Cecil Woebker",
     author_email = "cwoebker@gmail.com",
+    homepage = "cwoebker.com"
     maintainer = "Cecil Woebker",
     maintainer_email = "cwoebker@gmail.com",
     description = ("Recursive Document Content Search in Python"),
     keywords = "python search document content",
-    url = "http://cwoebker.github.com/relo",
+    url = "http://cwoebker.com/relo",
     packages = packages,
     package_data={'relo': ['*.relo', 'doctype/*.relo']},
     #data_files = data_files,
