@@ -30,7 +30,7 @@ class Color(object):
     ITEM = ESCAPE % (BOLD % '37') # Black Bold/Bright
     SUBITEM = ESCAPE % '37' # White Normal
 
-    ENDC = '\033[0m'
+    ENDC = ESCAPE % '0'
 
     @classmethod
     def _deco(cls, msg, color):

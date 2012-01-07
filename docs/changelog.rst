@@ -5,6 +5,21 @@
 Release Notes and Changelog
 ===========================
 
+Release 0.7 (2012 Jan 7)
+========================
+
+* **Relo Updater:** Notifies about new versions (auto download?) **EXPERIMENTAL**
+
+* **Better Printing**: improved way of posting information **DONE**
+
+    * **Relo Colorful:** Colors for better information flow. **DONE**
+    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **DONE (but not part of the actual printing module)**
+
+* **Index Option** index files before search them, more efficient **DONE**
+
+* **Settings** config file plus a way to change settings **DONE**
+
+
 Release 0.6 (2011 Sep 16)
 =========================
 
