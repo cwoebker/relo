@@ -44,7 +44,6 @@ for dirpath, dirnames, filenames in os.walk(relo_dir):
 
 #[os.path.join(dirpath, f) for f in filenames]
 
-version = __import__('relo').get_version()
 setup(
     name = "Relo",
     version = version.replace(' ', '-'),
@@ -61,8 +60,7 @@ setup(
     #data_files = data_files,
     long_description=read('README.rst'),
     scripts = ['relopy'],
-    install_requires=['pypdf >= 1.13', 'argparse >= 1.2.1'],
-    #requires=['pypdf >= 1.13'],
+    install_requires=['pdfminer >= 20110515', 'argparse >= 1.2.1', 'redis >= 2.4.10', 'progressbar >= 2.3'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
