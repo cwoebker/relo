@@ -5,24 +5,10 @@
 Roadmap
 =======
 
-
-Release 0.7
-===========
-
-* **Relo Updater:** Notifies about new versions (auto download?) **IN PROGRESS**
-
-* **Better Printing**: improved way of posting information **DONE**
-
-    * **Relo Colorful:** Colors for better information flow. **DONE**
-    * **Progress Bar:** There is now a progressbar to display how much of the search is done. **DONE (but not part of the actual printing module)**
-
-* **Index Option** index files before search them, more efficient **DONE**
-
-* **Settings** config file plus a way to change settings **DONE**
-
-
 Release 0.8
 ===========
+
+* **Updater** finish and stabilize
 
 * **Graphical User Interface (GUI):** A User interface in wxPython, PyQt4 or whatever fits best.
 
@@ -33,6 +19,8 @@ Release 0.8
 * **Adapt new plugin system** custom plugin system instead of yapsy
 
 * **New Argument System** for better integration with the gui
+
+* **Documentation Updated** hopefully this will help with usage problems
 
 * **Many new doctypes** you will see soon
 
