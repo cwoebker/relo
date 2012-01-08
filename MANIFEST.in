@@ -1,9 +1,3 @@
-include README.rst
-include INSTALL
-include CHANGES
-include ROADMAP
-include LICENSE
-include MANIFEST.in
+include README.rst LICENSE
 recursive-include tests *
 recursive-include relo *
-include relo/doctype/*.relo
