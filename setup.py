@@ -6,7 +6,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "relo",
+    name = "Relo",
     version = '0.7-beta',
     author = "Cecil Woebker",
     author_email = "cwoebker@gmail.com",
