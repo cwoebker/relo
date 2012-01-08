@@ -19,7 +19,7 @@ from relo.core.util import mkdirs
 
 __author__ = "cwoebker"
 __version__ = config.get_version()
-__copyright__ = "© cwoebker"
+__copyright__ = "© 2012 cwoebker"
 __license__ = "See in LICENSE file"
 
 def init_home():
@@ -59,6 +59,8 @@ def main():
 
     ##### Local Argumnets #####
 
+    ## INDEX
+
     index = reloParsers.add_parser('index', help='index help')
     index.set_defaults(which='index')
 
@@ -72,6 +74,8 @@ def main():
     index_type_group.add_argument('-c', '--content', action='store_true',
         help='search match in content')
 
+    ## STATS
+
     stats = reloParsers.add_parser('stats', help='analyze help')
     stats.set_defaults(which='stats')
     stats.add_argument('module', action='store', help='module to use')
@@ -79,6 +83,8 @@ def main():
                         help='take hidden files into account')
     stats.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select directory')
+
+    ## SEARCH
 
     search = reloParsers.add_parser('search', help='search help')
     search.set_defaults(which='search')
