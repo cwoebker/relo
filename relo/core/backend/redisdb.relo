@@ -1,0 +1,9 @@
+[Core]
+Name = REDISDB
+Module = redisdb
+
+[Documentation]
+Author = cwoebker
+Version = 0.1
+Website = http://cwoebker.github.com/relo/
+Description = Relo standard index backend based on redis

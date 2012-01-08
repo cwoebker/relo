@@ -1,60 +1,13 @@
 #!/usr/bin/env python
 #encoding: utf-8
 
-import sys, os
-import argparse
 import relo
-from relo import Relo
-from relo import yapsy # Needed for pyinstaller compilation
+from relo.core import config
 
 __author__ = "cwoebker"
-__version__ = relo.get_version()
+__version__ = config.get_version()
 __copyright__ = "cwoebker"
 __license__ = "See in LICENSE file"
 
-def main(argv):
-    """
-    parses the arguments and starts the application
-    """
-    parser = argparse.ArgumentParser(description='Recursive Document Content Search in Python')
-    parser.add_argument('search_key', action='store', help='keyword to search for')
-    parser.add_argument('-v', '--version', action='version',
-                        version=('%(prog)s ' + __version__))
-    parser.add_argument('-s', '--hidden', '--secret', action='store_true',
-                        help='search hidden files')
-    parser.add_argument('-l', '--links', '--symbolic', action='store_true',
-                        help='search in symbolically linked directories and files')
-    parser.add_argument('-r', '--recursive', action='store_true',
-                        help='search recursively')
-    doctype_group = parser.add_mutually_exclusive_group()
-    doctype_group.add_argument('-a', '--all', action='store_true',
-                        help='search all files (even non supported with standard plugin)')
-    doctype_group.add_argument('--doctype', action='store',
-                        help='specify doctypes you want to use in your search')
-    search_type_group = parser.add_mutually_exclusive_group()
-    search_type_group.add_argument('-n', '--name', action='store_true',
-                            help='search match in fileNames (regex allowed) - (default)')
-    search_type_group.add_argument('-c', '--content', action='store_true',
-                            help='search match in content (regex allowed)')
-    parser.add_argument('--debug', '--verbose', action='store_true',
-                        help='enable debug/verbose mode')
-    parser.add_argument('-d', '--directory', action='store', default='./',
-                        dest='directory', help='select Directory - (default=current)')
-    
-    try:
-        results = parser.parse_args(args=argv)
-    except IOError, msg:
-        parser.error(str(msg))
-    print results
-
-    search = Relo(results.debug, results.all, results.hidden, results.links, results.content, results.recursive,
-                    results.doctype, results.directory, results.search_key)
-    search.list()
-    search.filter()
-    #print search.fileList
-    #print search.extList
-    #print search.filteredList
-    search.start()
-
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    relo.main()
