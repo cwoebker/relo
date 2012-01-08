@@ -8,7 +8,7 @@ Roadmap
 Release 0.8
 ===========
 
-* **Updater** finish and stabilize
+* **Relo Updater:** updates relo
 
 * **Graphical User Interface (GUI):** A User interface in wxPython, PyQt4 or whatever fits best.
 
