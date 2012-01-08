@@ -1,48 +1,9 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 from distutils.command.install import INSTALL_SCHEMES
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-#def fullsplit(path, result=None):
-#    """
-#    Split a pathname into components (the opposite of os.path.join) in a
-#    platform-neutral way.
-#    """
-#    if result is None:
-#        result = []
-#    head, tail = os.path.split(path)
-#    if head == '':
-#        return [tail] + result
-#    if head == path:
-#        return result
-#    return fullsplit(head, [tail] + result)
-
-#for scheme in INSTALL_SCHEMES.values():
-#    scheme['data'] = scheme['purelib']
-
-#packages, data_files = [], []
-#root_dir = os.path.dirname(__file__)
-#if root_dir != '':
-#    os.chdir(root_dir)
-#relo_dir = 'relo'
-
-#for dirpath, dirnames, filenames in os.walk(relo_dir):
-#    # Ignore dirnames that start with '.'
-#    for i, dirname in enumerate(dirnames):
-#        if dirname.startswith('.'): del dirnames[i]
-#    if '__init__.py' in filenames:
-#        packages.append('.'.join(fullsplit(dirpath)))
-#    reloList=[]
-#    for file in filenames:
-#        if '.relo' in file:
-#            reloList.append(file)
-#    if reloList == []:
-#        continue
-#    data_files.append((dirpath, reloList))
-#
-#[os.path.join(dirpath, f) for f in filenames]
 
 setup(
     name = "relo",
@@ -55,12 +16,11 @@ setup(
     description = ("Recursive Document Content Search in Python"),
     keywords = "python search document content",
     url = "http://cwoebker.com/relo",
-    packages = ['relo'],
-    package_data={'relo': ['core/etc/*', 'core/backend/*', 'core/doctype/*']},
-    #data_files = data_files,
+    packages = find_packages(),
+    include_package_data=True,
     long_description=read('README.rst'),
     scripts = ['relopy'],
-    install_requires=['pdfminer >= 20110515', 'argparse >= 1.2.1', 'redis >= 2.4.10', 'progressbar >= 2.3'],
+    install_requires=['BeautifulSoup >= 3.2.0', 'pdfminer >= 20110515', 'argparse >= 1.2.1', 'redis >= 2.4.10', 'progressbar >= 2.3'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
