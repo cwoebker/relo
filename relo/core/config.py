@@ -15,7 +15,7 @@ except:
     import configparser as ConfigParser
 
 # relo version
-VERSION = (0, 6, 'beta')
+VERSION = (0, 7, 'beta')
 
 def get_version():
     return '%s.%s' % (VERSION[0], VERSION[1])
