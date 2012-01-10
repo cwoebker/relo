@@ -86,7 +86,6 @@ exclude_patterns = ['_build']
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-
 # -- Options for HTML output ---------------------------------------------------
 
 sys.path.append(os.path.abspath('_themes'))
@@ -99,6 +98,11 @@ html_theme = 'cw'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #html_theme_options = {
+#	important_links: [],
+#	flattr: '',
+#	pypi: u'Relo',
+#	github_name: u'cwoebker',
+#	github_project: u'relo',
 #}
 
 # Add any paths that contain custom themes here, relative to this directory.
