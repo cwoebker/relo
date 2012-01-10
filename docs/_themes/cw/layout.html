@@ -102,11 +102,21 @@
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/styles.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/syntax.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/css/styles.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/css/syntax.css', 1) }}" type="text/css" />
     {%- for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
     {%- endfor %}
+{%- endmacro %}
+
+{%- macro customhead() %}
+ <link rel="stylesheet" href="{{ pathto('_static/css/flexible-nav.min.css', 1) }}" type="text/css" />
+    <script type="text/javascript" src="{{ pathto('_static/js/flexible-nav.js', 1) }}"></script>
+    <script type="text/javascript">
+      $(function(){
+          new FlexibleNav ( new FlexibleNavMaker().make().prependTo('body') );
+      });
+    </script>
 {%- endmacro %}
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -117,6 +127,7 @@
     <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
     {%- endblock %}
     {{ css() }}
+    {{ customhead() }}
     {%- if not embedded %}
     {{ script() }}
     {%- if use_opensearch %}
@@ -155,6 +166,46 @@
 {%- block extrahead %} {% endblock %}
   </head>
   <body>
+
+    <div id="custom-header"></div>
+    <div id="custom-header-underline"></div>
+
+    <div id="topbar">
+      <ul id="me">
+        <li>
+          <a href="/"><span id="cwoebker">{{ project }}</span></a>
+        </li>
+        <div id="external">
+        <li>
+          <a href="https://github.com/cwoebker" id="github">
+              @ Github
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/cwoebker" id="twitter">
+            @ PyPi
+          </a>
+        </li>
+        <li>
+          <a href="feed://feeds.feedburner.com/cwoebker" id="rss">
+            @ Flattr
+          </a>
+          <a href="feed://feeds.feedburner.com/cwoebker" id="rss">
+            @ Issue Tracker
+          </a>
+        </li>
+        </div> 
+        <div id="titlediv">{{ title|striptags|e }}</div>
+        <div id="section">
+        <li><a class="section" href="/about">about</a></li>
+        <li><a class="section" href="http://vimeo.com/cwoebker">videos</a></li>
+        <li><a class="section" href="/projects">projects</a></li>
+        <li><a class="section" href="/scientia">scientia</a></li>
+        <li><a class="section" href="/tags">tags</a></li>
+        </div>
+      </ul>
+    </div>
+
 {%- block header %}{% endblock %}
 
 {%- block relbar1 %}{{ relbar() }}{% endblock %}
@@ -169,7 +220,29 @@
         <div class="bodywrapper">
       {%- endif %}
           <div class="body">
-            {% block body %} {% endblock %}
+            <div class="content">
+              <div class="posts">
+                {% block body %} {% endblock %}
+                {%- block relbar2 %}{{ relbar() }}{% endblock %}
+                {%- block footer %}
+                  <div class="footer">
+                  {%- if show_copyright %}
+                    {%- if hasdoc('copyright') %}
+                      {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+                    {%- else %}
+                      {% trans copyright=copyright %}&copy; Copyright {{ copyright }}.{% endtrans %}
+                    {%- endif %}
+                  {%- endif %}
+                  {%- if last_updated %}
+                    {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+                  {%- endif %}
+                  {%- if show_sphinx %}
+                    {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+                  {%- endif %}
+                  </div>
+              {%- endblock %}
+              </div>
+            </div>
           </div>
       {%- if render_sidebar %}
         </div>
@@ -182,24 +255,6 @@
     </div>
 {%- endblock %}
 
-{%- block relbar2 %}{{ relbar() }}{% endblock %}
 
-{%- block footer %}
-    <div class="footer">
-    {%- if show_copyright %}
-      {%- if hasdoc('copyright') %}
-        {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
-      {%- else %}
-        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
-      {%- endif %}
-    {%- endif %}
-    {%- if last_updated %}
-      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
-    {%- endif %}
-    {%- if show_sphinx %}
-      {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
-    {%- endif %}
-    </div>
-{%- endblock %}
   </body>
 </html>
