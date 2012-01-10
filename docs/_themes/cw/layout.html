@@ -114,7 +114,7 @@
     <script type="text/javascript" src="{{ pathto('_static/js/flexible-nav.js', 1) }}"></script>
     <script type="text/javascript">
       $(function(){
-          new FlexibleNav ( new FlexibleNavMaker().make().prependTo('.content') );
+          new FlexibleNav ( new FlexibleNavMaker().make().prependTo('.document') );
       });
     </script>
 {%- endmacro %}
@@ -208,7 +208,7 @@
 
 {%- block header %}{% endblock %}
 
-{%- block relbar1 %}{{ relbar() }}{% endblock %}
+<!--{%- block relbar1 %}{{ relbar() }}{% endblock %}-->
 
 {%- block content %}
   {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
@@ -223,6 +223,8 @@
             <div class="content">
               <div class="posts">
                 {% block body %} {% endblock %}
+                <br />
+                <br />
                 {%- block relbar2 %}{{ relbar() }}{% endblock %}
                 {%- block footer %}
                   <div class="footer">
