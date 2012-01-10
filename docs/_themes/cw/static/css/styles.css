@@ -261,6 +261,11 @@ h3{
   color: #000;
 }
 
+#topbar #me #section {
+  position: relative;
+  top: -2px;
+}
+
 #topbar #me .section{
   margin: 25px 0 0 -15px;
   display: inline;
