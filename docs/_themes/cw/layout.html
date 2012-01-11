@@ -111,12 +111,12 @@
 
 {%- macro customhead() %}
  <link rel="stylesheet" href="{{ pathto('_static/css/flexible-nav.min.css', 1) }}" type="text/css" />
-    <script type="text/javascript" src="{{ pathto('_static/js/flexible-nav.js', 1) }}"></script>
+    <!--<script type="text/javascript" src="{{ pathto('_static/js/flexible-nav.js', 1) }}"></script>
     <script type="text/javascript">
       $(function(){
           new FlexibleNav ( new FlexibleNavMaker().make().prependTo('.document') );
       });
-    </script>
+    </script>-->
     <script type="text/javascript">
 /* <![CDATA[ */
     (function() {
@@ -205,15 +205,20 @@
             Issues
           </a>
         </li>
+        <li>
+          {%- block topsearch %}
+          {%- include "topsearch.html" %}
+          {%- endblock %}
+        </li>
         </div> 
-        <div id="titlediv">{{ title|striptags|e }}</div>
-        <div id="section">
+        <!--<div id="titlediv">{{ title|striptags|e }}</div>-->
+        <!--<div id="section">
         <li><a class="section" href="/about">about</a></li>
         <li><a class="section" href="http://vimeo.com/cwoebker">videos</a></li>
         <li><a class="section" href="/projects">projects</a></li>
         <li><a class="section" href="/scientia">scientia</a></li>
         <li><a class="section" href="/tags">tags</a></li>
-        </div>
+        </div>-->
       </ul>
     </div>
 
