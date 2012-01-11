@@ -85,16 +85,19 @@ hr{
   font-family: "Helvetica", sans-serif;
 }
 .posts ul{
-  margin: 0;
+  margin: 10px 0 10px 30px;
   padding: 0;
 }
 .posts li{
   font-size: 14px;
-  list-style: none;
+  /*list-style: none;*/
   padding: 5px 3px;
   margin: 0;
-  color: #777;
-  border-bottom: 1px solid #eee;
+  color: #222;
+  /*border-bottom: 1px solid #eee;*/
+  line-height: 1.4em;
+  margin-bottom: 1em;
+  list-style-type: square;
 }
 .posts li span{
   float: right;
