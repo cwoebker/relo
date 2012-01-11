@@ -235,6 +235,16 @@ h3{
   color: #666;
 }
 
+#topbar #me #searchbox {
+  position: absolute;
+  display: inline;
+  width: 200px;
+}
+
+p.highlight-link {
+  display: none;
+}
+
 #topbar #me #internal {
 	position: relative;
 	top: -6px;
