@@ -22,9 +22,11 @@ __version__ = config.get_version()
 __copyright__ = "© 2012 cwoebker"
 __license__ = "See in LICENSE file"
 
+
 def init_home():
     if not os.path.isdir(PATH_HOME_ETC):
         mkdirs(PATH_HOME_ETC)
+
 
 def main():
     """
@@ -140,7 +142,6 @@ def main():
     logger.debug(results)
     core.init()
 
-
     ########## CONFIG ##########
     if results.which.startswith('config'):
         if results.which == 'config.list':
@@ -212,7 +213,7 @@ def main():
             meta.listProject()
             meta.run()
             inverted = InvertedIndex(results.directory, results.hidden)
-            inverted.setUpProject('meta:::search') ### make index more modular and fix this nasty code
+            inverted.setUpProject('meta:::search')  # make index more modular and fix this nasty code
             inverted.run()
             eTime = time.time()
             dTime = eTime - sTime
