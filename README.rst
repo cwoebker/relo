@@ -6,9 +6,9 @@ More information is available at the `homepage <http://cwoebker.github.com/relo>
 Build Status
 ------------
 
-Master: {<img src="https://secure.travis-ci.org/cwoebker/relo.png?branch=master" alt="Master Build Status" />}[http://travis-ci.org/cwoebker/relo]
+Master: .. image:: https://secure.travis-ci.org/cwoebker/relo.png?branch=master
 
-Develop: {<img src="https://secure.travis-ci.org/cwoebker/relo.png?branch=develop" alt="Develop Build Status" />}[http://travis-ci.org/cwoebker/relo]
+Develop: .. image:: https://secure.travis-ci.org/cwoebker/relo.png?branch=develop
 
 What kind of documents are supported?
 -------------------------------------
