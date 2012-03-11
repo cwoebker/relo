@@ -1,19 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import sys
-import os
 import redis
 from relo.core.log import logger
 
-dirname = os.path.dirname(os.path.abspath(__file__))
-up_dir = os.path.dirname(dirname)
-sys.path.append(up_dir)
 
-from relo.core.interfaces import Backend
-
-
-class REDISDB(Backend):
+class REDISDB(object):
     name = "redis"
     expiretime = 60 * 60 * 24 * 7  # for a week
 

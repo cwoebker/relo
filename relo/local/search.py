@@ -16,6 +16,8 @@ from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
                         Percentage
 from metaphone import dm as double_metaphone
 
+from relo.core.backend import REDISDB
+
 # from relo.core.doctype import *
 
 
@@ -23,19 +25,9 @@ def checkIndex(path):
     absolute = os.path.abspath(path)
 
     def setUpBackend():
-        backendManager = PluginManager(plugin_info_ext='relo')
-        backendManager.setPluginPlaces(["relo/core/backend"])
-        backendManager.locatePlugins()
-        backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
-
-        for plugin in backendManager.getAllPlugins():
-            backendManager.activatePluginByName(plugin.name)
-
-        for plugin in backendManager.getAllPlugins():
-            if plugin.name == conf.readConfig('core.index'):
-                db = plugin.plugin_object
-                db.init()
-                return db
+        db = REDISDB()
+        db.init()
+        return db
     db = setUpBackend()
     project_list = db.listProjects(config.REDIS_KEY_PROJECTS)
     for project in project_list:
