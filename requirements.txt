@@ -1,4 +1,5 @@
 distribute==0.6.24
+argparse==1.2.1
 pdfminer==20110515
 BeautifulSoup==3.2.0
 progressbar==2.3
