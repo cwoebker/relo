@@ -8,7 +8,7 @@
 #####################################################################
 #####################################################################
 import os
-import re
+
 try:
     import ConfigParser
 except:
@@ -17,8 +17,11 @@ except:
 # relo version
 VERSION = (0, 7, 'beta')
 
+
 def get_version():
     return '%s.%s' % (VERSION[0], VERSION[1])
+
+
 def get_long_version():
     return '%s.%s %s' % (VERSION[0], VERSION[1], VERSION[2])
 
@@ -53,23 +56,30 @@ PATH_HOME_ETC = os.path.join(PATH_HOME, 'etc')
 
 # files
 
+
 ##### Config #####
 class ReloConfig(object):
     def __init__(self):
         self.config = ConfigParser.SafeConfigParser()
+
     def loadConfig(self):
         self.config.read([PATH_ETC_CONFIG, os.path.join(INSTALLER_ROOT, 'etc', 'config.cfg')])
+
     def saveConfig(self):
         self.config.write(PATH_ETC_CONFIG)
+
     def listConfig(self, category):
+
         def listCore():
             print "[Core]"
             for item in self.config.items('core'):
                 print " - " + str(item)
+
         def listLocal():
             print "[Local]"
             for item in self.config.items('local'):
                 print " - " + str(item)
+
         def listNet():
             print "[Net]"
             for item in self.config.items('net'):
@@ -83,10 +93,10 @@ class ReloConfig(object):
         else:
             print "category not found"
 
-
     def readConfig(self, key):
         section, option = key.split('.')
         return self.config.get(section, option)
+
     def writeConfig(self, key, value):
         section, option = key.split('.')
         self.config.set(section, option, value)

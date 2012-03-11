@@ -10,15 +10,18 @@ from relo.core import doctype
 from relo.core import config
 from relo.core.config import conf
 from relo.core.log import logger
-import os, time
+import os
+import time
 from progressbar import ProgressBar, RotatingMarker, Bar, ReverseBar, \
                         Percentage
 from metaphone import dm as double_metaphone
 
 # from relo.core.doctype import *
 
+
 def checkIndex(path):
     absolute = os.path.abspath(path)
+
     def setUpBackend():
         backendManager = PluginManager(plugin_info_ext='relo')
         backendManager.setPluginPlaces(["relo/core/backend"])
@@ -40,15 +43,18 @@ def checkIndex(path):
             return project[1:]
     return None
 
+
 def fileNameSearch(fileList, key):
     for itempath in fileList:
         item = os.path.basename(itempath)
         if not item.find(key) == -1:
             logger.log("Found: " + itempath)
 
+
 class CustomSearch(object):
     def __init__(self):
         pass
+
 
 class IndexSearch(CustomSearch):
     def __init__(self, directory, key):
@@ -56,6 +62,7 @@ class IndexSearch(CustomSearch):
         self.key = key
         self.setUpBackend()
         self.results = []
+
     def setUpBackend(self):
         self.backendManager = PluginManager(plugin_info_ext='relo')
         self.backendManager.setPluginPlaces(["relo/core/backend"])
@@ -69,30 +76,36 @@ class IndexSearch(CustomSearch):
             if plugin.name == conf.readConfig('core.index'):
                 self.db = plugin.plugin_object
                 self.db.init()
+
     def loadFiles(self):
         return self.db.getSet(config.REDIS_KEY_DOCUMENTS % {"project_id": self.directory})
+
     def loadMetaphones(self):
         return self.db.getSet(config.REDIS_KEY_METAPHONES % {"project_id": self.directory})
+
     def nameSearch(self):
         files = self.loadFiles()
         for file in files:
             item = os.path.basename(file)
             if not item.find(self.key) == -1:
                 self.results.append(file)
+
     def contentSearch(self):
-        metaphones = self.loadMetaphones() ## do part of search in redis itself in the future so we dont hae to laod everything, keys *mp*
+        metaphones = self.loadMetaphones()  # do part of search in redis itself in the future so we dont hae to laod everything, keys *mp*
         # or just try to load metaphone and see what you get
         key_mps = double_metaphone(unicode(self.key, errors='ignore'))
-        for mp in metaphones: # filter, map and reduce should help here in future
+        for mp in metaphones:  # filter, map and reduce should help here in future
             for key_mp in key_mps:
                 if key_mp == mp:
-                    self.results.extend(self.db.getSet(config.REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone":key_mp}))
+                    self.results.extend(self.db.getSet(config.REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone": key_mp}))
+
     def printResult(self):
         if len(self.results) == 0:
             logger.item("No results found")
         else:
             for item in self.results:
                 logger.item(item)
+
 
 class Search(CustomSearch):
     def __init__(self, info=False, debug=False, all=False, hidden=False, filelog=False, content=False, recursive=False,
@@ -144,6 +157,7 @@ class Search(CustomSearch):
         #Main Progress Bar
         self.mainWidgets = ['Searching: ', Percentage(), ' ', Bar('>'),
                    ' ', RotatingMarker()]
+
     def list(self):
         widgets = ["Listing directory content... ",
                    Bar('>'), ' ', RotatingMarker(), ' ', ReverseBar('<')]
@@ -191,8 +205,10 @@ class Search(CustomSearch):
             self.startName()
         self.pbar.finish()
         self.printResults()
+
     def startName(self):
         fileNameSearch(self.fileList, self.key)
+
     def startContent(self):
         self.setUpDocType(self.extList)
         i = 0
@@ -203,11 +219,13 @@ class Search(CustomSearch):
             self.search(content, item)
             i += 1
             self.pbar.update(i)
+
     def search(self, string, item):
         found = []
         for m in re.finditer(self.key, string):
             found.append(str(m.start()))
         self.results[item] = found
+
     def printResults(self):
         logger.head("Search Results | " + self.dir + " | '" + self.key + "'")
         for key, value in self.results.iteritems():
@@ -215,6 +233,7 @@ class Search(CustomSearch):
                 continue
             logger.item(key)
             logger.subitem(repr(value))
+
     def setUpDocType(self, extList):
         self.extList = extList
 
