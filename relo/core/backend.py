@@ -11,7 +11,7 @@ class REDISDB(object):
 
     def init(self):
         logger.debug("Connecting to Redis")
-        self.connection = redis.StrictRedis(host='localhost', port=6379, db=12)
+        self.connection = redis.StrictRedis(host='localhost', port=6379)
 
     def check(self):
         logger.debug("check not needed with redis")
