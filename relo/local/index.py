@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import os, time, re
+import os
+import time
+import re
 
 from metaphone import dm as double_metaphone
 
@@ -9,12 +11,9 @@ from relo.core.config import conf
 from relo.core.log import logger
 
 from relo.local import util
-from relo.core.interfaces import Backend
 from relo.yapsy.PluginManager import PluginManager
 import hashlib
 from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, FormatLabel
-
-from relo.core.backend import *
 
 ##### Inverted Index Variables #####
 
@@ -46,6 +45,7 @@ REDIS_KEY_PROJECTS = "projects"
 class CustomIndex(object):
     def __init__(self):
         pass
+
     def setUpBackend(self):
         self.backendManager = PluginManager(plugin_info_ext='relo')
         self.backendManager.setPluginPlaces(["relo/core/backend"])
@@ -59,8 +59,10 @@ class CustomIndex(object):
             if plugin.name == conf.readConfig('core.index'):
                 self.db = plugin.plugin_object
                 self.db.init()
+
     def setUpProject(self, type):
         self.db.addProject(REDIS_KEY_PROJECTS, self.directory, type)
+
     def listProject(self):
         for root, subFolders, files in os.walk(self.directory):
             for file in files:
@@ -71,10 +73,13 @@ class CustomIndex(object):
                     #print "link found" + itempath
                     continue
                 self.db.addSet(REDIS_KEY_DOCUMENTS % {"project_id": self.directory}, itempath)
+
     def run(self):
         pass
+
     def __end__(self):
         pass
+
 
 class MetaIndex(CustomIndex):
     """
@@ -82,7 +87,7 @@ class MetaIndex(CustomIndex):
     """
     def __init__(self, directory, hidden=False):
         self.directory = os.path.abspath(directory)
-        logger.head("Relo Index | meta | "  +  directory)
+        logger.head("Relo Index | meta | " + directory)
         self.setUpBackend()
 
     def run(self):
@@ -119,16 +124,19 @@ class MetaIndex(CustomIndex):
         setupTime = pTime - sTime
         tTime = eTime - sTime
         logger.debug("(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime))
+
     def __end__(self):
         self.db.end()
+
 
 class InvertedIndex(CustomIndex):
     def __init__(self, directory, hidden=False):
         self.directory = os.path.abspath(directory)
-        logger.head("| Relo Index | content | "  +  directory)
+        logger.head("| Relo Index | content | " + directory)
         self.setUpBackend()
         self.punctuation_regex = re.compile(r"[%s]" % re.escape(PUNCTUATION_CHARS))
         super(InvertedIndex, self).__init__()
+
     def setUpDocType(self, extList):
         self.extList = extList
 
@@ -154,6 +162,7 @@ class InvertedIndex(CustomIndex):
         words = [word for word in text.split() if len(word) >= MIN_WORD_LENGTH and word.lower() not in STOP_WORDS]
 
         return words
+
     def get_metaphones(self, words):
         """Get the metaphones for a given list of words"""
         metaphones = set()
@@ -164,6 +173,7 @@ class InvertedIndex(CustomIndex):
             if(metaphone[1]):
                 metaphones.add(metaphone[1].strip())
         return metaphones
+
     def index_item(self, item, content):
         """Indexes a certain content"""
 
@@ -173,6 +183,7 @@ class InvertedIndex(CustomIndex):
 
         for metaphone in metaphones:
             self._link_item_and_metaphone(item, metaphone)
+
     def _link_item_and_metaphone(self, item, metaphone):
         # Add the item to the metaphone key
         redis_key = REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone": metaphone}
@@ -197,12 +208,14 @@ class InvertedIndex(CustomIndex):
             self.db.redis.delete(REDIS_KEY_METAPHONE % {"project_id": self.directory, "metaphone": project_metaphone})
 
         return True
+
     def load(self, itempath):
         for plugin in self.docTypeManager.getAllPlugins():
             if plugin.name == util.getFileType(itempath).upper():
                 return plugin.plugin_object.load(itempath)
         plugin = self.docTypeManager.getPluginByName("DEFAULT")
         return plugin.plugin_object.load(itempath)
+
     def run(self):
         sTime = time.time()
         logger.log("Preparing Index...")
@@ -242,7 +255,6 @@ class InvertedIndex(CustomIndex):
         setupTime = pTime - sTime
         tTime = eTime - sTime
         logger.debug("(Setup : %0.2fs) - (Index : %0.2fs) - (Total : %0.2fs)" % (setupTime, iTime, tTime))
+
     def __end__(self):
         self.db.end()
-
-
