@@ -56,18 +56,8 @@ class IndexSearch(CustomSearch):
         self.results = []
 
     def setUpBackend(self):
-        self.backendManager = PluginManager(plugin_info_ext='relo')
-        self.backendManager.setPluginPlaces(["relo/core/backend"])
-        self.backendManager.locatePlugins()
-        self.backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
-
-        for plugin in self.backendManager.getAllPlugins():
-            self.backendManager.activatePluginByName(plugin.name)
-
-        for plugin in self.backendManager.getAllPlugins():
-            if plugin.name == conf.readConfig('core.index'):
-                self.db = plugin.plugin_object
-                self.db.init()
+        self.db = REDISDB()
+        self.db.init()
 
     def loadFiles(self):
         return self.db.getSet(config.REDIS_KEY_DOCUMENTS % {"project_id": self.directory})
