@@ -15,6 +15,8 @@ from relo.yapsy.PluginManager import PluginManager
 import hashlib
 from progressbar import ProgressBar, RotatingMarker, Bar, Percentage, ETA, FormatLabel
 
+from relo.core.backend import REDISDB
+
 ##### Inverted Index Variables #####
 
     # Words which should not be indexed
@@ -47,18 +49,8 @@ class CustomIndex(object):
         pass
 
     def setUpBackend(self):
-        self.backendManager = PluginManager(plugin_info_ext='relo')
-        self.backendManager.setPluginPlaces(["relo/core/backend"])
-        self.backendManager.locatePlugins()
-        self.backendManager.loadPlugins("<class 'relo.core.interfaces.Backend'>", ['redis'])
-
-        for plugin in self.backendManager.getAllPlugins():
-            self.backendManager.activatePluginByName(plugin.name)
-
-        for plugin in self.backendManager.getAllPlugins():
-            if plugin.name == conf.readConfig('core.index'):
-                self.db = plugin.plugin_object
-                self.db.init()
+        self.db = REDISDB()
+        self.db.init()
 
     def setUpProject(self, type):
         self.db.addProject(REDIS_KEY_PROJECTS, self.directory, type)
