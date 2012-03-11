@@ -6,7 +6,15 @@ python:
 # environment variables to set
 #env: RELO_PATH=/path/to/relo
 # command to run tests
-script: python test.py
+#before_script:
+#  -
+script: nosetests
+#after_script:
+#  -
 # command to install dependencies
+#before_command:
+#  -
 install:
   - pip install -r requirements.txt --use-mirrors
+#after_command:
+#  -
