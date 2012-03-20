@@ -1,10 +1,10 @@
-====
-Relo
-====
-More information is available at the `homepage <http://cwoebker.github.com/relo>`_.
+Relo: Intelligent cli search for Humans
+=======================================
 
-Build Status
-------------
+`Relo <http://relo.cwoebker.com>`_.
+
+`Build Status <http://travis-ci.org/cwoebker/relo>`_
+----------------------------------------------------
 
 Master:
 
@@ -15,18 +15,43 @@ Develop:
 .. image:: https://secure.travis-ci.org/cwoebker/relo.png?branch=develop
 
 
-What kind of documents are supported?
--------------------------------------
-For now you have to browse through the `DocType <http://github.com/cwoebker/relo/tree/master/doctype/>`_ plugin directory on github.
+Usage
+-----
 
-Where are the Docs?
--------------------
-Check `readthedocs.org <http://relo.readthedocs.org/>`_ or you can still check out the `github wiki <http://wiki.github.com/cwoebker/relo>`_.
+``relo config``
+  Changes settings and other global variables.
 
-Additionally try running ``python relo.py --help`` for basic usage information.
+``relo update``
+  Updates the relo installation.
+
+``relo index``
+  Creates an index of a given directory.
+
+``relo search``
+  Either searches a filesystem or an index if available.
+
+``relo stats``
+  Analyzes a filesystem or an index if available.
 
 
-Need more info or want to contribute?
-------------------------------------
+Installation
+------------
 
-Email me with any questions
+**Warning:** This is still beta. Do not use for anything hugely important.
+
+Installing relo is easy with pip:
+
+    $ pip install legit
+
+You'll then be able to call upon the ``relo`` command any time.
+
+Documentation
+--------------
+
+Check `the homepage <http://relo.cwoebker.com/>`_.
+
+Additionally try running ``relo --help`` for basic usage information.
+
+
+Caveats
+-------
