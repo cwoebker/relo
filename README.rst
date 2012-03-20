@@ -1,7 +1,7 @@
 Relo: Intelligent cli search for Humans
 =======================================
 
-`Relo <http://relo.cwoebker.com>`_.
+`Relo <http://relo.cwoebker.com>`_ recursively searches documents and analyzes them.
 
 `Build Status <http://travis-ci.org/cwoebker/relo>`_
 ----------------------------------------------------
@@ -37,13 +37,11 @@ Usage
 Installation
 ------------
 
-**Warning:** This is still beta. Do not use for anything hugely important.
-
 Installing relo is easy with pip:
 
     $ pip install legit
 
-You'll then be able to call upon the ``relo`` command any time.
+You'll then be able to call upon the ``relo`` command at any time.
 
 Documentation
 --------------
@@ -55,3 +53,5 @@ Additionally try running ``relo --help`` for basic usage information.
 
 Caveats
 -------
+
+- **Warning:** This is still beta. Do not use for anything hugely important.
