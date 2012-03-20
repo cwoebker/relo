@@ -19,19 +19,19 @@ Usage
 -----
 
 ``relo config``
-  Changes settings and other global variables.
+    Changes settings and other global variables.
 
 ``relo update``
-  Updates the relo installation.
+    Updates the relo installation.
 
 ``relo index``
-  Creates an index of a given directory.
+    Creates an index of a given directory.
 
 ``relo search``
-  Either searches a filesystem or an index if available.
+    Either searches a filesystem or an index if available.
 
 ``relo stats``
-  Analyzes a filesystem or an index if available.
+    Analyzes a filesystem or an index if available.
 
 
 Installation

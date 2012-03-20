@@ -13,9 +13,6 @@ APP_NAME = 'Relo'
 APP_SCRIPT = './relopy'
 VERSION = '0.7.0'
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 # Grab requirements.
 with open('requirements.txt') as f:
     required = f.readlines()
@@ -69,12 +66,7 @@ settings.update(
         "Operating System :: OS Independent",
         "Topic :: Utilities",
         "Topic :: Text Processing",
-        "Topic :: Software Development :: Libraries :: Python Modules",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.3",
-        "Programming Language :: Python :: 2.4",
-        "Programming Language :: Python :: 2.5",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "License :: OSI Approved :: BSD License",
