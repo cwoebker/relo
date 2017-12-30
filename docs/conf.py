@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'relo'
-copyright = u'2012. A <a href="http://cwoebker.com/projects">Cecil Woebker</a> Project'
+copyright = u'2012-2018. A <a href="http://cwoebker.com/projects">Cecil Woebker</a> project'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -190,7 +190,7 @@ htmlhelp_basename = 'relodoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'relo.tex', u'relo Documentation',
+  ('index', 'relo.tex', u'relo documentation',
    u'Cecil Woebker', 'manual'),
 ]
 
@@ -223,6 +223,6 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'relo', u'relo Documentation',
+    ('index', 'relo', u'relo documentation',
      [u'Cecil Woebker'], 1)
 ]

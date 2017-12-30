@@ -1,4 +1,4 @@
-#Relo: Intelligent cli search for Humans
+# Relo: Intelligent cli search for Humans
 
 [`relo`](https://relo.cwoebker.com) recursively searches documents and analyzes them.
 
