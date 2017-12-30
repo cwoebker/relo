@@ -1,20 +1,39 @@
 language: python
 python:
-  - "2.6"
+  - "2.6" # deprecated
   - "2.7"
+  - "pypy"
 #  - "3.2"
+#  - "3.3" # not sure
+#  - "3.4"
+#  - "pypy3"
+#  - "nightly"
+
+notifications:
+  email:
+    recipients:
+      - me@cwoebker.com
+    #on_success: [always|never|change] # default: change
+    #on_failure: change # [always|never|change] # default: always
+
 # environment variables to set
 #env: RELO_PATH=/path/to/relo
-# command to run tests
-#before_script:
-#  -
-script: nosetests
-#after_script:
-#  -
+
 # command to install dependencies
 #before_command:
 #  -
 install:
-  - pip install -r requirements.txt --use-mirrors
+  - pip install -r requirements.txt
 #after_command:
 #  -
+
+#before_script:
+#  - pip install nose2
+
+#script:
+#  - nose2 --verbose test_pen
+before_script:
+  - pip install nose
+
+script:
+  - nosetests

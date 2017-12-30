@@ -17,8 +17,8 @@ from relo.core.util import mkdirs
 
 __author__ = "cwoebker"
 __version__ = config.get_version()
-__copyright__ = "© 2012 cwoebker"
-__license__ = "See in LICENSE file"
+__copyright__ = "(c) 2012-2018 Cecil Woebker"
+__license__ = "BSD"
 
 
 def init_home():
