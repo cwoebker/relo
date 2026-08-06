@@ -7,8 +7,8 @@ from relo.core import doctype
 from relo.core.log import logger
 
 FILE_Marker = '<files>'
-
 ##### Format #####
+
 
 def paths2tree(paths):
     "a list of paths to a list of tree elements"
@@ -17,19 +17,19 @@ def paths2tree(paths):
         Insert a branch of directories on its trunk
         """
         parts = branch.split('/', 1)
-        if len(parts) == 1: # is a file
+        if len(parts) == 1:  # is a file
             trunk[FILE_Marker].append(parts[0])
-        else: # is a directory
+        else:  # is a directory
             node, others = parts
             if node not in trunk:
                 trunk[node] = defaultdict(dict, ((FILE_Marker, []),))
             attach(others, trunk[node])
 
-
     main_dict = defaultdict(dict, ((FILE_Marker, []),))
     for path in paths:
         attach(path, main_dict)
     return main_dict
+
 
 def tree2paths(tree):
     "a list of tree elements to a list of paths"
@@ -38,6 +38,7 @@ def tree2paths(tree):
         #NOT WORKING YEY
         #CAN BE DERIVED FROM PRINT TREE FUNCTION
         pass
+
 
 def printTree(tree, indent=0):
     """
@@ -50,9 +51,9 @@ def printTree(tree, indent=0):
         else:
             print ' ' * indent + str(key)
             if isinstance(value, dict):
-                printTree(value, indent+1)
+                printTree(value, indent + 1)
             else:
-                print '  ' * (indent+1) + str(value)
+                print '  ' * (indent + 1) + str(value)
 
 
 ##### Listing #####
@@ -69,6 +70,7 @@ def countFiles(rootDir):
             count += 1
     return count
 
+
 def getTotalSize(rootDir, hidden):
     """
     get total size in directory (recursively)
@@ -79,7 +81,7 @@ def getTotalSize(rootDir, hidden):
             subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
             #print root
         for file in files:
-            if file.startswith('.') and hidden==0:
+            if file.startswith('.') and hidden == 0:
                 continue
             itempath = os.path.join(root, file)
             if os.path.islink(itempath):
@@ -88,12 +90,13 @@ def getTotalSize(rootDir, hidden):
             total_size += os.path.getsize(itempath)
     return total_size
 
+
 def listFiles(rootDir, hidden):
     returnList = []
     total_size = 0
     fileList = os.listdir(rootDir)
     for file in fileList:
-        if file.startswith('.') and hidden==0:
+        if file.startswith('.') and hidden == 0:
             continue
         itempath = os.path.join(rootDir, file)
         if os.path.isdir(itempath) or os.path.islink(itempath):
@@ -104,6 +107,7 @@ def listFiles(rootDir, hidden):
 
     logger.debug("Total Size: %d" % total_size)
     return total_size, returnList
+
 
 def recursiveListFiles(rootDir, hidden):
     """
@@ -116,7 +120,7 @@ def recursiveListFiles(rootDir, hidden):
             subFolders[:] = [sub for sub in subFolders if not sub.startswith('.')]
         #print root
         for file in files:
-            if file.startswith('.') and hidden==0:
+            if file.startswith('.') and hidden == 0:
                 continue
             itempath = os.path.join(root, file)
             if os.path.islink(itempath):
@@ -128,6 +132,7 @@ def recursiveListFiles(rootDir, hidden):
 
 ##### Filters #####
 
+
 def filterList(fileList):
     filteredList = []
     for path in fileList:
@@ -135,6 +140,7 @@ def filterList(fileList):
         if ext in doctype.__all__:
             filteredList.append(path)
     return filteredList
+
 
 def filterDocType(fileList, doctype):
     filteredList = []
@@ -146,6 +152,7 @@ def filterDocType(fileList, doctype):
 
 ##### Information #####
 
+
 def getFileType(itempath):
     """
     takes a path and returns a filetype
@@ -155,6 +162,7 @@ def getFileType(itempath):
     return ext
 
 ##### List Conversion #####
+
 
 def paths2names(pathList):
     """
