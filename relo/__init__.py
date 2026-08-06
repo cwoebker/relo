@@ -4,7 +4,6 @@
 import sys
 import os
 import time
-import math
 import argparse
 from relo import core
 from relo.core.log import logger
@@ -13,18 +12,19 @@ from relo.core.config import conf
 from relo.local.search import Search, IndexSearch, checkIndex
 from relo.local.index import MetaIndex, InvertedIndex
 from relo.local.stats import Stats
-from relo.net import crawl as rawl
 from relo.core.config import PATH_HOME_ETC
 from relo.core.util import mkdirs
 
 __author__ = "cwoebker"
 __version__ = config.get_version()
-__copyright__ = "© 2012 cwoebker"
-__license__ = "See in LICENSE file"
+__copyright__ = "(c) 2012-2018 Cecil Woebker"
+__license__ = "BSD"
+
 
 def init_home():
     if not os.path.isdir(PATH_HOME_ETC):
         mkdirs(PATH_HOME_ETC)
+
 
 def main():
     """
@@ -117,11 +117,7 @@ def main():
     search.add_argument('-d', '--directory', action='store', default='./',
                         dest='directory', help='select Directory - (default=current)')
 
-    ##### Remote Argumnets #####
-
-    crawl = reloParsers.add_parser('crawl', help='crawl help')
-    crawl.set_defaults(which='crawl')
-    crawl.add_argument('url', action='store', help='url to use')
+    ########## INIT ##########
 
     try:
         results = parser.parse_args(args=sys.argv[1:])
@@ -136,10 +132,8 @@ def main():
         logger.error(str(msg))
         return 1
 
-    ########## INIT ##########
     logger.debug(results)
     core.init()
-
 
     ########## CONFIG ##########
     if results.which.startswith('config'):
@@ -158,22 +152,6 @@ def main():
             relo.update(results.key)
         else:
             logger.error('Invalid Repo-Key')
-    ########## CRAWL ##########
-    elif results.which == 'crawl':
-        url = results.url
-
-        sTime = time.time()
-
-        crawler = rawl.Crawler(url, 16)
-        crawler.crawl()
-        print "\n".join(crawler.urls)
-
-        eTime = time.time()
-        tTime = eTime - sTime
-
-        print "Found:    %d" % crawler.links
-        print "Followed: %d" % crawler.followed
-        print "Stats:    (%d/s after %0.2fs)" % (int(math.ceil(float(crawler.links) / tTime)), tTime)
     ########## SEARCH ##########
     elif results.which == 'search':
         check = checkIndex(results.directory)
@@ -212,7 +190,7 @@ def main():
             meta.listProject()
             meta.run()
             inverted = InvertedIndex(results.directory, results.hidden)
-            inverted.setUpProject('meta:::search') ### make index more modular and fix this nasty code
+            inverted.setUpProject('meta:::search')  # make index more modular and fix this nasty code
             inverted.run()
             eTime = time.time()
             dTime = eTime - sTime
