@@ -1,15 +1,14 @@
 # Relo: Intelligent cli search for Humans
 
+> **Archived.** This project is no longer maintained and this repository is
+> read-only. It targets Python 2 and won't run as-is on Python 3. Feel free
+> to fork it if you'd like to pick up where it left off.
+
 [`relo`](https://relo.cwoebker.com) recursively searches documents and analyzes them.
 
 [![PyPI Version](https://img.shields.io/pypi/v/relo.svg)](https://pypi.python.org/pypi/relo)
 [![PyPI License](https://img.shields.io/pypi/l/relo.svg)](https://pypi.python.org/pypi/relo)
 [![PyPI Python Versions](https://img.shields.io/pypi/pyversions/relo.svg)](https://pypi.python.org/pypi/relo)
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/cwoebker)
-
-Master: [![Build Status](https://secure.travis-ci.org/cwoebker/relo.png?branch=master)](http://travis-ci.org/cwoebker/relo)
-
-Develop: [![Build Status](https://secure.travis-ci.org/cwoebker/relo.png?branch=develop)](http://travis-ci.org/cwoebker/relo)
 
 ---
 
@@ -45,10 +44,14 @@ Additionally try running `relo --help` for basic usage information.
 ## Caveats
 
 - **Warning:** This is still beta. Do not use for anything hugely important.
+- This project is archived and unmaintained; issues and pull requests are
+  no longer monitored.
 
 ## Contribute
 
-[Fork and contribute!](https://github.com/cwoebker/pen)
+This repository is archived and no longer accepts contributions. Feel free
+to [fork it](https://github.com/cwoebker/relo/fork) if you'd like to continue
+the work yourself.
 
 ---
 
